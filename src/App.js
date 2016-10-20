@@ -5,9 +5,6 @@ import './App.css';
 import firebase, { provider } from './firebase';
 import $ from 'jquery';
 
-
-
-
 class App extends Component {
   constructor() {
     super();
@@ -19,16 +16,22 @@ class App extends Component {
   searchTwitter() {
     console.log(provider);
     firebase.auth().signInWithPopup(provider).then((result)=>{
-      // console.log(twitter.getUserTimeline({ 'screen_name': 'dkerrious', 'count': '10'}, error, success));
-      $.getJSON("https://api.twitter.com/1.1/search/tweets.json?q=%23freebandnames",
+      $.get("https://api.twitter.com/1.1/statuses/oembed.json?id=507185938620219395",
       function(data){console.log(data);});
     }).catch((error) => {
       console.log(error);
-      // var errorCode = error.code;
-      // var email = error.email;
-      // var credential = error.credential;
     });
   }
+  //
+  // componentDidMount() {
+  //   var xhr = new xmlHttpRequest();
+  //   xhr.onreadystatechange = () => {
+  //     if(xhr.readyState === 4 && xhr.status === 200) {
+  //       console.log('poop');
+  //       console.log(JSON.parse(xhr.responseText));
+  //     }
+  //   };
+  // }
 
   render() {
     return (
