@@ -1,12 +1,3 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import './index.css';
-
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
 // var Twitter = require('twitter-js-client').Twitter;
 //
 // var config = {
@@ -19,3 +10,10 @@ ReactDOM.render(
 //
 // var twitter = new Twitter(config);
 //
+// var error = function (err, response, body) {
+//   console.log('ERROR [%s]', console.log(err));
+// };
+//
+// var success = function (data) {
+// 	console.log('Data [%s]', data);
+// };
