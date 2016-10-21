@@ -23,9 +23,9 @@ class App extends Component {
   pullTweet() {
     $.ajax({
       context: this,
-      url: "https://api.twitter.com/1.1/statuses/user_timeline.json?dkerrious=twitterapi&count=2",
-      jsonp: "callback",
-      dataType: "jsonp",
+      url: "https://api.twitter.com/v1/statuses/user_timeline.json?user_name=dkerrioustwitterapi&count=2",
+      json: "callback",
+      // dataType: "jsonp",
       success: function(response) {
         let tweet = _.pick(response, ['author_name','html']);
         this.setState({ 'tweets' : this.state.tweets.concat(tweet) });
@@ -33,7 +33,7 @@ class App extends Component {
         console.log("response: ", response);
       },
       error: function(errorThrown){
-        alert(errorThrown);
+        console.log(errorThrown);
       }
   });
   }
