@@ -23,7 +23,7 @@ class App extends Component {
   pullTweet() {
     $.ajax({
       context: this,
-      url: "https://api.twitter.com/1/statuses/oembed.json?id=785307538975698945",
+      url: "https://api.twitter.com/1.1/statuses/user_timeline.json?dkerrious=twitterapi&count=2",
       jsonp: "callback",
       dataType: "jsonp",
       success: function(response) {
