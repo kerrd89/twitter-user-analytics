@@ -4,38 +4,46 @@ import List from './containers/List.js';
 import './App.css';
 import firebase, { provider } from './firebase';
 import $ from 'jquery';
+import _ from 'lodash';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      tweets: [1,2,3]
+      tweets: []
     };
   }
 
-  searchTwitter() {
-    console.log(provider);
+  twitterLogin() {
     firebase.auth().signInWithPopup(provider).then((result)=>{
-      $.get("https://api.twitter.com/1.1/statuses/oembed.json?id=507185938620219395",
-      function(data){console.log(data);});
-    }).catch((error) => {
-      console.log(error);
+      console.log(result);
     });
   }
-  //
-  // componentDidMount() {
-  //   var xhr = new xmlHttpRequest();
-  //   xhr.onreadystatechange = () => {
-  //     if(xhr.readyState === 4 && xhr.status === 200) {
-  //       console.log('poop');
-  //       console.log(JSON.parse(xhr.responseText));
-  //     }
-  //   };
-  // }
+
+  pullTweet() {
+    $.ajax({
+      context: this,
+      url: "https://api.twitter.com/1/statuses/oembed.json?id=785307538975698945",
+      jsonp: "callback",
+      dataType: "jsonp",
+      success: function(response) {
+        let tweet = _.pick(response, ['author_name','html']);
+        this.setState({ 'tweets' : this.state.tweets.concat(tweet) });
+        console.log(this.state.tweets);
+        console.log("response: ", response);
+      },
+      error: function(errorThrown){
+        alert(errorThrown);
+      }
+  });
+  }
 
   render() {
     return (
       <div className="App">
+        <button className="buttonSignIn" onClick={() => this.pullTweet()}>
+        Pull Tweet
+        </button>
         <button className="buttonSignIn" onClick={() => this.searchTwitter()}>
         Sign In
         </button>

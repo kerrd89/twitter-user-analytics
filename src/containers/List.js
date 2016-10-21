@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 
 class List extends Component {
+
   render() {
+    if (!this.props.tweets) {return;}
     let tweets = this.props.tweets.map((tweet)=>{
-      return <p key={tweet}>{tweet}</p>
+      return <li>{tweet.author_name}</li>;
     });
     return (
-        <div>
+        <ul>
           {tweets}
-        </div>
+        </ul>
     );
   }
 }
