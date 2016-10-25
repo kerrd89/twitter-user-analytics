@@ -6,6 +6,7 @@ var app = express();
 var twitter = new Twitter(require ('./config'));
 
 app.set('port', process.env.PORT || 3001);
+app.use(express.static('public'));
 
 app.listen(app.get('port'), () => {
   console.log(`listening on ${app.get('port')}`);
@@ -26,10 +27,3 @@ app.get('/api/tweets-for-user/:username', function(req, res) {
     res.send(data);
   });
 });
-
-
-
-
-
-
-/*"engines" : {"node":"6.3.1"}*/
