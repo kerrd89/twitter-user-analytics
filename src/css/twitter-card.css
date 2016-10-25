@@ -1,0 +1,40 @@
+.twitter-card {
+  background-color: rgba(42, 42, 42, .75);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 300px;
+  margin: 20px;
+  height: 100%;
+}
+
+.twitter-card svg {
+  color: #00AAEC;
+}
+
+.twitter-card-header {
+  background-color: rgba(42, 42, 42, .75);
+  color: #00AAEC;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 200;
+  width: 100%;
+  padding: 5px 0px;
+}
+
+.twitter-card-body {
+  padding: 5px;
+  color: white;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  height: 100%;
+}
+
+.twitter-card-footer {
+  background-color: rgba(42, 42, 42, .75);
+  font-family: 'Roboto', sans-serif;
+  font-weight: 200;
+  width: 100%;
+  color: #00AAEC;
+  padding: 5px 0px;
+}
