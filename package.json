@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "express": "^4.14.0",
     "firebase": "^3.5.1",
     "react-scripts": "0.6.1"
   },
   "dependencies": {
+    "axios": "^0.15.2",
     "lodash": "^4.16.4",
     "node-sass": "^3.10.1",
     "react": "^15.3.2",
