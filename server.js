@@ -2,6 +2,7 @@
 var Twitter = require('node-twitter-api');
 const express = require('express');
 var app = express();
+const _ = require('lodash');
 
 var twitter = new Twitter(require ('./config'));
 
@@ -24,6 +25,7 @@ const getTweetsForUser = (username, numberOfTweets, callback) => {
 app.get('/api/tweets-for-user/:username', function(req, res) {
   const numberOfTweets = req.query.count || 3;
   getTweetsForUser(req.params.username, numberOfTweets, (error, data) => {
+    _.compact()
     res.send(data);
   });
 });

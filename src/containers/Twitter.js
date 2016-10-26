@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 
 class List extends Component {
 
   render() {
     let tweets;
-    let instagramPosts;
     if (this.props.tweets) {
+      console.log(_.slice(this.props.tweets, 0, 10));
       tweets = this.props.tweets.map((tweet)=>{
         return (
           <li className="twitter-card" key={tweet.id_str}>
@@ -18,19 +19,6 @@ class List extends Component {
         );
       });
     }
-    // if (this.props.insta) {
-    //   instagramPosts = this.props.insta.map((post) => {
-    //     if(post.videos) return;
-    //     return (
-    //       <li className="instagram-card" key={post.id}>
-    //         <p className="instagram-card-header">
-    //           <img src="https://source.unsplash.com/random/300x300" alt={post.caption.text}/>
-    //           {post.caption.text}
-    //         </p>
-    //       </li>
-    //     )
-    //   })
-    // }
     return (
         <ul>
           {tweets}
@@ -40,5 +28,3 @@ class List extends Component {
 }
 
 export default List
-
-// {instagramPosts}
