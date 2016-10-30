@@ -10,6 +10,12 @@ class List extends Component {
     );
   }
 
+  hashtagTemplate(hashtag) {
+    return (
+      <li>{hashtag.hashtag}: {hashtag.count}</li>
+    );
+  }
+
   tweetTemplate(tweet) {
     return (
       <li className="twitter-card" key={tweet.id_str}>
@@ -28,15 +34,20 @@ class List extends Component {
   render() {
     let tweets;
     let userMentions;
+    let hashtags;
 
     if (this.props.tweets) {
+
+      tweets = _.slice(this.props.tweets, 0, 10).map((tweet)=>{
+        return this.tweetTemplate(tweet);
+      });
 
       userMentions = this.props.tweets.map((tweet) => {
         if(tweet.entities.user_mentions.length !== 0) {
           let mentions = tweet.entities.user_mentions.map((userMention) => {
             return userMention.screen_name;
           });
-          return (mentions);
+          return mentions;
         }
       });
       userMentions = _.countBy(_.compact(_.flatten(userMentions)));
@@ -57,14 +68,34 @@ class List extends Component {
         return this.userMentionsTemplate(user);
       });
 
-      tweets = _.slice(this.props.tweets, 0, 10).map((tweet)=>{
-        return this.tweetTemplate(tweet);
-      });
 
       hashtags = this.props.tweets.map((tweet) => {
-        if(tweet.)
-      })
+        if(tweet.entities.hashtags.length !== 0) {
+          let tags = tweet.entities.hashtags.map((hashtag) => {
+            return hashtag.text;
+          });
+          return tags;
+        }
+      });
+      hashtags = _.countBy(_.compact(_.flatten(hashtags)))
+      let hashtagsFiltered = _.reduce(hashtags, function(result, value, key) {
+        let obj = {};
+        obj.hashtag = key;
+        obj.count = value;
+        if(!result.length) return result.concat(obj);
+        for(let i = 0; i < result.length; i ++) {
+          if(obj.count>result[i].count) {
+            result.splice(i,0,obj);
+            return result;
+          }
+        }
+        return result.concat(obj);
+      }, []);
+      hashtags = _.slice(hashtagsFiltered, 0, 10).map((hashtag) => {
+        return this.hashtagTemplate(hashtag);
+      });
     }
+
 
     return (
       <div>
