@@ -4,13 +4,33 @@ import moment from 'moment';
 
 class List extends Component {
 
+  userMentionsTemplate(userMention) {
+    return (
+      <li>{userMention.username}: {userMention.count}</li>
+    );
+  }
 
+  tweetTemplate(tweet) {
+    return (
+      <li className="twitter-card" key={tweet.id_str}>
+        <p className="twitter-card-header">
+          {tweet.user.name}<span>@{tweet.user.screen_name}</span>
+        </p>
+        <p className="twitter-card-body">{tweet.text}</p>
+        <p className="twitter-card-footer">{tweet.retweet_count}
+          <span>{tweet.favorited_count}</span>
+          <span>{moment(tweet.created_at).format('LLL')}</span>
+        </p>
+      </li>
+    )
+  }
 
   render() {
     let tweets;
     let userMentions;
 
     if (this.props.tweets) {
+
       userMentions = this.props.tweets.map((tweet) => {
         if(tweet.entities.user_mentions.length !== 0) {
           let mentions = tweet.entities.user_mentions.map((userMention) => {
@@ -20,9 +40,8 @@ class List extends Component {
         }
       });
       userMentions = _.countBy(_.compact(_.flatten(userMentions)));
-      console.log(userMentions)
-      let potato = _.reduce(userMentions, function(result, value, key) {
-        let obj = {username: "", count: null};
+      let userMentionsFiltered = _.reduce(userMentions, function(result, value, key) {
+        let obj = {};
         obj.username = key;
         obj.count = value;
         if(!result.length) return result.concat(obj);
@@ -34,33 +53,31 @@ class List extends Component {
         }
         return result.concat(obj);
       }, []);
-      console.log(potato, 'potato');
-    }
-
-
-
-
-
-    if (this.props.tweets) {
-      tweets = _.slice(this.props.tweets, 0, 10).map((tweet)=>{
-        return (
-          <li className="twitter-card" key={tweet.id_str}>
-            <p className="twitter-card-header">
-              {tweet.user.name}<span>@{tweet.user.screen_name}</span>
-            </p>
-            <p className="twitter-card-body">{tweet.text}</p>
-            <p className="twitter-card-footer">{tweet.retweet_count}
-              <span>{tweet.favorited_count}</span>
-              <span>{moment(tweet.created_at).format('LLL')}</span>
-            </p>
-          </li>
-        );
+      userMentions = _.slice(userMentionsFiltered, 0, 10).map((user)=>{
+        return this.userMentionsTemplate(user);
       });
+
+      tweets = _.slice(this.props.tweets, 0, 10).map((tweet)=>{
+        return this.tweetTemplate(tweet);
+      });
+
+      hashtags = this.props.tweets.map((tweet) => {
+        if(tweet.)
+      })
     }
+
     return (
+      <div>
         <ul>
           {tweets}
         </ul>
+        <ul>
+          {userMentions}
+        </ul>
+        <ul>
+          {hashtags}
+        </ul>
+      </div>
     );
   }
 }
