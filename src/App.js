@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from './containers/Header';
 import Twitter from './containers/Twitter';
-import './App.css';
+// import './App.css';
 import firebase, { provider } from './firebase';
 import _ from 'lodash';
 import axios from 'axios';
@@ -19,7 +19,7 @@ class App extends Component {
   componentDidMount() {
     firebase.auth().onAuthStateChanged((user) => { this.setState({ user });
     });
-    this.pullTweets(this.state.username, 1000);
+    this.pullTweets(this.state.username, 2000);
   }
 
   twitterLogin() {
@@ -28,23 +28,23 @@ class App extends Component {
   }
 
   pullTweets(screenName, count) {
-    let _this = this;
-    //how do we use this in a non-janky fashion
     axios.get(`/api/tweets-for-user/${screenName}?count=${count}`)
-      .then(function (response) {
-        _this.setState({ tweets: response.data });
-      })
+      .then((response)=>this.setState({ tweets: response.data }))
       .catch(function (error) {
         console.log(error);
       });
+  }
 
+  changeUsername(data) {
+    this.setState({ username: data });
+    this.pullTweets(data, 200);
   }
 
   render() {
     return (
       <div className="App">
-        <Header />
-        <Twitter />
+        <Header changeUsername={this.changeUsername.bind(this)}/>
+        <Twitter tweets={this.state.tweets}/>
       </div>
     );
   }
