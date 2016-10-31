@@ -17,6 +17,7 @@ class List extends Component {
   }
 
   tweetTemplate(tweet) {
+    debugger;
     return (
       <li className="twitter-card" key={tweet.id_str}>
       <p className="twitter-card-header">

@@ -29690,11 +29690,12 @@
 	  }, {
 	    key: 'tweetTemplate',
 	    value: function tweetTemplate(tweet) {
+	      debugger;
 	      return _react2.default.createElement(
 	        'li',
 	        { className: 'twitter-card', key: tweet.id_str, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 21
+	            lineNumber: 22
 	          },
 	          __self: this
 	        },
@@ -29702,7 +29703,7 @@
 	          'p',
 	          { className: 'twitter-card-header', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 22
+	              lineNumber: 23
 	            },
 	            __self: this
 	          },
@@ -29712,7 +29713,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 23
+	                lineNumber: 24
 	              },
 	              __self: this
 	            },
@@ -29724,7 +29725,7 @@
 	          'p',
 	          { className: 'twitter-card-body', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 25
+	              lineNumber: 26
 	            },
 	            __self: this
 	          },
@@ -29734,7 +29735,7 @@
 	          'p',
 	          { className: 'twitter-card-footer', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 26
+	              lineNumber: 27
 	            },
 	            __self: this
 	          },
@@ -29744,7 +29745,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 27
+	                lineNumber: 28
 	              },
 	              __self: this
 	            },
@@ -29755,7 +29756,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 28
+	                lineNumber: 29
 	              },
 	              __self: this
 	            },
@@ -29853,7 +29854,7 @@
 	        {
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 111
+	            lineNumber: 112
 	          },
 	          __self: this
 	        },
@@ -29862,7 +29863,7 @@
 	          {
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 112
+	              lineNumber: 113
 	            },
 	            __self: this
 	          },
@@ -29873,7 +29874,7 @@
 	          {
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 115
+	              lineNumber: 116
 	            },
 	            __self: this
 	          },
@@ -29884,7 +29885,7 @@
 	          {
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 118
+	              lineNumber: 119
 	            },
 	            __self: this
 	          },
