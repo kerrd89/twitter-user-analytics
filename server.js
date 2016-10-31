@@ -24,8 +24,9 @@ const getTweetsForUser = (username, numberOfTweets, callback) => {
 
 app.get('/api/tweets-for-user/:username', function(req, res) {
   const numberOfTweets = req.query.count || 3;
+  const maxID = req.query.maxID || 0;
   getTweetsForUser(req.params.username, numberOfTweets, (error, data) => {
-    _.compact()
+    _.compact();
     res.send(data);
   });
 });

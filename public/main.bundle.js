@@ -29457,7 +29457,7 @@
 	      _firebase2.default.auth().onAuthStateChanged(function (user) {
 	        _this2.setState({ user: user });
 	      });
-	      this.pullTweets(this.state.username, 2000);
+	      this.pullTweets(this.state.username, 200);
 	    }
 	  }, {
 	    key: 'twitterLogin',
@@ -29469,10 +29469,10 @@
 	    value: function pullTweets(screenName, count) {
 	      var _this3 = this;
 
-	      _axios2.default.get('/api/tweets-for-user/' + screenName + '?count=' + count).then(function (response) {
-	        return _this3.setState({ tweets: response.data });
+	      _axios2.default.get('/api/tweets-for-user/' + screenName + '?count=' + count + '?exclude_replies=true').then(function (response) {
+	        _this3.setState({ tweets: response.data });
 	      }).catch(function (error) {
-	        console.log(error);
+	        return console.log(error);
 	      });
 	    }
 	  }, {
@@ -29658,8 +29658,7 @@
 	    value: function userMentionsTemplate(userMention) {
 	      return _react2.default.createElement(
 	        'li',
-	        {
-	          __source: {
+	        { key: userMention.username, __source: {
 	            fileName: _jsxFileName,
 	            lineNumber: 9
 	          },
@@ -29675,8 +29674,7 @@
 	    value: function hashtagTemplate(hashtag) {
 	      return _react2.default.createElement(
 	        'li',
-	        {
-	          __source: {
+	        { key: hashtag.hashtag, __source: {
 	            fileName: _jsxFileName,
 	            lineNumber: 15
 	          },
@@ -29690,12 +29688,11 @@
 	  }, {
 	    key: 'tweetTemplate',
 	    value: function tweetTemplate(tweet) {
-	      debugger;
 	      return _react2.default.createElement(
 	        'li',
 	        { className: 'twitter-card', key: tweet.id_str, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 22
+	            lineNumber: 21
 	          },
 	          __self: this
 	        },
@@ -29703,7 +29700,7 @@
 	          'p',
 	          { className: 'twitter-card-header', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 23
+	              lineNumber: 22
 	            },
 	            __self: this
 	          },
@@ -29713,7 +29710,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 24
+	                lineNumber: 23
 	              },
 	              __self: this
 	            },
@@ -29725,7 +29722,7 @@
 	          'p',
 	          { className: 'twitter-card-body', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 26
+	              lineNumber: 25
 	            },
 	            __self: this
 	          },
@@ -29735,7 +29732,7 @@
 	          'p',
 	          { className: 'twitter-card-footer', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 27
+	              lineNumber: 26
 	            },
 	            __self: this
 	          },
@@ -29745,7 +29742,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 28
+	                lineNumber: 27
 	              },
 	              __self: this
 	            },
@@ -29756,7 +29753,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 29
+	                lineNumber: 28
 	              },
 	              __self: this
 	            },
@@ -29764,6 +29761,15 @@
 	          )
 	        )
 	      );
+	    }
+	  }, {
+	    key: 'getActivityByDate',
+	    value: function getActivityByDate(tweets) {
+	      var activityByDate = tweets.map(function (tweet) {
+	        return (0, _moment2.default)(tweet.created_at).format('LL');
+	      });
+	      activityByDate = _lodash2.default.countBy(_lodash2.default.compact(_lodash2.default.flatten(activityByDate)));
+	      // console.log(activityByDate);
 	    }
 	  }, {
 	    key: 'getUserMentions',
@@ -29837,6 +29843,7 @@
 	      var tweets = void 0;
 	      var userMentions = void 0;
 	      var hashtags = void 0;
+	      var activityByDate = void 0;
 
 	      if (this.props.tweets) {
 
@@ -29847,6 +29854,8 @@
 	        userMentions = this.getUserMentions(this.props.tweets);
 
 	        hashtags = this.getHashtags(this.props.tweets);
+
+	        activityByDate = this.getActivityByDate(this.props.tweets);
 	      }
 
 	      return _react2.default.createElement(
@@ -29854,7 +29863,7 @@
 	        {
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 112
+	            lineNumber: 121
 	          },
 	          __self: this
 	        },
@@ -29863,7 +29872,7 @@
 	          {
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 113
+	              lineNumber: 122
 	            },
 	            __self: this
 	          },
@@ -29874,7 +29883,7 @@
 	          {
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 116
+	              lineNumber: 125
 	            },
 	            __self: this
 	          },
@@ -29885,7 +29894,7 @@
 	          {
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 119
+	              lineNumber: 128
 	            },
 	            __self: this
 	          },

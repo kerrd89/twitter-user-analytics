@@ -19,7 +19,7 @@ class App extends Component {
   componentDidMount() {
     firebase.auth().onAuthStateChanged((user) => { this.setState({ user });
     });
-    this.pullTweets(this.state.username, 2000);
+    this.pullTweets(this.state.username, 200);
   }
 
   twitterLogin() {
@@ -28,11 +28,11 @@ class App extends Component {
   }
 
   pullTweets(screenName, count) {
-    axios.get(`/api/tweets-for-user/${screenName}?count=${count}`)
-      .then((response)=>this.setState({ tweets: response.data }))
-      .catch(function (error) {
-        console.log(error);
-      });
+    axios.get(`/api/tweets-for-user/${screenName}?count=${count}?exclude_replies=true`)
+      .then((response)=>{
+        this.setState({ tweets: response.data });
+      })
+      .catch((error) => console.log(error));
   }
 
   changeUsername(data) {

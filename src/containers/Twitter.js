@@ -6,18 +6,17 @@ class List extends Component {
 
   userMentionsTemplate(userMention) {
     return (
-      <li>{userMention.username}: {userMention.count}</li>
+      <li key={userMention.username}>{userMention.username}: {userMention.count}</li>
     );
   }
 
   hashtagTemplate(hashtag) {
     return (
-      <li>{hashtag.hashtag}: {hashtag.count}</li>
+      <li key={hashtag.hashtag}>{hashtag.hashtag}: {hashtag.count}</li>
     );
   }
 
   tweetTemplate(tweet) {
-    debugger;
     return (
       <li className="twitter-card" key={tweet.id_str}>
       <p className="twitter-card-header">
@@ -30,6 +29,14 @@ class List extends Component {
       </p>
       </li>
     )
+  }
+
+  getActivityByDate(tweets) {
+    let activityByDate = tweets.map((tweet) => {
+      return moment(tweet.created_at).format('LL')
+    })
+    activityByDate = _.countBy(_.compact(_.flatten(activityByDate)));
+    // console.log(activityByDate);
   }
 
   getUserMentions(tweets) {
@@ -95,6 +102,7 @@ class List extends Component {
     let tweets;
     let userMentions;
     let hashtags;
+    let activityByDate;
 
     if (this.props.tweets) {
 
@@ -106,6 +114,7 @@ class List extends Component {
 
       hashtags = this.getHashtags(this.props.tweets)
 
+      activityByDate = this.getActivityByDate(this.props.tweets)
     }
 
     return (
