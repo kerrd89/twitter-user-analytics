@@ -8193,7 +8193,7 @@
 
 	var _App2 = _interopRequireDefault(_App);
 
-	__webpack_require__(630);
+	__webpack_require__(623);
 
 	__webpack_require__(627);
 
@@ -29638,6 +29638,11 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	// import * as twitterHelpers from '../utils/twitter-helpers.js';
+
+
+	// twitterHelpers.getActivityByWeekday(tweets);
+
 	var List = function (_Component) {
 	  _inherits(List, _Component);
 
@@ -29654,7 +29659,7 @@
 	        'li',
 	        { key: userMention.username, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 11
+	            lineNumber: 14
 	          },
 	          __self: this
 	        },
@@ -29670,7 +29675,7 @@
 	        'li',
 	        { key: hashtag.hashtag, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 17
+	            lineNumber: 20
 	          },
 	          __self: this
 	        },
@@ -29686,7 +29691,7 @@
 	        'li',
 	        { className: 'twitter-card', key: tweet.id_str, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 23
+	            lineNumber: 26
 	          },
 	          __self: this
 	        },
@@ -29694,7 +29699,7 @@
 	          'p',
 	          { className: 'twitter-card-header', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 24
+	              lineNumber: 27
 	            },
 	            __self: this
 	          },
@@ -29704,7 +29709,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 25
+	                lineNumber: 28
 	              },
 	              __self: this
 	            },
@@ -29716,7 +29721,7 @@
 	          'p',
 	          { className: 'twitter-card-body', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 27
+	              lineNumber: 30
 	            },
 	            __self: this
 	          },
@@ -29726,7 +29731,7 @@
 	          'p',
 	          { className: 'twitter-card-footer', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 28
+	              lineNumber: 31
 	            },
 	            __self: this
 	          },
@@ -29736,7 +29741,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 29
+	                lineNumber: 32
 	              },
 	              __self: this
 	            },
@@ -29747,7 +29752,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 30
+	                lineNumber: 33
 	              },
 	              __self: this
 	            },
@@ -29769,6 +29774,8 @@
 	        return (0, _moment2.default)(tweet.created_at).format('wwww');
 	      });
 	      var data = [];
+	      var labels = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
 	      data.push(activityByWeekday['Monday']);
 	      data.push(activityByWeekday['Tuesday']);
 	      data.push(activityByWeekday['Wednesday']);
@@ -29776,10 +29783,9 @@
 	      data.push(activityByWeekday['Friday']);
 	      data.push(activityByWeekday['Saturday']);
 	      data.push(activityByWeekday['Sunday']);
-	      var labels = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 	      return _react2.default.createElement(_LineChart2.default, { data: data, labels: labels, width: '600', height: '250', __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 56
+	          lineNumber: 61
 	        },
 	        __self: this
 	      });
@@ -29787,14 +29793,6 @@
 	  }, {
 	    key: 'getActivityByWeek',
 	    value: function getActivityByWeek(tweets) {
-	      var label1 = (0, _moment2.default)(tweets[1].created_at).format('LL');
-	      var label2 = (0, _moment2.default)(tweets[30].created_at).format('LL');
-	      var label3 = (0, _moment2.default)(tweets[60].created_at).format('LL');
-	      var label4 = (0, _moment2.default)(tweets[90].created_at).format('LL');
-	      var label5 = (0, _moment2.default)(tweets[120].created_at).format('LL');
-	      var label6 = (0, _moment2.default)(tweets[150].created_at).format('LL');
-	      var label7 = (0, _moment2.default)(tweets[180].created_at).format('LL');
-	      var labels = [label1, label2, label3, label4, label5, label6, label7];
 
 	      var activityByWeek = tweets.map(function (tweet) {
 	        return (0, _moment2.default)(tweet.created_at).format('ww');
@@ -29805,19 +29803,18 @@
 	      _lodash2.default.map(activityByWeek, function (week) {
 	        data.push(week);
 	      });
-	      var labelz = [];
+	      var labels = [];
 	      var labelHelper = Math.floor(tweets.length / data.length);
-	      console.log(labelHelper);
+
 	      for (var i = 0; i < data.length; i++) {
 	        var indexForLabel = labelHelper * i;
 	        var label = (0, _moment2.default)(tweets[indexForLabel].created_at).format('LL');
-	        labelz.push(label);
+	        labels.push(label);
 	      }
-	      console.log(labelz);
 
-	      return _react2.default.createElement(_LineChart2.default, { data: data, labels: labelz.reverse(), width: '600', height: '250', __source: {
+	      return _react2.default.createElement(_LineChart2.default, { data: data, labels: labels.reverse(), width: '600', height: '250', __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 90
+	          lineNumber: 86
 	        },
 	        __self: this
 	      });
@@ -29846,7 +29843,7 @@
 
 	      return _react2.default.createElement(_LineChart2.default, { data: data, labels: labels, width: '600', height: '250', __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 117
+	          lineNumber: 113
 	        },
 	        __self: this
 	      });
@@ -29942,7 +29939,7 @@
 	        'div',
 	        { className: 'twitter-container', __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 199
+	            lineNumber: 195
 	          },
 	          __self: this
 	        },
@@ -29950,7 +29947,7 @@
 	          'ul',
 	          { className: 'side-bar', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 200
+	              lineNumber: 196
 	            },
 	            __self: this
 	          },
@@ -29960,7 +29957,7 @@
 	          'div',
 	          { className: 'user-lists', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 203
+	              lineNumber: 199
 	            },
 	            __self: this
 	          },
@@ -29969,7 +29966,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 204
+	                lineNumber: 200
 	              },
 	              __self: this
 	            },
@@ -29979,7 +29976,7 @@
 	            'ul',
 	            { className: 'user-mentions', __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 205
+	                lineNumber: 201
 	              },
 	              __self: this
 	            },
@@ -29990,7 +29987,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 208
+	                lineNumber: 204
 	              },
 	              __self: this
 	            },
@@ -30000,7 +29997,7 @@
 	            'ul',
 	            { className: 'user-hashtags', __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 209
+	                lineNumber: 205
 	              },
 	              __self: this
 	            },
@@ -30011,7 +30008,7 @@
 	          'div',
 	          { className: 'activity-charts', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 213
+	              lineNumber: 209
 	            },
 	            __self: this
 	          },
@@ -61458,28 +61455,30 @@
 	    datasets: [{
 	      label: "user-activity by day",
 	      lineTension: 0.5,
-	      backgroundColor: ["rgba(75,192,192,0.4)"],
-	      borderColor: ["rgba(75,192,192,1)"],
-	      borderCapStyle: 'butt',
-	      borderDash: [],
-	      borderDashOffset: 0.0,
-	      borderJoinStyle: 'miter',
-	      pointBorderColor: "rgba(75,192,192,1)",
-	      pointBackgroundColor: "#fff",
-	      pointBorderWidth: 1,
-	      pointHoverRadius: 5,
-	      pointHoverBackgroundColor: "rgba(75,192,192,1)",
-	      pointHoverBorderColor: "rgba(220,220,220,1)",
-	      pointHoverBorderWidth: 2,
-	      pointRadius: 1,
-	      pointHitRadius: 10,
+	      // backgroundColor: ["rgba(75,192,192,0.4)"],
+	      // borderColor: ["rgba(75,192,192,1)"],
+	      // borderCapStyle: 'butt',
+	      // borderDash: [],
+	      // borderDashOffset: 0.0,
+	      // borderJoinStyle: 'miter',
+	      // pointBorderColor: "rgba(75,192,192,1)",
+	      // pointBackgroundColor: "#fff",
+	      // pointBorderWidth: 1,
+	      // pointHoverRadius: 5,
+	      // pointHoverBackgroundColor: "rgba(75,192,192,1)",
+	      // pointHoverBorderColor: "rgba(220,220,220,1)",
+	      // pointHoverBorderWidth: 2,
+	      // pointRadius: 1,
+	      // pointHitRadius: 10,
 	      data: data,
 	      spanGaps: false
 	    }]
 	  };
-	  return _react2.default.createElement(LineChart, { data: chartData, width: '600', height: '300', __source: {
+
+	  var chartOptions = {};
+	  return _react2.default.createElement(LineChart, { data: chartData, options: chartOptions, width: '600', height: '300', __source: {
 	      fileName: _jsxFileName,
-	      lineNumber: 31
+	      lineNumber: 34
 	    },
 	    __self: undefined
 	  });
@@ -67687,8 +67686,46 @@
 
 
 /***/ },
-/* 623 */,
-/* 624 */,
+/* 623 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(624);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(626)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./reset.css", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./reset.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 624 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(625)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "/* http://meyerweb.com/eric/tools/css/reset/\n   v2.0 | 20110126\n   License: none (public domain)\n*/\n\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n\tmargin: 0;\n\tpadding: 0;\n\tborder: 0;\n\tfont-size: 100%;\n\tfont: inherit;\n\tvertical-align: baseline;\n}\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n\tdisplay: block;\n}\nbody {\n\tline-height: 1;\n}\nol, ul {\n\tlist-style: none;\n}\nblockquote, q {\n\tquotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n\tcontent: '';\n\tcontent: none;\n}\ntable {\n\tborder-collapse: collapse;\n\tborder-spacing: 0;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
 /* 625 */
 /***/ function(module, exports) {
 
@@ -68032,47 +68069,6 @@
 
 	// module
 	exports.push([module.id, "/*@import url('./css/header')*/\n/*@import './css/index';*/\nheader {\n  background-color: #2A2A2A;\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n  padding: 10px;\n}\n\n.twitter-container {\n  display:flex;\n  flex-direction: wrap;\n  border: 5px solid black;\n  width: 100%;\n  margin: 10px;\n}\n\n.side-bar{\n  width: 300px;\n  background-color: rgba(42, 42, 42, .75);\n}\n\n.user-lists {\n  display: flex;\n  flex-direction: column;\n  background-color: rgba(42, 42, 42, .75);\n  border: 5px solid black;\n}\n\n.user-lists p {\n  background-color: rgba(42, 42, 42, .75);\n  color: #00AAEC;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 200;\n  width: 100%;\n  padding: 5px 0px;\n}\n\n.user-lists li{\n  padding: 5px;\n  color: white;\n  width: 100%;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 100;\n  height: 100%;\n}\n\n.user-hashtags {\n  width:300px;\n}\n\n.user-mentions{\n  width:300px;\n}\n\n.activity-charts {\n  display: flex;\n  flex-direction: column;\n  width: 600px;\n}\n\n.side-bar,.user-hashtags, .user-mentions, .activity-charts{\n  border: 5px solid black;\n}\n\n.twitter-card {\n  background-color: rgba(42, 42, 42, .75);\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  width: 300px;\n}\n\n.twitter-card svg {\n  color: #00AAEC;\n}\n\n.twitter-card-header {\n  background-color: rgba(42, 42, 42, .75);\n  color: #00AAEC;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 200;\n  width: 100%;\n  padding: 5px 0px;\n}\n\n.twitter-card-body {\n  padding: 5px;\n  color: white;\n  width: 100%;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 100;\n  height: 100%;\n}\n\n.twitter-card-footer {\n  background-color: rgba(42, 42, 42, .75);\n  font-family: 'Roboto', sans-serif;\n  font-weight: 200;\n  width: 100%;\n  color: #00AAEC;\n  padding: 5px 0px;\n}\n", ""]);
-
-	// exports
-
-
-/***/ },
-/* 629 */,
-/* 630 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(631);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(626)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./reset.css", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./reset.css");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 631 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(625)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "/* http://meyerweb.com/eric/tools/css/reset/\n   v2.0 | 20110126\n   License: none (public domain)\n*/\n\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n\tmargin: 0;\n\tpadding: 0;\n\tborder: 0;\n\tfont-size: 100%;\n\tfont: inherit;\n\tvertical-align: baseline;\n}\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n\tdisplay: block;\n}\nbody {\n\tline-height: 1;\n}\nol, ul {\n\tlist-style: none;\n}\nblockquote, q {\n\tquotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n\tcontent: '';\n\tcontent: none;\n}\ntable {\n\tborder-collapse: collapse;\n\tborder-spacing: 0;\n}\n", ""]);
 
 	// exports
 

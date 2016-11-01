@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import moment from 'moment';
 import LineChartTemplate from '../components/LineChart';
+// import * as twitterHelpers from '../utils/twitter-helpers.js';
 
+
+// twitterHelpers.getActivityByWeekday(tweets);
 
 class List extends Component {
 
@@ -44,6 +47,9 @@ class List extends Component {
       return moment(tweet.created_at).format('wwww');
     })
     let data = [];
+    let labels = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+
     data.push(activityByWeekday['Monday'])
     data.push(activityByWeekday['Tuesday'])
     data.push(activityByWeekday['Wednesday'])
@@ -51,21 +57,12 @@ class List extends Component {
     data.push(activityByWeekday['Friday'])
     data.push(activityByWeekday['Saturday'])
     data.push(activityByWeekday['Sunday'])
-    let labels = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
     return (
       <LineChartTemplate data={data} labels={labels} width="600" height="250"/>
     )
   }
 
   getActivityByWeek(tweets){
-    let label1 = moment(tweets[1].created_at).format('LL')
-    let label2 = moment(tweets[30].created_at).format('LL')
-    let label3 = moment(tweets[60].created_at).format('LL')
-    let label4 = moment(tweets[90].created_at).format('LL')
-    let label5 = moment(tweets[120].created_at).format('LL')
-    let label6 = moment(tweets[150].created_at).format('LL')
-    let label7 = moment(tweets[180].created_at).format('LL')
-    let labels = [label1,label2,label3,label4,label5,label6,label7];
 
     let activityByWeek = tweets.map((tweet) => {
       return moment(tweet.created_at).format('ww');
@@ -76,18 +73,17 @@ class List extends Component {
     _.map(activityByWeek, ((week)=>{
       data.push(week)
     }))
-    let labelz = [];
+    let labels = [];
     let labelHelper = Math.floor(tweets.length/data.length)
-    console.log(labelHelper);
+
     for(let i = 0; i < data.length; i++) {
       let indexForLabel = (labelHelper*i)
       let label = moment(tweets[indexForLabel].created_at).format('LL')
-      labelz.push(label)
+      labels.push(label)
     }
-    console.log(labelz)
 
     return (
-      <LineChartTemplate data={data} labels={labelz.reverse()} width="600" height="250"/>
+      <LineChartTemplate data={data} labels={labels.reverse()} width="600" height="250"/>
     )
   }
 
