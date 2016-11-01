@@ -72,15 +72,49 @@ class List extends Component {
     })
 
     activityByWeek = _.countBy(_.compact(_.flatten(activityByWeek)));
-
     let data = [];
     _.map(activityByWeek, ((week)=>{
       data.push(week)
     }))
-
+    let labelz = [];
+    let labelHelper = Math.floor(tweets.length/data.length)
+    console.log(labelHelper);
+    for(let i = 0; i < data.length; i++) {
+      let indexForLabel = (labelHelper*i)
+      let label = moment(tweets[indexForLabel].created_at).format('LL')
+      labelz.push(label)
+    }
+    console.log(labelz)
 
     return (
-      <LineChartTemplate data={data} labels={labels.reverse()} width="600" height="250"/>
+      <LineChartTemplate data={data} labels={labelz.reverse()} width="600" height="250"/>
+    )
+  }
+
+  getActivityByHour(tweets){
+    let labels = ['12AM','1AM','2AM','3AM','4AM','5AM','6AM','7AM','8AM',
+    '9AM','10AM','11AM','12PM','1PM','2PM','3PM','4PM','5PM','6PM','7PM','8PM',
+    '9PM','10PM','11PM'];
+
+    let activityByHour = tweets.map((tweet) => {
+      return moment(tweet.created_at).format('HH');
+    })
+
+    activityByHour = _.countBy(_.compact(_.flatten(activityByHour)));
+
+    let data = [];
+
+    for(let i = 1; i < 25; i++) {
+      let index = i.toString()
+      if(activityByHour[index]!==undefined) {
+        data.push((activityByHour[index]))
+      } else {
+        data.push(0)
+      }
+    }
+
+    return (
+      <LineChartTemplate data={data} labels={labels} width="600" height="250"/>
     )
   }
 
@@ -148,6 +182,7 @@ class List extends Component {
     let hashtags;
     let activityByWeekday;
     let activityByWeek;
+    let activityByHour;
 
     if (this.props.tweets.length) {
       tweets = _.slice(this.props.tweets, 0, 10).map((tweet)=>{
@@ -157,21 +192,29 @@ class List extends Component {
       hashtags = this.getHashtags(this.props.tweets)
       activityByWeekday = this.getActivityByWeekday(this.props.tweets)
       activityByWeek = this.getActivityByWeek(this.props.tweets)
+      activityByHour = this.getActivityByHour(this.props.tweets)
     }
 
     return (
-      <div>
-        <ul>
+      <div className="twitter-container">
+        <ul className="side-bar">
           {tweets}
         </ul>
-        <ul>
-          {userMentions}
-        </ul>
-        <ul>
-          {hashtags}
-        </ul>
+        <div className="user-lists">
+          <p>Users mentioned</p>
+          <ul className="user-mentions">
+            {userMentions}
+          </ul>
+          <p>Hashtags used</p>
+          <ul className="user-hashtags">
+            {hashtags}
+          </ul >
+        </div>
+        <div className="activity-charts">
           {activityByWeekday}
           {activityByWeek}
+          {activityByHour}
+        </div>
       </div>
     );
   }

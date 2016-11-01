@@ -6,9 +6,9 @@ const LineChartTemplate = ({ data , labels }) => {
     labels: labels,
     datasets: [{
       label: "user-activity by day",
-      lineTension: 0.1,
-      backgroundColor: "rgba(75,192,192,0.4)",
-      borderColor: "rgba(75,192,192,1)",
+      lineTension: 0.5,
+      backgroundColor: ["rgba(75,192,192,0.4)"],
+      borderColor: ["rgba(75,192,192,1)"],
       borderCapStyle: 'butt',
       borderDash: [],
       borderDashOffset: 0.0,
@@ -28,7 +28,7 @@ const LineChartTemplate = ({ data , labels }) => {
   ]
 };
   return (
-    <LineChart data={chartData} width="600" height="250"/>
+    <LineChart data={chartData} width={'600'} height={'300'}/>
   );
 }
 
