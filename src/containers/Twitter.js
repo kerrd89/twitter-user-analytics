@@ -58,7 +58,7 @@ class List extends Component {
     data.push(activityByWeekday['Saturday'])
     data.push(activityByWeekday['Sunday'])
     return (
-      <LineChartTemplate data={data} labels={labels} width="600" height="250"/>
+      <LineChartTemplate data={data} labels={labels} title="Activity by Day" width="600" height="250"/>
     )
   }
 
@@ -83,7 +83,7 @@ class List extends Component {
     }
 
     return (
-      <LineChartTemplate data={data} labels={labels.reverse()} width="600" height="250"/>
+      <LineChartTemplate data={data} labels={labels.reverse()} title="Recent Activity by Week" width="600" height="250"/>
     )
   }
 
@@ -110,7 +110,7 @@ class List extends Component {
     }
 
     return (
-      <LineChartTemplate data={data} labels={labels} width="600" height="250"/>
+      <LineChartTemplate data={data} labels={labels} title="Average Activity by Hour" width="600" height="250"/>
     )
   }
 

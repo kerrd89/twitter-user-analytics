@@ -1,35 +1,45 @@
 import React from 'react';
-const LineChart = require('react-chartjs').Line;
+const LineChart = require('react-chartjs-2').Line;
 
-const LineChartTemplate = ({ data , labels }) => {
+const LineChartTemplate = ({ data , labels , title }) => {
   let chartData = {
     labels: labels,
     datasets: [{
-      label: "user-activity by day",
-      lineTension: 0.5,
-      // backgroundColor: ["rgba(75,192,192,0.4)"],
-      // borderColor: ["rgba(75,192,192,1)"],
-      // borderCapStyle: 'butt',
-      // borderDash: [],
-      // borderDashOffset: 0.0,
-      // borderJoinStyle: 'miter',
-      // pointBorderColor: "rgba(75,192,192,1)",
-      // pointBackgroundColor: "#fff",
-      // pointBorderWidth: 1,
-      // pointHoverRadius: 5,
-      // pointHoverBackgroundColor: "rgba(75,192,192,1)",
-      // pointHoverBorderColor: "rgba(220,220,220,1)",
-      // pointHoverBorderWidth: 2,
-      // pointRadius: 1,
-      // pointHitRadius: 10,
+      borderColor: "rgba(0, 170, 236,1)",
+      pointborderColor: "rgba(0, 170, 236,1)",
+      pointBackgroundColor: "rgba(0, 170, 236,1)",
+      backgroundColor: "rgba(0, 170, 236,.4)",
+
+      // pointColor: "rgba(0, 170, 236,1)",
+      // strokeColor: "rgba(0, 170, 236,1)",
       data: data,
-      spanGaps: false,
-    }]
+    }],
   };
 
-  let chartOptions = {
-    
-  }
+let chartOptions = {
+  default: {
+    fontColor: "white",
+    fontFamily: "'Roboto', sans-serif",
+    fontStyle: "100"
+  },
+  title: {
+    display: true,
+    text:title,
+    fontColor: "white",
+    fontSize: 16,
+    fontFamily: "'Roboto', sans-serif",
+    fontStyle: "100"
+  },
+  scales: {
+    yAxes: [{
+      display:true,
+    }]
+  },
+  legend: {
+    display:false
+  },
+};
+
   return (
     <LineChart data={chartData} options={chartOptions} width={'600'} height={'300'}/>
   );
