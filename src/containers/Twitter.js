@@ -54,7 +54,7 @@ class List extends Component {
     let activityByDate = tweets.map((tweet) => {
       return moment(tweet.created_at).format('dddd');
     })
-    d
+
     activityByDate = _.countBy(_.compact(_.flatten(activityByDate)));
     let data = [];
     data.push(activityByDate['Monday'])
@@ -64,10 +64,12 @@ class List extends Component {
     data.push(activityByDate['Friday'])
     data.push(activityByDate['Saturday'])
     data.push(activityByDate['Sunday'])
+    let chartData = this.state.simpleLineChartData
+    chartData.series[0]=data
     this.state.simpleLineChartData.series[0]=data;
-    debugger;
-    this.forceUpdate();
-    // return this.setState({simpleLineChartData:this.state.simpleLineChartData.series=[data]})
+    return (
+      <ChartistGraph data={chartData} type='Line'/>
+    )
   }
 
   getUserMentions(tweets) {
@@ -132,6 +134,7 @@ class List extends Component {
     let tweets;
     let userMentions;
     let hashtags;
+    let twitterActivityChart;
 
     if (this.props.tweets.length) {
       tweets = _.slice(this.props.tweets, 0, 10).map((tweet)=>{
@@ -139,6 +142,7 @@ class List extends Component {
       });
       userMentions = this.getUserMentions(this.props.tweets)
       hashtags = this.getHashtags(this.props.tweets)
+      twitterActivityChart = this.getActivityByDate(this.props.tweets)
     }
 
     return (
@@ -152,7 +156,7 @@ class List extends Component {
         <ul>
           {hashtags}
         </ul>
-        <ChartistGraph data={this.state.simpleLineChartData} type='Line'/>
+          {twitterActivityChart}
       </div>
     );
   }

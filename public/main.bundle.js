@@ -29788,7 +29788,7 @@
 	      var activityByDate = tweets.map(function (tweet) {
 	        return (0, _moment2.default)(tweet.created_at).format('dddd');
 	      });
-	      d;
+
 	      activityByDate = _lodash2.default.countBy(_lodash2.default.compact(_lodash2.default.flatten(activityByDate)));
 	      var data = [];
 	      data.push(activityByDate['Monday']);
@@ -29798,10 +29798,15 @@
 	      data.push(activityByDate['Friday']);
 	      data.push(activityByDate['Saturday']);
 	      data.push(activityByDate['Sunday']);
+	      var chartData = this.state.simpleLineChartData;
+	      chartData.series[0] = data;
 	      this.state.simpleLineChartData.series[0] = data;
-	      debugger;
-	      this.forceUpdate();
-	      // return this.setState({simpleLineChartData:this.state.simpleLineChartData.series=[data]})
+	      return _react2.default.createElement(_reactChartist2.default, { data: chartData, type: 'Line', __source: {
+	          fileName: _jsxFileName,
+	          lineNumber: 71
+	        },
+	        __self: this
+	      });
 	    }
 	  }, {
 	    key: 'getUserMentions',
@@ -29875,6 +29880,7 @@
 	      var tweets = void 0;
 	      var userMentions = void 0;
 	      var hashtags = void 0;
+	      var twitterActivityChart = void 0;
 
 	      if (this.props.tweets.length) {
 	        tweets = _lodash2.default.slice(this.props.tweets, 0, 10).map(function (tweet) {
@@ -29882,6 +29888,7 @@
 	        });
 	        userMentions = this.getUserMentions(this.props.tweets);
 	        hashtags = this.getHashtags(this.props.tweets);
+	        twitterActivityChart = this.getActivityByDate(this.props.tweets);
 	      }
 
 	      return _react2.default.createElement(
@@ -29889,7 +29896,7 @@
 	        {
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 145
+	            lineNumber: 149
 	          },
 	          __self: this
 	        },
@@ -29898,7 +29905,7 @@
 	          {
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 146
+	              lineNumber: 150
 	            },
 	            __self: this
 	          },
@@ -29909,7 +29916,7 @@
 	          {
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 149
+	              lineNumber: 153
 	            },
 	            __self: this
 	          },
@@ -29920,18 +29927,13 @@
 	          {
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 152
+	              lineNumber: 156
 	            },
 	            __self: this
 	          },
 	          hashtags
 	        ),
-	        _react2.default.createElement(_reactChartist2.default, { data: this.state.simpleLineChartData, type: 'Line', __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 155
-	          },
-	          __self: this
-	        })
+	        twitterActivityChart
 	      );
 	    }
 	  }]);
