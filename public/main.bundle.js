@@ -29634,6 +29634,10 @@
 
 	var _moment2 = _interopRequireDefault(_moment);
 
+	var _LineChart = __webpack_require__(622);
+
+	var _LineChart2 = _interopRequireDefault(_LineChart);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -29642,43 +29646,13 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var LineChart = __webpack_require__(580).Line;
-
 	var List = function (_Component) {
 	  _inherits(List, _Component);
 
-	  function List(props) {
+	  function List() {
 	    _classCallCheck(this, List);
 
-	    var _this = _possibleConstructorReturn(this, (List.__proto__ || Object.getPrototypeOf(List)).call(this));
-
-	    _this.state = {
-	      data: {
-	        labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-	        datasets: [{
-	          label: "user-activity by day",
-	          lineTension: 0.1,
-	          backgroundColor: "rgba(75,192,192,0.4)",
-	          borderColor: "rgba(75,192,192,1)",
-	          borderCapStyle: 'butt',
-	          borderDash: [],
-	          borderDashOffset: 0.0,
-	          borderJoinStyle: 'miter',
-	          pointBorderColor: "rgba(75,192,192,1)",
-	          pointBackgroundColor: "#fff",
-	          pointBorderWidth: 1,
-	          pointHoverRadius: 5,
-	          pointHoverBackgroundColor: "rgba(75,192,192,1)",
-	          pointHoverBorderColor: "rgba(220,220,220,1)",
-	          pointHoverBorderWidth: 2,
-	          pointRadius: 1,
-	          pointHitRadius: 10,
-	          data: [65, 59, 80, 81, 56, 55, 40],
-	          spanGaps: false
-	        }]
-	      }
-	    };
-	    return _this;
+	    return _possibleConstructorReturn(this, (List.__proto__ || Object.getPrototypeOf(List)).apply(this, arguments));
 	  }
 
 	  _createClass(List, [{
@@ -29688,7 +29662,7 @@
 	        'li',
 	        { key: userMention.username, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 40
+	            lineNumber: 11
 	          },
 	          __self: this
 	        },
@@ -29704,7 +29678,7 @@
 	        'li',
 	        { key: hashtag.hashtag, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 46
+	            lineNumber: 17
 	          },
 	          __self: this
 	        },
@@ -29720,7 +29694,7 @@
 	        'li',
 	        { className: 'twitter-card', key: tweet.id_str, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 52
+	            lineNumber: 23
 	          },
 	          __self: this
 	        },
@@ -29728,7 +29702,7 @@
 	          'p',
 	          { className: 'twitter-card-header', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 53
+	              lineNumber: 24
 	            },
 	            __self: this
 	          },
@@ -29738,7 +29712,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 54
+	                lineNumber: 25
 	              },
 	              __self: this
 	            },
@@ -29750,7 +29724,7 @@
 	          'p',
 	          { className: 'twitter-card-body', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 56
+	              lineNumber: 27
 	            },
 	            __self: this
 	          },
@@ -29760,7 +29734,7 @@
 	          'p',
 	          { className: 'twitter-card-footer', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 57
+	              lineNumber: 28
 	            },
 	            __self: this
 	          },
@@ -29770,7 +29744,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 58
+	                lineNumber: 29
 	              },
 	              __self: this
 	            },
@@ -29781,7 +29755,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 59
+	                lineNumber: 30
 	              },
 	              __self: this
 	            },
@@ -29791,30 +29765,40 @@
 	      );
 	    }
 	  }, {
-	    key: 'getActivityByDate',
-	    value: function getActivityByDate(tweets) {
+	    key: 'getActivityByWeekday',
+	    value: function getActivityByWeekday(tweets) {
 	      if (!tweets.length) return;
-	      var activityByDate = tweets.map(function (tweet) {
+	      var activityByWeekday = tweets.map(function (tweet) {
 	        return (0, _moment2.default)(tweet.created_at).format('dddd');
 	      });
+	      activityByWeekday = _lodash2.default.countBy(_lodash2.default.compact(_lodash2.default.flatten(activityByWeekday)));
 
-	      activityByDate = _lodash2.default.countBy(_lodash2.default.compact(_lodash2.default.flatten(activityByDate)));
+	      var activityByWeek = tweets.map(function (tweet) {
+	        return (0, _moment2.default)(tweet.created_at).format('wwww');
+	      });
 	      var data = [];
-	      data.push(activityByDate['Monday']);
-	      data.push(activityByDate['Tuesday']);
-	      data.push(activityByDate['Wednesday']);
-	      data.push(activityByDate['Thursday']);
-	      data.push(activityByDate['Friday']);
-	      data.push(activityByDate['Saturday']);
-	      data.push(activityByDate['Sunday']);
-	      var chartData = this.state.data;
-	      chartData.datasets[0].data = data;
-	      return _react2.default.createElement(LineChart, { data: chartData, width: '600', height: '250', __source: {
+	      data.push(activityByWeekday['Monday']);
+	      data.push(activityByWeekday['Tuesday']);
+	      data.push(activityByWeekday['Wednesday']);
+	      data.push(activityByWeekday['Thursday']);
+	      data.push(activityByWeekday['Friday']);
+	      data.push(activityByWeekday['Saturday']);
+	      data.push(activityByWeekday['Sunday']);
+
+	      return _react2.default.createElement(_LineChart2.default, { data: data, width: '600', height: '250', __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 83
+	          lineNumber: 56
 	        },
 	        __self: this
 	      });
+	    }
+	  }, {
+	    key: 'getActivityByWeek',
+	    value: function getActivityByWeek(tweets) {
+	      var activityByWeek = tweets.map(function (tweet) {
+	        return (0, _moment2.default)(tweet.created_at).format('wwww');
+	      });
+	      activityByWeek = _lodash2.default.countBy(_lodash2.default.compact(_lodash2.default.flatten(activityByWeek)));
 	    }
 	  }, {
 	    key: 'getUserMentions',
@@ -29888,7 +29872,7 @@
 	      var tweets = void 0;
 	      var userMentions = void 0;
 	      var hashtags = void 0;
-	      var twitterActivityChart = void 0;
+	      var activityByWeekday = void 0;
 
 	      if (this.props.tweets.length) {
 	        tweets = _lodash2.default.slice(this.props.tweets, 0, 10).map(function (tweet) {
@@ -29896,7 +29880,7 @@
 	        });
 	        userMentions = this.getUserMentions(this.props.tweets);
 	        hashtags = this.getHashtags(this.props.tweets);
-	        twitterActivityChart = this.getActivityByDate(this.props.tweets);
+	        activityByWeekday = this.getActivityByWeekday(this.props.tweets);
 	      }
 
 	      return _react2.default.createElement(
@@ -29904,7 +29888,7 @@
 	        {
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 161
+	            lineNumber: 141
 	          },
 	          __self: this
 	        },
@@ -29913,7 +29897,7 @@
 	          {
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 162
+	              lineNumber: 142
 	            },
 	            __self: this
 	          },
@@ -29924,7 +29908,7 @@
 	          {
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 165
+	              lineNumber: 145
 	            },
 	            __self: this
 	          },
@@ -29935,13 +29919,13 @@
 	          {
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 168
+	              lineNumber: 148
 	            },
 	            __self: this
 	          },
 	          hashtags
 	        ),
-	        twitterActivityChart
+	        activityByWeekday
 	      );
 	    }
 	  }]);
@@ -67541,6 +67525,72 @@
 	  };
 	};
 
+
+/***/ },
+/* 622 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var _jsxFileName = '/Users/davidkerr/Projects/social-feed/src/components/LineChart.js';
+
+	var _react = __webpack_require__(299);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var LineChart = __webpack_require__(580).Line;
+
+	var LineChartTemplate = function LineChartTemplate(_ref) {
+	  var data = _ref.data;
+
+	  var chartData = {
+	    labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+	    datasets: [{
+	      label: "user-activity by day",
+	      lineTension: 0.1,
+	      backgroundColor: "rgba(75,192,192,0.4)",
+	      borderColor: "rgba(75,192,192,1)",
+	      borderCapStyle: 'butt',
+	      borderDash: [],
+	      borderDashOffset: 0.0,
+	      borderJoinStyle: 'miter',
+	      pointBorderColor: "rgba(75,192,192,1)",
+	      pointBackgroundColor: "#fff",
+	      pointBorderWidth: 1,
+	      pointHoverRadius: 5,
+	      pointHoverBackgroundColor: "rgba(75,192,192,1)",
+	      pointHoverBorderColor: "rgba(220,220,220,1)",
+	      pointHoverBorderWidth: 2,
+	      pointRadius: 1,
+	      pointHitRadius: 10,
+	      data: data,
+	      spanGaps: false
+	    }]
+	  };
+	  return _react2.default.createElement(LineChart, { data: chartData, width: '600', height: '250', __source: {
+	      fileName: _jsxFileName,
+	      lineNumber: 31
+	    },
+	    __self: undefined
+	  });
+	};
+
+	// StackedBarGraph.defaultProps = {
+	//   width: 600,
+	//   height: 40,
+	// };
+	//
+	// StackedBarGraph.propTypes = {
+	//   width: React.PropTypes.number.isRequired,
+	//   height: React.PropTypes.number.isRequired
+	// };
+
+	exports.default = LineChartTemplate;
 
 /***/ }
 /******/ ]);

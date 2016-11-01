@@ -1,39 +1,10 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import moment from 'moment';
-const LineChart = require('react-chartjs').Line;
+import LineChartTemplate from '../components/LineChart';
+
 
 class List extends Component {
-  constructor(props) {
-    super();
-    this.state = {
-      data: {
-        labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-        datasets: [{
-          label: "user-activity by day",
-          lineTension: 0.1,
-          backgroundColor: "rgba(75,192,192,0.4)",
-          borderColor: "rgba(75,192,192,1)",
-          borderCapStyle: 'butt',
-          borderDash: [],
-          borderDashOffset: 0.0,
-          borderJoinStyle: 'miter',
-          pointBorderColor: "rgba(75,192,192,1)",
-          pointBackgroundColor: "#fff",
-          pointBorderWidth: 1,
-          pointHoverRadius: 5,
-          pointHoverBackgroundColor: "rgba(75,192,192,1)",
-          pointHoverBorderColor: "rgba(220,220,220,1)",
-          pointHoverBorderWidth: 2,
-          pointRadius: 1,
-          pointHitRadius: 10,
-          data: [65, 59, 80, 81, 56, 55, 40],
-          spanGaps: false,
-        }
-      ]
-      },
-    };
-  }
 
   userMentionsTemplate(userMention) {
     return (
@@ -62,26 +33,35 @@ class List extends Component {
     )
   }
 
-  getActivityByDate(tweets) {
+  getActivityByWeekday(tweets) {
     if (!tweets.length) return;
-    let activityByDate = tweets.map((tweet) => {
+    let activityByWeekday = tweets.map((tweet) => {
       return moment(tweet.created_at).format('dddd');
     })
+    activityByWeekday = _.countBy(_.compact(_.flatten(activityByWeekday)));
 
-    activityByDate = _.countBy(_.compact(_.flatten(activityByDate)));
+    let activityByWeek = tweets.map((tweet) => {
+      return moment(tweet.created_at).format('wwww');
+    })
     let data = [];
-    data.push(activityByDate['Monday'])
-    data.push(activityByDate['Tuesday'])
-    data.push(activityByDate['Wednesday'])
-    data.push(activityByDate['Thursday'])
-    data.push(activityByDate['Friday'])
-    data.push(activityByDate['Saturday'])
-    data.push(activityByDate['Sunday'])
-    let chartData = this.state.data
-    chartData.datasets[0].data = data
+    data.push(activityByWeekday['Monday'])
+    data.push(activityByWeekday['Tuesday'])
+    data.push(activityByWeekday['Wednesday'])
+    data.push(activityByWeekday['Thursday'])
+    data.push(activityByWeekday['Friday'])
+    data.push(activityByWeekday['Saturday'])
+    data.push(activityByWeekday['Sunday'])
+
     return (
-      <LineChart data={chartData} width="600" height="250"/>
+      <LineChartTemplate data={data} width="600" height="250"/>
     )
+  }
+
+  getActivityByWeek(tweets){
+    let activityByWeek = tweets.map((tweet) => {
+      return moment(tweet.created_at).format('wwww');
+    })
+    activityByWeek= _.countBy(_.compact(_.flatten(activityByWeek)));
   }
 
   getUserMentions(tweets) {
@@ -146,7 +126,7 @@ class List extends Component {
     let tweets;
     let userMentions;
     let hashtags;
-    let twitterActivityChart;
+    let activityByWeekday;
 
     if (this.props.tweets.length) {
       tweets = _.slice(this.props.tweets, 0, 10).map((tweet)=>{
@@ -154,7 +134,7 @@ class List extends Component {
       });
       userMentions = this.getUserMentions(this.props.tweets)
       hashtags = this.getHashtags(this.props.tweets)
-      twitterActivityChart = this.getActivityByDate(this.props.tweets)
+      activityByWeekday = this.getActivityByWeekday(this.props.tweets)
     }
 
     return (
@@ -168,7 +148,7 @@ class List extends Component {
         <ul>
           {hashtags}
         </ul>
-          {twitterActivityChart}
+          {activityByWeekday}
       </div>
     );
   }
