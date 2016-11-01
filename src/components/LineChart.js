@@ -1,9 +1,9 @@
 import React from 'react';
 const LineChart = require('react-chartjs').Line;
 
-const LineChartTemplate = ({ data }) => {
+const LineChartTemplate = ({ data , labels }) => {
   let chartData = {
-    labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+    labels: labels,
     datasets: [{
       label: "user-activity by day",
       lineTension: 0.1,

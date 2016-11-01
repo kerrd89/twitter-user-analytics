@@ -29784,8 +29784,8 @@
 	      data.push(activityByWeekday['Friday']);
 	      data.push(activityByWeekday['Saturday']);
 	      data.push(activityByWeekday['Sunday']);
-
-	      return _react2.default.createElement(_LineChart2.default, { data: data, width: '600', height: '250', __source: {
+	      var labels = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+	      return _react2.default.createElement(_LineChart2.default, { data: data, labels: labels, width: '600', height: '250', __source: {
 	          fileName: _jsxFileName,
 	          lineNumber: 56
 	        },
@@ -29795,10 +29795,32 @@
 	  }, {
 	    key: 'getActivityByWeek',
 	    value: function getActivityByWeek(tweets) {
+	      var label1 = (0, _moment2.default)(tweets[1].created_at).format('LL');
+	      var label2 = (0, _moment2.default)(tweets[30].created_at).format('LL');
+	      var label3 = (0, _moment2.default)(tweets[60].created_at).format('LL');
+	      var label4 = (0, _moment2.default)(tweets[90].created_at).format('LL');
+	      var label5 = (0, _moment2.default)(tweets[120].created_at).format('LL');
+	      var label6 = (0, _moment2.default)(tweets[150].created_at).format('LL');
+	      var label7 = (0, _moment2.default)(tweets[180].created_at).format('LL');
+	      var labels = [label1, label2, label3, label4, label5, label6, label7];
+
 	      var activityByWeek = tweets.map(function (tweet) {
-	        return (0, _moment2.default)(tweet.created_at).format('wwww');
+	        return (0, _moment2.default)(tweet.created_at).format('ww');
 	      });
+
 	      activityByWeek = _lodash2.default.countBy(_lodash2.default.compact(_lodash2.default.flatten(activityByWeek)));
+
+	      var data = [];
+	      _lodash2.default.map(activityByWeek, function (week) {
+	        data.push(week);
+	      });
+
+	      return _react2.default.createElement(_LineChart2.default, { data: data, labels: labels.reverse(), width: '600', height: '250', __source: {
+	          fileName: _jsxFileName,
+	          lineNumber: 83
+	        },
+	        __self: this
+	      });
 	    }
 	  }, {
 	    key: 'getUserMentions',
@@ -29873,6 +29895,7 @@
 	      var userMentions = void 0;
 	      var hashtags = void 0;
 	      var activityByWeekday = void 0;
+	      var activityByWeek = void 0;
 
 	      if (this.props.tweets.length) {
 	        tweets = _lodash2.default.slice(this.props.tweets, 0, 10).map(function (tweet) {
@@ -29881,6 +29904,7 @@
 	        userMentions = this.getUserMentions(this.props.tweets);
 	        hashtags = this.getHashtags(this.props.tweets);
 	        activityByWeekday = this.getActivityByWeekday(this.props.tweets);
+	        activityByWeek = this.getActivityByWeek(this.props.tweets);
 	      }
 
 	      return _react2.default.createElement(
@@ -29888,7 +29912,7 @@
 	        {
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 141
+	            lineNumber: 163
 	          },
 	          __self: this
 	        },
@@ -29897,7 +29921,7 @@
 	          {
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 142
+	              lineNumber: 164
 	            },
 	            __self: this
 	          },
@@ -29908,7 +29932,7 @@
 	          {
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 145
+	              lineNumber: 167
 	            },
 	            __self: this
 	          },
@@ -29919,13 +29943,14 @@
 	          {
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 148
+	              lineNumber: 170
 	            },
 	            __self: this
 	          },
 	          hashtags
 	        ),
-	        activityByWeekday
+	        activityByWeekday,
+	        activityByWeek
 	      );
 	    }
 	  }]);
@@ -67546,10 +67571,11 @@
 	var LineChart = __webpack_require__(580).Line;
 
 	var LineChartTemplate = function LineChartTemplate(_ref) {
-	  var data = _ref.data;
+	  var data = _ref.data,
+	      labels = _ref.labels;
 
 	  var chartData = {
-	    labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+	    labels: labels,
 	    datasets: [{
 	      label: "user-activity by day",
 	      lineTension: 0.1,

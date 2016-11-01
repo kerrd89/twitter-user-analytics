@@ -51,17 +51,37 @@ class List extends Component {
     data.push(activityByWeekday['Friday'])
     data.push(activityByWeekday['Saturday'])
     data.push(activityByWeekday['Sunday'])
-
+    let labels = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
     return (
-      <LineChartTemplate data={data} width="600" height="250"/>
+      <LineChartTemplate data={data} labels={labels} width="600" height="250"/>
     )
   }
 
   getActivityByWeek(tweets){
+    let label1 = moment(tweets[1].created_at).format('LL')
+    let label2 = moment(tweets[30].created_at).format('LL')
+    let label3 = moment(tweets[60].created_at).format('LL')
+    let label4 = moment(tweets[90].created_at).format('LL')
+    let label5 = moment(tweets[120].created_at).format('LL')
+    let label6 = moment(tweets[150].created_at).format('LL')
+    let label7 = moment(tweets[180].created_at).format('LL')
+    let labels = [label1,label2,label3,label4,label5,label6,label7];
+
     let activityByWeek = tweets.map((tweet) => {
-      return moment(tweet.created_at).format('wwww');
+      return moment(tweet.created_at).format('ww');
     })
-    activityByWeek= _.countBy(_.compact(_.flatten(activityByWeek)));
+
+    activityByWeek = _.countBy(_.compact(_.flatten(activityByWeek)));
+
+    let data = [];
+    _.map(activityByWeek, ((week)=>{
+      data.push(week)
+    }))
+
+
+    return (
+      <LineChartTemplate data={data} labels={labels.reverse()} width="600" height="250"/>
+    )
   }
 
   getUserMentions(tweets) {
@@ -127,6 +147,7 @@ class List extends Component {
     let userMentions;
     let hashtags;
     let activityByWeekday;
+    let activityByWeek;
 
     if (this.props.tweets.length) {
       tweets = _.slice(this.props.tweets, 0, 10).map((tweet)=>{
@@ -135,6 +156,7 @@ class List extends Component {
       userMentions = this.getUserMentions(this.props.tweets)
       hashtags = this.getHashtags(this.props.tweets)
       activityByWeekday = this.getActivityByWeekday(this.props.tweets)
+      activityByWeek = this.getActivityByWeek(this.props.tweets)
     }
 
     return (
@@ -149,6 +171,7 @@ class List extends Component {
           {hashtags}
         </ul>
           {activityByWeekday}
+          {activityByWeek}
       </div>
     );
   }
