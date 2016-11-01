@@ -1,8 +1,26 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import moment from 'moment';
+import ChartistGraph from 'react-chartist';
 
 class List extends Component {
+  constructor(props) {
+    super();
+    this.state = {
+      simpleLineChartData: {
+        labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+        series: [[30,30,40,40,50,60,50]]
+      },
+      lineChartOptions: {
+        low: 0,
+        showArea: true
+      }
+    };
+  }
+
+  componentWillReceiveProps() {
+    this.getActivityByDate(this.props.tweets);
+  }
 
   userMentionsTemplate(userMention) {
     return (
@@ -32,11 +50,24 @@ class List extends Component {
   }
 
   getActivityByDate(tweets) {
+    if (!tweets.length) return;
     let activityByDate = tweets.map((tweet) => {
-      return moment(tweet.created_at).format('LL')
+      return moment(tweet.created_at).format('dddd');
     })
+    d
     activityByDate = _.countBy(_.compact(_.flatten(activityByDate)));
-    // console.log(activityByDate);
+    let data = [];
+    data.push(activityByDate['Monday'])
+    data.push(activityByDate['Tuesday'])
+    data.push(activityByDate['Wednesday'])
+    data.push(activityByDate['Thursday'])
+    data.push(activityByDate['Friday'])
+    data.push(activityByDate['Saturday'])
+    data.push(activityByDate['Sunday'])
+    this.state.simpleLineChartData.series[0]=data;
+    debugger;
+    this.forceUpdate();
+    // return this.setState({simpleLineChartData:this.state.simpleLineChartData.series=[data]})
   }
 
   getUserMentions(tweets) {
@@ -97,24 +128,17 @@ class List extends Component {
     return allHashtags;
   }
 
-
   render() {
     let tweets;
     let userMentions;
     let hashtags;
-    let activityByDate;
 
-    if (this.props.tweets) {
-
+    if (this.props.tweets.length) {
       tweets = _.slice(this.props.tweets, 0, 10).map((tweet)=>{
         return this.tweetTemplate(tweet);
       });
-
       userMentions = this.getUserMentions(this.props.tweets)
-
       hashtags = this.getHashtags(this.props.tweets)
-
-      activityByDate = this.getActivityByDate(this.props.tweets)
     }
 
     return (
@@ -128,6 +152,7 @@ class List extends Component {
         <ul>
           {hashtags}
         </ul>
+        <ChartistGraph data={this.state.simpleLineChartData} type='Line'/>
       </div>
     );
   }

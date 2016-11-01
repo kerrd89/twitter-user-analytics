@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Header from './containers/Header';
 import Twitter from './containers/Twitter';
-// import './App.css';
 import firebase, { provider } from './firebase';
 import _ from 'lodash';
 import axios from 'axios';
