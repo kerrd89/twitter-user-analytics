@@ -1,11 +1,39 @@
 /*@import url('./css/header')*/
 /*@import './css/index';*/
 header {
-  background-color: rgba(42, 42, 42, .75);
+  background-color: rgba(42, 42, 42, .94);
   display: flex;
   flex-direction: row;
   width: 100%;
   padding: 10px;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 16px;
+}
+
+body {
+  position: relative;
+  letter-spacing: .8px;
+}
+
+header input {
+  margin-left: auto;
+  margin-right: 10px;
+  background-color: rgba(255, 255, 255,.8);
+  color: black;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  border:none;
+}
+
+header button {
+  margin-right: 30px;
+  border:none;
+  color: black;
+  font-family: 'Roboto', sans-serif;
+  background-color: rgba(0, 170, 236,1);
+  font-size: 16px;
 }
 
 .twitter-container {
@@ -13,6 +41,8 @@ header {
   flex-direction: wrap;
   border: 1px solid rgba(42, 42, 42, 1);
   width: 100%;
+  height: 100%;
+  background-color: rgba(42, 42, 42, .75);
 }
 
 .side-bar{
@@ -25,40 +55,33 @@ header {
   flex-direction: column;
   background-color: rgba(42, 42, 42, .75);
   border: 1px solid rgba(42, 42, 42, 1);;
+  width: 200px;
 }
 
 .user-lists p {
-  background-color: rgba(42, 42, 42, .94);
+
+  background-color: rgba(42, 42, 42, .75);
   color: #00AAEC;
   font-family: 'Roboto', sans-serif;
   font-weight: 200;
-  width: 290px;
   padding: 5px;
 }
 
 .user-lists li{
   padding: 5px;
   color: white;
-  width: 290px;
+  width: 100%;
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
+  letter-spacing: .8px;
   height: 100%;
-  background-color: rgba(42, 42, 42, .75);
-}
-
-.user-hashtags {
-  width:300px;
-}
-
-.user-mentions{
-  width:300px;
 }
 
 .activity-charts {
   display: flex;
   flex-direction: column;
-  width: 600px;
-  background-color: rgba(42, 42, 42, .94);
+  /*width: 600px;*/
+  background-color: rgba(42, 42, 42, .75);
 }
 
 .side-bar,.user-hashtags, .user-mentions, .activity-charts{
@@ -66,7 +89,7 @@ header {
 }
 
 .twitter-card {
-  background-color: rgba(42, 42, 42, .75);
+  /*background-color: rgba(42, 42, 42, .75);*/
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -98,8 +121,9 @@ header {
 .twitter-card-footer {
   background-color: rgba(42, 42, 42, .75);
   font-family: 'Roboto', sans-serif;
-  font-weight: 200;
-  width: 100%;
+  font-weight: 100;
+  font-size: 12px;
+  width:300px;
   color: #00AAEC;
   padding: 5px 0px;
 }

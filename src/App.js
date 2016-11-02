@@ -42,7 +42,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header changeUsername={this.changeUsername.bind(this)}/>
+        <Header user={this.state.tweets[0]} changeUsername={this.changeUsername.bind(this)}/>
         <Twitter tweets={this.state.tweets}/>
       </div>
     );

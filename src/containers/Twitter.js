@@ -2,10 +2,17 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import moment from 'moment';
 import LineChartTemplate from '../components/LineChart';
+// import MapTemplate from '../components/LeafletMap';
 // import * as twitterHelpers from '../utils/twitter-helpers.js';
-
-
+//
+//
 // twitterHelpers.getActivityByWeekday(tweets);
+let commonWords = [
+  "i","rt","the","is","a","of","us","for","this","in","to","and","you","by","like",
+  "my","but","we","have","that",' ',"1","2","be","me","at","|","on","it's","don't",
+  "it","from","you're","with","are","just","do","has","was","i'm","an","am","","if",
+  "can","7"
+];
 
 class List extends Component {
 
@@ -28,10 +35,11 @@ class List extends Component {
       {tweet.user.name}<span>@{tweet.user.screen_name}</span>
       </p>
       <p className="twitter-card-body">{tweet.text}</p>
-      <p className="twitter-card-footer">{tweet.retweet_count}
-      <span>{tweet.favorited_count}</span>
-      <span>{moment(tweet.created_at).format('LLL')}</span>
-      </p>
+      <div className="twitter-card-footer">
+        <span>Retweets:{tweet.retweet_count} </span>
+        <span>Favorited:{tweet.favorite_count} </span>
+        <span>{moment(tweet.created_at).format('LLL')}</span>
+      </div>
       </li>
     )
   }
@@ -114,6 +122,37 @@ class List extends Component {
     )
   }
 
+  getActivityByLocation(tweets){
+    let activityByLocation = tweets.map((tweet) => {
+      if(!tweet.place) return;
+      return tweet.place.full_name;
+    })
+    if(!activityByLocation) return;
+    activityByLocation = _.countBy(_.compact(_.flatten(activityByLocation)));
+    let tweetLocationsFiltered = _.reduce(activityByLocation, function(result, value, key) {
+      let obj = {};
+      obj.location = key;
+      obj.count = value;
+      if(!result.length) return result.concat(obj);
+      for(let i = 0; i < result.length; i ++) {
+        if(obj.count>result[i].count) {
+          result.splice(i,0,obj);
+          return result;
+        }
+      }
+      return result.concat(obj);
+    }, []);
+
+    activityByLocation = _.slice(tweetLocationsFiltered,0,10).map((location)=> {
+      return (
+        <li key={location.location}>{location.location}: {location.count}</li>
+      )
+    })
+    return(
+      activityByLocation
+    )
+  }
+
   getUserMentions(tweets) {
     let userReferences = tweets.map((tweet) => {
       if(tweet.entities.user_mentions.length !== 0) {
@@ -172,6 +211,32 @@ class List extends Component {
     return allHashtags;
   }
 
+  getRepeatedWords(tweets) {
+    let allWords = tweets.map((tweet) => {
+      return tweet.text.split(' ')
+    });
+    allWords = _.countBy(_.flatten(allWords))
+    let allWordsFiltered = _.reduce(allWords, function(result, value, key) {
+      if(commonWords.includes(key.toLowerCase())) return result
+      if(key.includes('@')||key.includes('#')) return result;
+      let obj = {};
+      obj.word = key;
+      obj.count = value;
+      if(!result.length) return result.concat(obj);
+      for(let i = 0; i < result.length; i ++) {
+        if(obj.count>result[i].count) {
+          result.splice(i,0,obj);
+          return result;
+        }
+      }
+      return result.concat(obj);
+    }, []);
+    allWords = _.slice(allWordsFiltered, 0, 20).map((word) => {
+      return (<li key={word.word}>{word.word}: {word.count}</li>)
+    });
+    return allWords
+  }
+
   render() {
     let tweets;
     let userMentions;
@@ -179,6 +244,8 @@ class List extends Component {
     let activityByWeekday;
     let activityByWeek;
     let activityByHour;
+    let activityByLocation;
+    let repeatedWords;
 
     if (this.props.tweets.length) {
       tweets = _.slice(this.props.tweets, 0, 10).map((tweet)=>{
@@ -189,6 +256,8 @@ class List extends Component {
       activityByWeekday = this.getActivityByWeekday(this.props.tweets)
       activityByWeek = this.getActivityByWeek(this.props.tweets)
       activityByHour = this.getActivityByHour(this.props.tweets)
+      activityByLocation = this.getActivityByLocation(this.props.tweets)
+      repeatedWords = this.getRepeatedWords(this.props.tweets);
     }
 
     return (
@@ -205,11 +274,25 @@ class List extends Component {
           <ul className="user-hashtags">
             {hashtags}
           </ul >
+          <p>Common Words</p>
+          <ul>
+            {repeatedWords}
+          </ul>
+
+          <ul>
+
+          </ul>
         </div>
         <div className="activity-charts">
           {activityByWeekday}
           {activityByWeek}
           {activityByHour}
+        </div>
+        <div className="user-lists">
+          <p>Recent Locations: If Available</p>
+          <ul>
+            {activityByLocation}
+          </ul>
         </div>
       </div>
     );
