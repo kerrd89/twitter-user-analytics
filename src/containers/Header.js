@@ -22,7 +22,7 @@ class Header extends Component {
         <ul>
           <p>Handle: {this.props.user.user.screen_name}</p>
           <p>Name: {this.props.user.user.name}</p>
-          <p>On Twitter since: {createdAt}</p>
+          <p>On Twitter since {createdAt}</p>
         </ul>
       )
     }

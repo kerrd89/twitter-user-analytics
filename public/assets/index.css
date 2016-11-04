@@ -4,17 +4,19 @@ header {
   background-color: rgba(42, 42, 42, .94);
   display: flex;
   flex-direction: row;
-  width: 100%;
+  width: 75%;
   padding: 10px;
   color: white;
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
-  font-size: 16px;
+  font-size: 24px;
+  margin-left: 25%;
 }
 
 body {
   position: relative;
   letter-spacing: .8px;
+  background-color: rgba(42, 42, 42, .75);
 }
 
 header input {
@@ -39,48 +41,58 @@ header button {
 .twitter-container {
   display:flex;
   flex-direction: wrap;
-  border: 1px solid rgba(42, 42, 42, 1);
-  width: 100%;
   height: 100%;
-  background-color: rgba(42, 42, 42, .75);
 }
 
 .side-bar{
-  width: 300px;
+  width: 25%;
   background-color: rgba(42, 42, 42, .75);
+  position: fixed;
+  top:0;
+  bottom:0;
 }
 
 .user-lists {
   display: flex;
   flex-direction: column;
   background-color: rgba(42, 42, 42, .75);
-  border: 1px solid rgba(42, 42, 42, 1);;
-  width: 200px;
+  border: 1px solid rgba(42, 42, 42, 1);
+  width: 15%;
+  margin-left: 25%;
 }
 
-.user-lists p {
+.optional-lists {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(42, 42, 42, .75);
+  border: 1px solid rgba(42, 42, 42, 1);
+  width: 25%;
+}
 
+
+.user-lists p, .optional-lists p {
   background-color: rgba(42, 42, 42, .75);
   color: #00AAEC;
   font-family: 'Roboto', sans-serif;
   font-weight: 200;
-  padding: 5px;
+  font-size: 24px;
+  padding: 10px;
 }
 
-.user-lists li{
-  padding: 5px;
+.user-lists li, .optional-lists li{
   color: white;
   width: 100%;
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
+  font-size: 20px;
   letter-spacing: .8px;
   height: 100%;
+  margin: 5px;
 }
 
 .activity-charts {
   display: flex;
   flex-direction: column;
-  /*width: 600px;*/
   background-color: rgba(42, 42, 42, .75);
 }
 
@@ -89,11 +101,11 @@ header button {
 }
 
 .twitter-card {
-  /*background-color: rgba(42, 42, 42, .75);*/
+  border: 1px solid rgba(42, 42, 42, 1);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 300px;
+  width: 100%;
 }
 
 .twitter-card svg {
@@ -105,25 +117,32 @@ header button {
   color: #00AAEC;
   font-family: 'Roboto', sans-serif;
   font-weight: 200;
+  font-size: 24px;
   width: 100%;
   padding: 5px 0px;
+  margin-top: 10px;
 }
 
 .twitter-card-body {
-  padding: 5px;
   color: white;
   width: 100%;
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
+  font-size: 20px;
   height: 100%;
+  margin:5px 0px;
 }
 
 .twitter-card-footer {
   background-color: rgba(42, 42, 42, .75);
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
-  font-size: 12px;
-  width:300px;
+  font-size: 16px;
+  width:100%;
   color: #00AAEC;
   padding: 5px 0px;
+}
+
+span.twitter-date {
+  float:right;
 }

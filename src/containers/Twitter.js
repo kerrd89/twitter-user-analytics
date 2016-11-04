@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import moment from 'moment';
 import LineChartTemplate from '../components/LineChart';
+import RadarChartTemplate from '../components/RadarChart';
 // import MapTemplate from '../components/LeafletMap';
 // import * as twitterHelpers from '../utils/twitter-helpers.js';
 //
@@ -37,8 +38,8 @@ class List extends Component {
       <p className="twitter-card-body">{tweet.text}</p>
       <div className="twitter-card-footer">
         <span>Retweets:{tweet.retweet_count} </span>
-        <span>Favorited:{tweet.favorite_count} </span>
-        <span>{moment(tweet.created_at).format('LLL')}</span>
+        <span className="twitter-favorited">Favorited:{tweet.favorite_count} </span>
+        <span className="twitter-date">{moment(tweet.created_at).format('LLL')}</span>
       </div>
       </li>
     )
@@ -237,6 +238,21 @@ class List extends Component {
     return allWords
   }
 
+  getUserActivityRadar(tweets) {
+    let data = {
+      'followers':150,
+      'following':600,
+      'tweetsPerDay':2,
+      'likes':300,
+      'retweets':60
+    }
+
+    return (
+      <RadarChartTemplate data={data} labels={['followers','following','tweets per day','likes', 'retweets']}
+      title="How do they use Twitter?"/>
+    )
+  }
+
   render() {
     let tweets;
     let userMentions;
@@ -246,9 +262,10 @@ class List extends Component {
     let activityByHour;
     let activityByLocation;
     let repeatedWords;
+    let userActivityRadar;
 
     if (this.props.tweets.length) {
-      tweets = _.slice(this.props.tweets, 0, 10).map((tweet)=>{
+      tweets = _.slice(this.props.tweets, 0, 15).map((tweet)=>{
         return this.tweetTemplate(tweet);
       });
       userMentions = this.getUserMentions(this.props.tweets)
@@ -258,6 +275,7 @@ class List extends Component {
       activityByHour = this.getActivityByHour(this.props.tweets)
       activityByLocation = this.getActivityByLocation(this.props.tweets)
       repeatedWords = this.getRepeatedWords(this.props.tweets);
+      userActivityRadar = this.getUserActivityRadar(this.props.tweets)
     }
 
     return (
@@ -287,9 +305,11 @@ class List extends Component {
           {activityByWeekday}
           {activityByWeek}
           {activityByHour}
+
         </div>
-        <div className="user-lists">
-          <p>Recent Locations: If Available</p>
+        <div className="optional-lists">
+          {userActivityRadar}
+          <p>Recent locations if available</p>
           <ul>
             {activityByLocation}
           </ul>

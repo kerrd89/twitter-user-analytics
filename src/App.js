@@ -26,10 +26,15 @@ class App extends Component {
     });
   }
 
+  sendUserDataToFirebase(data) {
+    // data[0].user.followers_count;
+  }
+
   pullTweets(screenName, count) {
     axios.get(`/api/tweets-for-user/${screenName}?count=${count}?exclude_replies=true`)
       .then((response)=>{
         this.setState({ tweets: response.data });
+        this.sendUserDataToFirebase(response.data);
       })
       .catch((error) => console.log(error));
   }
