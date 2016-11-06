@@ -27,7 +27,7 @@ let chartOptions = {
     text:title,
     fontColor: "white",
     fontSize: 16,
-    fontFamily: "'Roboto', sans-serif",
+    fontFamily: "'Roboto Slab', serif",
     fontStyle: "100"
   },
   scales: {

@@ -20,9 +20,9 @@ class Header extends Component {
       let createdAt = moment(this.props.user.user.created_at).format('LL');
       userInfo = (
         <ul>
-          <p>Handle: {this.props.user.user.screen_name}</p>
-          <p>Name: {this.props.user.user.name}</p>
-          <p>On Twitter since {createdAt}</p>
+          <p className="user-info-label">Handle: <span>{this.props.user.user.screen_name}</span></p>
+          <p className="user-info-label">Name: <span>{this.props.user.user.name}</span></p>
+          <p className="user-info-label">On Twitter Since: <span>{createdAt}</span></p>
         </ul>
       )
     }

@@ -23,10 +23,10 @@ const RadarChartTemplate = ({ data , labels , title }) => {
       },
       {
         label:"User Averages",
-        borderColor: "rgba(123, 230, 131,1)",
-        pointborderColor: "rgba(123, 230, 131,1)",
-        pointBackgroundColor: "rgba(123, 230, 131,1)",
-        backgroundColor: "rgba(123, 230, 131,.2)",
+        borderColor: "rgba(128, 194, 175,1)",
+        pointborderColor: "rgba(128, 194, 175,1)",
+        pointBackgroundColor: "rgba(128, 194, 175,1)",
+        backgroundColor: "rgba(128, 194, 175,.2)",
         data: [
           data.followers/averageTwitterUser.followers,
           data.following/averageTwitterUser.following,

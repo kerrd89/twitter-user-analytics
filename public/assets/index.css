@@ -1,7 +1,7 @@
 /*@import url('./css/header')*/
 /*@import './css/index';*/
 header {
-  background-color: rgba(42, 42, 42, .94);
+  background-color: rgba(35, 37, 40, .94);
   display: flex;
   flex-direction: row;
   width: 75%;
@@ -13,29 +13,42 @@ header {
   margin-left: 25%;
 }
 
+.user-info-label {
+  color: rgb(128, 194, 175);
+  font-family: 'Roboto Slab', serif;
+}
+
+.user-info-label span {
+  color: white;
+  font-family: 'Roboto', sans-serif;
+}
+
 body {
   position: relative;
-  letter-spacing: .8px;
-  background-color: rgba(42, 42, 42, .75);
+  letter-spacing: 2px;
+  background-color: rgba(35, 37, 40, .75);
 }
 
 header input {
   margin-left: auto;
   margin-right: 10px;
+  padding: 10px;
   background-color: rgba(255, 255, 255,.8);
   color: black;
-  font-size: 16px;
+  font-size: 24px;
   font-family: 'Roboto', sans-serif;
   border:none;
+  height: 40px;
 }
 
 header button {
   margin-right: 30px;
   border:none;
   color: black;
-  font-family: 'Roboto', sans-serif;
-  background-color: rgba(0, 170, 236,1);
-  font-size: 16px;
+  font-family: 'Roboto Slab', serif;
+  background-color: rgb(128, 194, 175);
+  font-size: 24px;
+  height: 60px;
 }
 
 .twitter-container {
@@ -46,7 +59,7 @@ header button {
 
 .side-bar{
   width: 25%;
-  background-color: rgba(42, 42, 42, .75);
+  background-color: rgba(35, 37, 40, .75);
   position: fixed;
   top:0;
   bottom:0;
@@ -55,8 +68,8 @@ header button {
 .user-lists {
   display: flex;
   flex-direction: column;
-  background-color: rgba(42, 42, 42, .75);
-  border: 1px solid rgba(42, 42, 42, 1);
+  background-color: rgba(35, 37, 40, .75);
+  border: 1px solid rgba(35, 37, 40, 1);
   width: 15%;
   margin-left: 25%;
 }
@@ -64,17 +77,16 @@ header button {
 .optional-lists {
   display: flex;
   flex-direction: column;
-  background-color: rgba(42, 42, 42, .75);
-  border: 1px solid rgba(42, 42, 42, 1);
+  background-color: rgba(35, 37, 40, .75);
+  border: 1px solid rgba(35, 37, 40, 1);
   width: 25%;
 }
 
 
 .user-lists p, .optional-lists p {
-  background-color: rgba(42, 42, 42, .75);
+  background-color: rgba(35, 37, 40, .75);
   color: #00AAEC;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 200;
+  font-family: 'Roboto Slab', serif;
   font-size: 24px;
   padding: 10px;
 }
@@ -85,7 +97,7 @@ header button {
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
   font-size: 20px;
-  letter-spacing: .8px;
+  letter-spacing: 2px;
   height: 100%;
   margin: 5px;
 }
@@ -93,15 +105,15 @@ header button {
 .activity-charts {
   display: flex;
   flex-direction: column;
-  background-color: rgba(42, 42, 42, .75);
+  background-color: rgba(35, 37, 40, .75);
 }
 
 .side-bar,.user-hashtags, .user-mentions, .activity-charts{
-  border: 1px solid rgba(42, 42, 42, 1);
+  border: 1px solid rgba(35, 37, 40, 1);
 }
 
 .twitter-card {
-  border: 1px solid rgba(42, 42, 42, 1);
+  border: 1px solid rgba(35, 37, 40, 1);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -113,14 +125,18 @@ header button {
 }
 
 .twitter-card-header {
-  background-color: rgba(42, 42, 42, .75);
-  color: #00AAEC;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 200;
+  background-color: rgba(35, 37, 40, .75);
+  color: white;
+  font-family: 'Roboto Slab', serif;
   font-size: 24px;
   width: 100%;
   padding: 5px 0px;
   margin-top: 10px;
+}
+
+.twitter-card-header span {
+  font-family: 'Roboto', sans-serif;
+  color: #00AAEC;
 }
 
 .twitter-card-body {
@@ -134,12 +150,12 @@ header button {
 }
 
 .twitter-card-footer {
-  background-color: rgba(42, 42, 42, .75);
+  background-color: rgba(35, 37, 40, .75);
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
   font-size: 16px;
   width:100%;
-  color: #00AAEC;
+  color: rgb(128, 194, 175);
   padding: 5px 0px;
 }
 
