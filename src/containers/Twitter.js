@@ -6,16 +6,19 @@ import twitterHelpers from '../../utils/twitter-helpers';
 
 class List extends Component {
   getUserActivityRadar(tweets) {
+    let recentCreatedAt = moment().diff(tweets[0].created_at,"days");
+    let oldestCreatedAt = moment().diff(tweets[(tweets.length-1)].created_at,"days");
+    let velocity = tweets.length/(oldestCreatedAt - recentCreatedAt);
     let data = {
-      'followers':150,
-      'following':600,
-      'tweetsPerDay':2,
-      'likes':300,
-      'retweets':60
-    }
+      'followers': tweets[0].user.followers_count,
+      'following': tweets[0].user.friends_count,
+      'tweetsPerDay': velocity,
+      'likes':tweets[0].user.favourites_count,
+      // 'retweets':60
+    };
 
     return (
-      <RadarChartTemplate data={data} labels={['followers','following','tweets per day','likes', 'retweets']}
+      <RadarChartTemplate data={data} labels={['followers','following','tweets per day',"likes"]}
       title="How do they use Twitter?"/>
     )
   }
@@ -81,7 +84,7 @@ class List extends Component {
             {activityByLocation}
           </ul>
         </div>
-        
+
       </div>
     );
   }

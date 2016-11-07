@@ -6,7 +6,7 @@ let averageTwitterUser = {
   'following':500,
   'tweetsPerDay':1.6,
   'likes':400,
-  'retweets':60
+  // 'retweets':60
 }
 
 const RadarChartTemplate = ({ data , labels , title }) => {
@@ -19,7 +19,7 @@ const RadarChartTemplate = ({ data , labels , title }) => {
         pointborderColor: "rgba(0, 170, 236,1)",
         pointBackgroundColor: "rgba(0, 170, 236,1)",
         backgroundColor: "rgba(0, 170, 236,.2)",
-        data: [1,1,1,1,1],
+        data: [1,1,1,1],
       },
       {
         label:"User Averages",
@@ -32,10 +32,9 @@ const RadarChartTemplate = ({ data , labels , title }) => {
           data.following/averageTwitterUser.following,
           data.tweetsPerDay/averageTwitterUser.tweetsPerDay,
           data.likes/averageTwitterUser.likes,
-          data.retweets/averageTwitterUser.retweets
+          // data.retweets/averageTwitterUser.retweets
         ]
-      }
-  ],
+      }],
   };
 
 let chartOptions = {
@@ -61,12 +60,17 @@ let chartOptions = {
         fontStyle: "100",
     }
   },
-  scaleLabels: {
-    display: true,
-    scaleLabel: {
-        fontColor: 'rgb(255, 255, 255)'
-    }
+  labels: {
+      fontColor: 'rgb(255, 255, 255)',
+      fontFamily: "'Roboto', sans-serif",
+      fontStyle: "100",
   },
+  scale: {
+    ticks: {
+      display: false
+    },
+  }
+
 };
 
   return (

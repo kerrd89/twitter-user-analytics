@@ -44127,11 +44127,11 @@
 
 	var _moment2 = _interopRequireDefault(_moment);
 
-	var _RadarChart = __webpack_require__(626);
+	var _RadarChart = __webpack_require__(580);
 
 	var _RadarChart2 = _interopRequireDefault(_RadarChart);
 
-	var _twitterHelpers = __webpack_require__(627);
+	var _twitterHelpers = __webpack_require__(626);
 
 	var _twitterHelpers2 = _interopRequireDefault(_twitterHelpers);
 
@@ -44155,18 +44155,20 @@
 	  _createClass(List, [{
 	    key: 'getUserActivityRadar',
 	    value: function getUserActivityRadar(tweets) {
+	      var recentCreatedAt = (0, _moment2.default)().diff(tweets[0].created_at, "days");
+	      var oldestCreatedAt = (0, _moment2.default)().diff(tweets[tweets.length - 1].created_at, "days");
+	      var velocity = tweets.length / (oldestCreatedAt - recentCreatedAt);
 	      var data = {
-	        'followers': 150,
-	        'following': 600,
-	        'tweetsPerDay': 2,
-	        'likes': 300,
-	        'retweets': 60
+	        'followers': tweets[0].user.followers_count,
+	        'following': tweets[0].user.friends_count,
+	        'tweetsPerDay': velocity,
+	        'likes': tweets[0].user.favourites_count
 	      };
 
-	      return _react2.default.createElement(_RadarChart2.default, { data: data, labels: ['followers', 'following', 'tweets per day', 'likes', 'retweets'],
+	      return _react2.default.createElement(_RadarChart2.default, { data: data, labels: ['followers', 'following', 'tweets per day', "likes"],
 	        title: 'How do they use Twitter?', __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 18
+	          lineNumber: 21
 	        },
 	        __self: this
 	      });
@@ -44203,7 +44205,7 @@
 	        'div',
 	        { className: 'twitter-container', __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 50
+	            lineNumber: 53
 	          },
 	          __self: this
 	        },
@@ -44211,7 +44213,7 @@
 	          'ul',
 	          { className: 'side-bar', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 52
+	              lineNumber: 55
 	            },
 	            __self: this
 	          },
@@ -44221,7 +44223,7 @@
 	          'div',
 	          { className: 'user-lists', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 56
+	              lineNumber: 59
 	            },
 	            __self: this
 	          },
@@ -44230,7 +44232,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 57
+	                lineNumber: 60
 	              },
 	              __self: this
 	            },
@@ -44240,7 +44242,7 @@
 	            'ul',
 	            { className: 'user-mentions', __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 58
+	                lineNumber: 61
 	              },
 	              __self: this
 	            },
@@ -44251,7 +44253,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 61
+	                lineNumber: 64
 	              },
 	              __self: this
 	            },
@@ -44261,7 +44263,7 @@
 	            'ul',
 	            { className: 'user-hashtags', __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 62
+	                lineNumber: 65
 	              },
 	              __self: this
 	            },
@@ -44272,7 +44274,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 65
+	                lineNumber: 68
 	              },
 	              __self: this
 	            },
@@ -44283,7 +44285,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 66
+	                lineNumber: 69
 	              },
 	              __self: this
 	            },
@@ -44294,7 +44296,7 @@
 	          'div',
 	          { className: 'activity-charts', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 71
+	              lineNumber: 74
 	            },
 	            __self: this
 	          },
@@ -44306,7 +44308,7 @@
 	          'div',
 	          { className: 'optional-lists', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 77
+	              lineNumber: 80
 	            },
 	            __self: this
 	          },
@@ -44316,7 +44318,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 79
+	                lineNumber: 82
 	              },
 	              __self: this
 	            },
@@ -44327,7 +44329,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 80
+	                lineNumber: 83
 	              },
 	              __self: this
 	            },
@@ -61341,7 +61343,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	var _jsxFileName = '/Users/davidkerr/Projects/social-feed/src/components/LineChart.js';
+	var _jsxFileName = '/Users/davidkerr/Projects/social-feed/src/components/RadarChart.js';
 
 	var _react = __webpack_require__(299);
 
@@ -61349,9 +61351,16 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var LineChart = __webpack_require__(581).Line;
+	var RadarChart = __webpack_require__(581).Radar;
 
-	var LineChartTemplate = function LineChartTemplate(_ref) {
+	var averageTwitterUser = {
+	  'followers': 208,
+	  'following': 500,
+	  'tweetsPerDay': 1.6,
+	  'likes': 400
+	};
+
+	var RadarChartTemplate = function RadarChartTemplate(_ref) {
 	  var data = _ref.data,
 	      labels = _ref.labels,
 	      title = _ref.title;
@@ -61359,14 +61368,19 @@
 	  var chartData = {
 	    labels: labels,
 	    datasets: [{
+	      label: "Twitter Averages",
 	      borderColor: "rgba(0, 170, 236,1)",
 	      pointborderColor: "rgba(0, 170, 236,1)",
 	      pointBackgroundColor: "rgba(0, 170, 236,1)",
-	      backgroundColor: "rgba(0, 170, 236,.4)",
-
-	      // pointColor: "rgba(0, 170, 236,1)",
-	      // strokeColor: "rgba(0, 170, 236,1)",
-	      data: data
+	      backgroundColor: "rgba(0, 170, 236,.2)",
+	      data: [1, 1, 1, 1]
+	    }, {
+	      label: "User Averages",
+	      borderColor: "rgba(128, 194, 175,1)",
+	      pointborderColor: "rgba(128, 194, 175,1)",
+	      pointBackgroundColor: "rgba(128, 194, 175,1)",
+	      backgroundColor: "rgba(128, 194, 175,.2)",
+	      data: [data.followers / averageTwitterUser.followers, data.following / averageTwitterUser.following, data.tweetsPerDay / averageTwitterUser.tweetsPerDay, data.likes / averageTwitterUser.likes]
 	    }]
 	  };
 
@@ -61381,38 +61395,39 @@
 	      text: title,
 	      fontColor: "white",
 	      fontSize: 16,
-	      fontFamily: "'Roboto Slab', serif",
+	      fontFamily: "'Roboto', sans-serif",
 	      fontStyle: "100"
 	    },
-	    scales: {
-	      yAxes: [{
-	        display: true
-	      }]
-	    },
+
 	    legend: {
-	      display: false
+	      display: true,
+	      labels: {
+	        fontColor: 'rgb(255, 255, 255)',
+	        fontFamily: "'Roboto', sans-serif",
+	        fontStyle: "100"
+	      }
+	    },
+	    labels: {
+	      fontColor: 'rgb(255, 255, 255)',
+	      fontFamily: "'Roboto', sans-serif",
+	      fontStyle: "100"
+	    },
+	    scale: {
+	      ticks: {
+	        display: false
+	      }
 	    }
+
 	  };
 
-	  return _react2.default.createElement(LineChart, { data: chartData, options: chartOptions, width: 800, height: 300, __source: {
+	  return _react2.default.createElement(RadarChart, { data: chartData, options: chartOptions, width: 300, height: 300, __source: {
 	      fileName: _jsxFileName,
-	      lineNumber: 44
+	      lineNumber: 77
 	    },
 	    __self: undefined
 	  });
 	};
-
-	// StackedBarGraph.defaultProps = {
-	//   width: 600,
-	//   height: 40,
-	// };
-	//
-	// StackedBarGraph.propTypes = {
-	//   width: React.PropTypes.number.isRequired,
-	//   height: React.PropTypes.number.isRequired
-	// };
-
-	exports.default = LineChartTemplate;
+	exports.default = RadarChartTemplate;
 
 /***/ },
 /* 581 */
@@ -72645,97 +72660,6 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	var _jsxFileName = '/Users/davidkerr/Projects/social-feed/src/components/RadarChart.js';
-
-	var _react = __webpack_require__(299);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var RadarChart = __webpack_require__(581).Radar;
-
-	var averageTwitterUser = {
-	  'followers': 208,
-	  'following': 500,
-	  'tweetsPerDay': 1.6,
-	  'likes': 400,
-	  'retweets': 60
-	};
-
-	var RadarChartTemplate = function RadarChartTemplate(_ref) {
-	  var data = _ref.data,
-	      labels = _ref.labels,
-	      title = _ref.title;
-
-	  var chartData = {
-	    labels: labels,
-	    datasets: [{
-	      label: "Twitter Averages",
-	      borderColor: "rgba(0, 170, 236,1)",
-	      pointborderColor: "rgba(0, 170, 236,1)",
-	      pointBackgroundColor: "rgba(0, 170, 236,1)",
-	      backgroundColor: "rgba(0, 170, 236,.2)",
-	      data: [1, 1, 1, 1, 1]
-	    }, {
-	      label: "User Averages",
-	      borderColor: "rgba(128, 194, 175,1)",
-	      pointborderColor: "rgba(128, 194, 175,1)",
-	      pointBackgroundColor: "rgba(128, 194, 175,1)",
-	      backgroundColor: "rgba(128, 194, 175,.2)",
-	      data: [data.followers / averageTwitterUser.followers, data.following / averageTwitterUser.following, data.tweetsPerDay / averageTwitterUser.tweetsPerDay, data.likes / averageTwitterUser.likes, data.retweets / averageTwitterUser.retweets]
-	    }]
-	  };
-
-	  var chartOptions = {
-	    default: {
-	      fontColor: "white",
-	      fontFamily: "'Roboto', sans-serif",
-	      fontStyle: "100"
-	    },
-	    title: {
-	      display: true,
-	      text: title,
-	      fontColor: "white",
-	      fontSize: 16,
-	      fontFamily: "'Roboto', sans-serif",
-	      fontStyle: "100"
-	    },
-
-	    legend: {
-	      display: true,
-	      labels: {
-	        fontColor: 'rgb(255, 255, 255)',
-	        fontFamily: "'Roboto', sans-serif",
-	        fontStyle: "100"
-	      }
-	    },
-	    scaleLabels: {
-	      display: true,
-	      scaleLabel: {
-	        fontColor: 'rgb(255, 255, 255)'
-	      }
-	    }
-	  };
-
-	  return _react2.default.createElement(RadarChart, { data: chartData, options: chartOptions, width: 300, height: 300, __source: {
-	      fileName: _jsxFileName,
-	      lineNumber: 73
-	    },
-	    __self: undefined
-	  });
-	};
-	exports.default = RadarChartTemplate;
-
-/***/ },
-/* 627 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
 
 	var _jsxFileName = '/Users/davidkerr/Projects/social-feed/utils/twitter-helpers.js',
 	    _twitterHelpers;
@@ -72752,7 +72676,7 @@
 
 	var _moment2 = _interopRequireDefault(_moment);
 
-	var _LineChart = __webpack_require__(580);
+	var _LineChart = __webpack_require__(627);
 
 	var _LineChart2 = _interopRequireDefault(_LineChart);
 
@@ -73174,6 +73098,88 @@
 	}), _twitterHelpers);
 
 	exports.default = twitterHelpers;
+
+/***/ },
+/* 627 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var _jsxFileName = '/Users/davidkerr/Projects/social-feed/src/components/LineChart.js';
+
+	var _react = __webpack_require__(299);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var LineChart = __webpack_require__(581).Line;
+
+	var LineChartTemplate = function LineChartTemplate(_ref) {
+	  var data = _ref.data,
+	      labels = _ref.labels,
+	      title = _ref.title;
+
+	  var chartData = {
+	    labels: labels,
+	    datasets: [{
+	      borderColor: "rgba(0, 170, 236,1)",
+	      pointborderColor: "rgba(0, 170, 236,1)",
+	      pointBackgroundColor: "rgba(0, 170, 236,1)",
+	      backgroundColor: "rgba(0, 170, 236,.4)",
+
+	      // pointColor: "rgba(0, 170, 236,1)",
+	      // strokeColor: "rgba(0, 170, 236,1)",
+	      data: data
+	    }]
+	  };
+
+	  var chartOptions = {
+	    default: {
+	      fontColor: "white",
+	      fontFamily: "'Roboto', sans-serif",
+	      fontStyle: "100"
+	    },
+	    title: {
+	      display: true,
+	      text: title,
+	      fontColor: "white",
+	      fontSize: 16,
+	      fontFamily: "'Roboto Slab', serif",
+	      fontStyle: "100"
+	    },
+	    scales: {
+	      yAxes: [{
+	        display: true
+	      }]
+	    },
+	    legend: {
+	      display: false
+	    }
+	  };
+
+	  return _react2.default.createElement(LineChart, { data: chartData, options: chartOptions, width: 800, height: 300, __source: {
+	      fileName: _jsxFileName,
+	      lineNumber: 44
+	    },
+	    __self: undefined
+	  });
+	};
+
+	// StackedBarGraph.defaultProps = {
+	//   width: 600,
+	//   height: 40,
+	// };
+	//
+	// StackedBarGraph.propTypes = {
+	//   width: React.PropTypes.number.isRequired,
+	//   height: React.PropTypes.number.isRequired
+	// };
+
+	exports.default = LineChartTemplate;
 
 /***/ },
 /* 628 */
