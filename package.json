@@ -69,7 +69,7 @@
   "scripts": {
     "start": "concurrently \"node server\" \"webpack --watch\"",
     "build": "webpack",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node src/App.test.js --env=jsdom"
   },
   "jest": {
     "moduleFileExtensions": [

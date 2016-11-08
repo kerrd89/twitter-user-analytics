@@ -70,7 +70,6 @@ let chartOptions = {
       display: false
     },
   }
-
 };
 
   return (

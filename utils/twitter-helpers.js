@@ -12,7 +12,7 @@ let commonWords = [
   "i","rt","the","is","a","of","us","for","this","in","to","and","you","by","like",
   "my","but","we","have","that",' ',"1","2","be","me","at","|","on","it's","don't",
   "it","from","you're","with","are","just","do","has","was","i'm","an","am","","if",
-  "can","7","-","as","&amp;"
+  "can","7","-","as","&amp;","--","21"
 ];
 
 let urls = [];

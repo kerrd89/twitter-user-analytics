@@ -4,6 +4,8 @@ import Twitter from './containers/Twitter';
 import firebase, { provider } from './firebase';
 import _ from 'lodash';
 import axios from 'axios';
+import LoadingSvg from './components/LoadingSvg';
+
 
 class App extends Component {
   constructor() {
@@ -45,12 +47,22 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <div className="App">
-        <Header user={this.state.tweets[0]} changeUsername={this.changeUsername.bind(this)}/>
-        <Twitter tweets={this.state.tweets}/>
-      </div>
-    );
+    if(this.state.tweets.length !== 0) {
+      return (
+        <div className="App">
+          <Header user={this.state.tweets[0]} changeUsername={this.changeUsername.bind(this)}/>
+          <Twitter tweets={this.state.tweets}/>
+        </div>
+      )
+    }
+
+    if(this.state.tweets.length === 0) {
+      return (
+        <div className="App">
+          <LoadingSvg width="200px" height="200px" color="rgb(128, 194, 175)"/>
+        </div>
+      )
+    }
   }
 }
 
