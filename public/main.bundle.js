@@ -44217,6 +44217,10 @@
 
 	var _RadarChart2 = _interopRequireDefault(_RadarChart);
 
+	var _DeleteSvg = __webpack_require__(669);
+
+	var _DeleteSvg2 = _interopRequireDefault(_DeleteSvg);
+
 	var _twitterHelpers = __webpack_require__(665);
 
 	var _twitterHelpers2 = _interopRequireDefault(_twitterHelpers);
@@ -44260,7 +44264,7 @@
 	      return _react2.default.createElement(_RadarChart2.default, { data: data, labels: ['followers', 'following', 'tweets per day', "likes"],
 	        title: 'How do they use Twitter?', __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 30
+	          lineNumber: 31
 	        },
 	        __self: this
 	      });
@@ -44279,7 +44283,7 @@
 	              _this2.setState({ selectedHashtag: null });
 	            }, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 39
+	              lineNumber: 40
 	            },
 	            __self: _this2
 	          },
@@ -44304,7 +44308,7 @@
 	              _this3.setState({ selectedUser: null });
 	            }, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 54
+	              lineNumber: 55
 	            },
 	            __self: _this3
 	          },
@@ -44336,19 +44340,38 @@
 	        if (this.state.selectedUser) {
 	          tweets = [];
 	          tweets.push(_react2.default.createElement(
-	            'p',
+	            'div',
 	            { className: 'tweets-active-filter', __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 81
+	                lineNumber: 83
 	              },
 	              __self: this
 	            },
-	            'Tweets mentioning @',
-	            this.state.selectedUser
+	            _react2.default.createElement(
+	              'p',
+	              {
+	                __source: {
+	                  fileName: _jsxFileName,
+	                  lineNumber: 84
+	                },
+	                __self: this
+	              },
+	              'Tweets mentioning @',
+	              this.state.selectedUser
+	            ),
+	            _react2.default.createElement(_DeleteSvg2.default, { width: '30px', height: '30px', color: 'rgb(128, 194, 175)',
+	              onClick: function onClick(e) {
+	                _this4.setState({ selectedUser: null, selectedHashtag: null });
+	              },
+	              __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 85
+	              },
+	              __self: this
+	            })
 	          ));
 	          this.props.tweets.map(function (tweet) {
 	            tweet.entities.user_mentions.map(function (userMention) {
-
 	              if (userMention.screen_name === _this4.state.selectedUser) {
 	                tweets.push(_twitterHelpers2.default.tweetTemplate(tweet));
 	              }
@@ -44357,15 +44380,35 @@
 	        } else if (this.state.selectedHashtag) {
 	          tweets = [];
 	          tweets.push(_react2.default.createElement(
-	            'p',
+	            'div',
 	            { className: 'tweets-active-filter', __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 92
+	                lineNumber: 102
 	              },
 	              __self: this
 	            },
-	            'Tweets with #',
-	            this.state.selectedHashtag
+	            _react2.default.createElement(
+	              'p',
+	              {
+	                __source: {
+	                  fileName: _jsxFileName,
+	                  lineNumber: 103
+	                },
+	                __self: this
+	              },
+	              'Tweets with #',
+	              this.state.selectedHashtag
+	            ),
+	            _react2.default.createElement(_DeleteSvg2.default, { width: '40px', height: '40px', color: 'rgb(128, 194, 175)',
+	              onClick: function onClick(e) {
+	                _this4.setState({ selectedUser: null, selectedHashtag: null });
+	              },
+	              __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 104
+	              },
+	              __self: this
+	            })
 	          ));
 	          this.props.tweets.map(function (tweet) {
 	            tweet.entities.hashtags.map(function (hashtag) {
@@ -44395,7 +44438,7 @@
 	        'div',
 	        { className: 'twitter-container', __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 118
+	            lineNumber: 136
 	          },
 	          __self: this
 	        },
@@ -44403,7 +44446,7 @@
 	          'ul',
 	          { className: 'side-bar', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 120
+	              lineNumber: 138
 	            },
 	            __self: this
 	          },
@@ -44413,7 +44456,7 @@
 	          'div',
 	          { className: 'user-lists', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 124
+	              lineNumber: 142
 	            },
 	            __self: this
 	          },
@@ -44422,7 +44465,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 125
+	                lineNumber: 143
 	              },
 	              __self: this
 	            },
@@ -44432,7 +44475,7 @@
 	            'ul',
 	            { className: 'user-mentions', __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 126
+	                lineNumber: 144
 	              },
 	              __self: this
 	            },
@@ -44443,7 +44486,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 129
+	                lineNumber: 147
 	              },
 	              __self: this
 	            },
@@ -44453,7 +44496,7 @@
 	            'ul',
 	            { className: 'user-hashtags', __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 130
+	                lineNumber: 148
 	              },
 	              __self: this
 	            },
@@ -44464,7 +44507,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 133
+	                lineNumber: 151
 	              },
 	              __self: this
 	            },
@@ -44474,7 +44517,7 @@
 	            'div',
 	            { className: 'repeated-words', __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 134
+	                lineNumber: 152
 	              },
 	              __self: this
 	            },
@@ -44482,7 +44525,7 @@
 	              'ul',
 	              { className: 'repeated-words-list', __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 135
+	                  lineNumber: 153
 	                },
 	                __self: this
 	              },
@@ -44492,7 +44535,7 @@
 	              'ul',
 	              { className: 'repeated-words-list', __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 138
+	                  lineNumber: 156
 	                },
 	                __self: this
 	              },
@@ -44504,7 +44547,7 @@
 	          'div',
 	          { className: 'activity-charts', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 144
+	              lineNumber: 162
 	            },
 	            __self: this
 	          },
@@ -44516,7 +44559,7 @@
 	          'div',
 	          { className: 'optional-lists', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 150
+	              lineNumber: 168
 	            },
 	            __self: this
 	          },
@@ -44526,7 +44569,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 152
+	                lineNumber: 170
 	              },
 	              __self: this
 	            },
@@ -44537,7 +44580,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 153
+	                lineNumber: 171
 	              },
 	              __self: this
 	            },
@@ -64141,7 +64184,7 @@
 
 
 	// module
-	exports.push([module.id, "/*@import url('./css/header')*/\n/*@import './css/index';*/\nheader {\n  background-color: rgba(35, 37, 40, .94);\n  display: flex;\n  flex-direction: row;\n  width: 75%;\n  padding: 10px;\n  color: white;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 100;\n  font-size: 20px;\n  margin-left: 25%;\n}\n\na {\n  text-decoration:none;\n}\n\n.user-info-label {\n  color: rgb(128, 194, 175);\n  font-family: 'Roboto Slab', serif;\n}\n\n.user-info-label span {\n  color: white;\n  font-family: 'Roboto', sans-serif;\n}\n\nbody {\n  position: relative;\n  letter-spacing: 2px;\n  background-color: rgba(35, 37, 40, .75);\n}\n\nheader input {\n  margin-left: auto;\n  margin-right: 10px;\n  padding: 10px;\n  background-color: rgba(255, 255, 255,.8);\n  color: black;\n  font-size: 20px;\n  font-family: 'Roboto', sans-serif;\n  border:none;\n  height: 40px;\n}\n\nheader button {\n  margin-right: 30px;\n  border:none;\n  color: black;\n  font-family: 'Roboto Slab', serif;\n  background-color: rgb(128, 194, 175);\n  font-size: 20px;\n  height: 60px;\n}\n\n.twitter-container {\n  display:flex;\n  flex-direction: wrap;\n  height: 100%;\n}\n\n.side-bar{\n  width: 25%;\n  background-color: rgba(35, 37, 40, .75);\n  position: fixed;\n  top:0;\n  bottom:0;\n}\n\n.user-lists {\n  display: flex;\n  flex-direction: column;\n  background-color: rgba(35, 37, 40, .75);\n  border: 1px solid rgba(35, 37, 40, 1);\n  width: 15%;\n  margin-left: 25%;\n}\n\n.optional-lists {\n  display: flex;\n  flex-direction: column;\n  background-color: rgba(35, 37, 40, .75);\n  border: 1px solid rgba(35, 37, 40, 1);\n  width: 25%;\n}\n\n\n.user-lists p, .optional-lists p {\n  background-color: rgba(35, 37, 40, .75);\n  color: #00AAEC;\n  font-family: 'Roboto Slab', serif;\n  font-size: 20px;\n  padding: 10px;\n}\n\n.user-lists li, .optional-lists li{\n  color: white;\n  width: 100%;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 100;\n  font-size: 16px;\n  letter-spacing: 2px;\n  margin: 5px;\n}\n\n.activity-charts {\n  display: flex;\n  flex-direction: column;\n  background-color: rgba(35, 37, 40, .75);\n}\n\n.side-bar,.user-hashtags, .user-mentions, .activity-charts{\n  border: 1px solid rgba(35, 37, 40, 1);\n}\n\n.twitter-card {\n  border: 1px solid rgba(35, 37, 40, 1);\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  width: 100%;\n}\n\n.twitter-card svg {\n  color: #00AAEC;\n}\n\n.twitter-card-header {\n  background-color: rgba(35, 37, 40, .75);\n  color: white;\n  font-family: 'Roboto Slab', serif;\n  font-size: 20px;\n  width: 100%;\n  padding: 5px 0px;\n  margin-top: 10px;\n}\n\n.twitter-card-header span {\n  font-family: 'Roboto', sans-serif;\n  color: #00AAEC;\n}\n\n.twitter-card-body {\n  color: white;\n  width: 100%;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 100;\n  font-size: 16px;\n  height: 100%;\n  margin:5px 0px;\n}\n\n.twitter-card-footer {\n  position: relative;\n  background-color: rgba(35, 37, 40, .75);\n  font-family: 'Roboto', sans-serif;\n  font-weight: 100;\n  font-size: 16px;\n  width:100%;\n  color: rgb(128, 194, 175);\n  padding:5px 0px;\n}\n\nspan.twitter-date {\n  position: absolute;\n  right: 5px;\n  top: 9px;\n}\n\n.repeated-words {\n\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n  padding: 8px 0px 5px 0px;\n}\n\n.repeated-words-list {\n  width: 50%;\n}\n\n.twitter-svg {\n  margin-right: 30px;\n  margin-top: 5px;\n}\n\n.tweets-active-filter {\n  background-color: rgba(35, 37, 40, .75);\n  color: rgb(128, 194, 175);\n  font-family: 'Roboto Slab', serif;\n  font-size: 20px;\n  padding: 10px;\n}\n", ""]);
+	exports.push([module.id, "/*@import url('./css/header')*/\n/*@import './css/index';*/\nheader {\n  background-color: rgba(35, 37, 40, .94);\n  display: flex;\n  flex-direction: row;\n  width: 75%;\n  padding: 10px;\n  color: white;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 100;\n  font-size: 20px;\n  margin-left: 25%;\n}\n\na {\n  text-decoration:none;\n}\n\n.user-info-label {\n  color: rgb(128, 194, 175);\n  font-family: 'Roboto Slab', serif;\n}\n\n.user-info-label span {\n  color: white;\n  font-family: 'Roboto', sans-serif;\n}\n\nbody {\n  position: relative;\n  letter-spacing: 2px;\n  background-color: rgba(35, 37, 40, .75);\n}\n\nheader input {\n  margin-left: auto;\n  margin-right: 10px;\n  padding: 10px;\n  background-color: rgba(255, 255, 255,.8);\n  color: black;\n  font-size: 20px;\n  font-family: 'Roboto', sans-serif;\n  border:none;\n  height: 40px;\n}\n\nheader button {\n  margin-right: 30px;\n  border:none;\n  color: black;\n  font-family: 'Roboto Slab', serif;\n  background-color: rgb(128, 194, 175);\n  font-size: 20px;\n  height: 60px;\n}\n\n.twitter-container {\n  display:flex;\n  flex-direction: wrap;\n  height: 100%;\n}\n\n.side-bar{\n  width: 25%;\n  background-color: rgba(35, 37, 40, .75);\n  position: fixed;\n  top:0;\n  bottom:0;\n}\n\n.user-lists {\n  display: flex;\n  flex-direction: column;\n  background-color: rgba(35, 37, 40, .75);\n  border: 1px solid rgba(35, 37, 40, 1);\n  width: 15%;\n  margin-left: 25%;\n}\n\n.optional-lists {\n  display: flex;\n  flex-direction: column;\n  background-color: rgba(35, 37, 40, .75);\n  border: 1px solid rgba(35, 37, 40, 1);\n  width: 25%;\n}\n\n\n.user-lists p, .optional-lists p {\n  background-color: rgba(35, 37, 40, .75);\n  color: #00AAEC;\n  font-family: 'Roboto Slab', serif;\n  font-size: 20px;\n  padding: 10px;\n}\n\n.user-lists li, .optional-lists li{\n  color: white;\n  width: 100%;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 100;\n  font-size: 16px;\n  letter-spacing: 2px;\n  margin: 5px;\n}\n\n.activity-charts {\n  display: flex;\n  flex-direction: column;\n  background-color: rgba(35, 37, 40, .75);\n}\n\n.side-bar,.user-hashtags, .user-mentions, .activity-charts{\n  border: 1px solid rgba(35, 37, 40, 1);\n}\n\n.twitter-card {\n  border: 1px solid rgba(35, 37, 40, 1);\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  width: 100%;\n}\n\n.twitter-card svg {\n  color: #00AAEC;\n}\n\n.twitter-card-header {\n  background-color: rgba(35, 37, 40, .75);\n  color: white;\n  font-family: 'Roboto Slab', serif;\n  font-size: 20px;\n  width: 100%;\n  padding: 5px 0px;\n  margin-top: 10px;\n}\n\n.twitter-card-header span {\n  font-family: 'Roboto', sans-serif;\n  color: #00AAEC;\n}\n\n.twitter-card-body {\n  color: white;\n  width: 100%;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 100;\n  font-size: 16px;\n  height: 100%;\n  margin:5px 0px;\n}\n\n.twitter-card-footer {\n  position: relative;\n  background-color: rgba(35, 37, 40, .75);\n  font-family: 'Roboto', sans-serif;\n  font-weight: 100;\n  font-size: 16px;\n  width:100%;\n  color: rgb(128, 194, 175);\n  padding:5px 0px;\n}\n\nspan.twitter-date {\n  position: absolute;\n  right: 5px;\n  top: 9px;\n}\n\n.repeated-words {\n\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n  padding: 8px 0px 5px 0px;\n}\n\n.repeated-words-list {\n  width: 50%;\n}\n\n.twitter-svg {\n  margin-right: 30px;\n  margin-top: 5px;\n}\n\n.tweets-active-filter {\n  height: 40px;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n}\n\n.tweets-active-filter p, .tweets-active-filter svg {\n  margin: auto 0px;\n}\n\n.tweets-active-filter {\n  background-color: rgba(35, 37, 40, .75);\n  color: rgb(128, 194, 175);\n  font-family: 'Roboto Slab', serif;\n  font-size: 20px;\n  padding: 10px;\n}\n", ""]);
 
 	// exports
 
@@ -76023,6 +76066,56 @@
 	  );
 	};
 	exports.default = retweetSvg;
+
+/***/ },
+/* 669 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var _jsxFileName = "/Users/davidkerr/Projects/social-feed/src/components/DeleteSvg.js";
+
+	var _react = __webpack_require__(299);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var deleteSvg = function deleteSvg(_ref) {
+	  var color = _ref.color,
+	      width = _ref.width,
+	      height = _ref.height,
+	      onClick = _ref.onClick;
+
+	  return _react2.default.createElement(
+	    "svg",
+	    { width: width, height: height, viewBox: "624 144 24 24", onClick: onClick, className: "delete-svg", __source: {
+	        fileName: _jsxFileName,
+	        lineNumber: 5
+	      },
+	      __self: undefined
+	    },
+	    _react2.default.createElement(
+	      "g",
+	      { id: "ic_highlight_remove", stroke: "none", strokeWidth: "1", fill: "none", fillRule: "evenodd", transform: "translate(624.000000, 144.000000)", __source: {
+	          fileName: _jsxFileName,
+	          lineNumber: 6
+	        },
+	        __self: undefined
+	      },
+	      _react2.default.createElement("path", { d: "M14.59,8 L12,10.59 L9.41,8 L8,9.41 L10.59,12 L8,14.59 L9.41,16 L12,13.41 L14.59,16 L16,14.59 L13.41,12 L16,9.41 L14.59,8 L14.59,8 Z M12,2 C6.47,2 2,6.47 2,12 C2,17.53 6.47,22 12,22 C17.53,22 22,17.53 22,12 C22,6.47 17.53,2 12,2 L12,2 Z M12,20 C7.59,20 4,16.41 4,12 C4,7.59 7.59,4 12,4 C16.41,4 20,7.59 20,12 C20,16.41 16.41,20 12,20 L12,20 Z", id: "Shape", fillOpacity: "0.7", fill: color, __source: {
+	          fileName: _jsxFileName,
+	          lineNumber: 7
+	        },
+	        __self: undefined
+	      })
+	    )
+	  );
+	};
+	exports.default = deleteSvg;
 
 /***/ }
 /******/ ]);

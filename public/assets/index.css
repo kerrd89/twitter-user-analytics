@@ -187,6 +187,17 @@ span.twitter-date {
 }
 
 .tweets-active-filter {
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.tweets-active-filter p, .tweets-active-filter svg {
+  margin: auto 0px;
+}
+
+.tweets-active-filter {
   background-color: rgba(35, 37, 40, .75);
   color: rgb(128, 194, 175);
   font-family: 'Roboto Slab', serif;

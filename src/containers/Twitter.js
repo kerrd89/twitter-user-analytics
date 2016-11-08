@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import moment from 'moment';
 import RadarChartTemplate from '../components/RadarChart';
+import DeleteSvg from '../components/DeleteSvg';
 import twitterHelpers from '../../utils/twitter-helpers';
 
 class List extends Component {
@@ -78,10 +79,18 @@ class List extends Component {
     if (this.props.tweets.length) {
       if(this.state.selectedUser) {
         tweets = [];
-        tweets.push(<p className="tweets-active-filter">Tweets mentioning @{this.state.selectedUser}</p>)
+        tweets.push(
+          <div className="tweets-active-filter">
+            <p>Tweets mentioning @{this.state.selectedUser}</p>
+            <DeleteSvg width="30px" height="30px" color="rgb(128, 194, 175)"
+              onClick={((e)=>{
+                this.setState({selectedUser: null, selectedHashtag: null})
+              })}
+            />
+          </div>
+        )
         this.props.tweets.map((tweet)=> {
           tweet.entities.user_mentions.map((userMention) => {
-
             if(userMention.screen_name === this.state.selectedUser) {
               tweets.push(twitterHelpers.tweetTemplate(tweet));
             }
@@ -89,7 +98,16 @@ class List extends Component {
         })
       } else if(this.state.selectedHashtag) {
           tweets = [];
-          tweets.push(<p className="tweets-active-filter">Tweets with #{this.state.selectedHashtag}</p>)
+          tweets.push(
+            <div className="tweets-active-filter">
+              <p>Tweets with #{this.state.selectedHashtag}</p>
+              <DeleteSvg width="40px" height="40px" color="rgb(128, 194, 175)"
+                onClick={((e)=>{
+                  this.setState({selectedUser: null, selectedHashtag: null})
+                })}
+              />
+            </div>
+          )
           this.props.tweets.map((tweet)=> {
             tweet.entities.hashtags.map((hashtag) => {
               if(hashtag.text === this.state.selectedHashtag) {
