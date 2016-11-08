@@ -9,8 +9,12 @@ header {
   color: white;
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
-  font-size: 24px;
+  font-size: 20px;
   margin-left: 25%;
+}
+
+a {
+  text-decoration:none;
 }
 
 .user-info-label {
@@ -35,7 +39,7 @@ header input {
   padding: 10px;
   background-color: rgba(255, 255, 255,.8);
   color: black;
-  font-size: 24px;
+  font-size: 20px;
   font-family: 'Roboto', sans-serif;
   border:none;
   height: 40px;
@@ -47,7 +51,7 @@ header button {
   color: black;
   font-family: 'Roboto Slab', serif;
   background-color: rgb(128, 194, 175);
-  font-size: 24px;
+  font-size: 20px;
   height: 60px;
 }
 
@@ -87,7 +91,7 @@ header button {
   background-color: rgba(35, 37, 40, .75);
   color: #00AAEC;
   font-family: 'Roboto Slab', serif;
-  font-size: 24px;
+  font-size: 20px;
   padding: 10px;
 }
 
@@ -96,9 +100,8 @@ header button {
   width: 100%;
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
-  font-size: 20px;
+  font-size: 16px;
   letter-spacing: 2px;
-  height: 100%;
   margin: 5px;
 }
 
@@ -128,7 +131,7 @@ header button {
   background-color: rgba(35, 37, 40, .75);
   color: white;
   font-family: 'Roboto Slab', serif;
-  font-size: 24px;
+  font-size: 20px;
   width: 100%;
   padding: 5px 0px;
   margin-top: 10px;
@@ -144,21 +147,41 @@ header button {
   width: 100%;
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
-  font-size: 20px;
+  font-size: 16px;
   height: 100%;
   margin:5px 0px;
 }
 
 .twitter-card-footer {
+  position: relative;
   background-color: rgba(35, 37, 40, .75);
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
   font-size: 16px;
   width:100%;
   color: rgb(128, 194, 175);
-  padding: 5px 0px;
+  padding:5px 0px;
 }
 
 span.twitter-date {
-  float:right;
+  position: absolute;
+  right: 5px;
+  top: 9px;
+}
+
+.repeated-words {
+
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 8px 0px 5px 0px;
+}
+
+.repeated-words-list {
+  width: 50%;
+}
+
+.twitter-svg {
+  margin-right: 30px;
+  margin-top: 5px;
 }

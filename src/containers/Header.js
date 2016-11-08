@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import moment from 'moment';
+import TwitterSvg from '../components/TwitterSvg';
 
 class Header extends Component {
   constructor(props) {
@@ -28,9 +29,10 @@ class Header extends Component {
     }
     return (
         <header>
-          {userInfo}
+          {userInfo}  
           <input type="text" onChange={(e)=>this.setState({ "input": e.target.value })}/>
           <button onClick={()=>this.changeUsername()}>Submit</button>
+          <TwitterSvg color="#00AAEC" width="60" height="50" />
         </header>
     );
   }

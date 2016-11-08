@@ -8193,9 +8193,9 @@
 
 	var _App2 = _interopRequireDefault(_App);
 
-	__webpack_require__(660);
+	__webpack_require__(663);
 
-	__webpack_require__(664);
+	__webpack_require__(667);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29409,19 +29409,19 @@
 
 	var _Header2 = _interopRequireDefault(_Header);
 
-	var _Twitter = __webpack_require__(578);
+	var _Twitter = __webpack_require__(579);
 
 	var _Twitter2 = _interopRequireDefault(_Twitter);
 
-	var _firebase = __webpack_require__(628);
+	var _firebase = __webpack_require__(631);
 
 	var _firebase2 = _interopRequireDefault(_firebase);
 
-	var _lodash = __webpack_require__(579);
+	var _lodash = __webpack_require__(580);
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
-	var _axios = __webpack_require__(635);
+	var _axios = __webpack_require__(638);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
@@ -29540,6 +29540,10 @@
 
 	var _moment2 = _interopRequireDefault(_moment);
 
+	var _TwitterSvg = __webpack_require__(578);
+
+	var _TwitterSvg2 = _interopRequireDefault(_TwitterSvg);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -29581,7 +29585,7 @@
 	          {
 	            __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 22
+	              lineNumber: 23
 	            },
 	            __self: this
 	          },
@@ -29589,7 +29593,7 @@
 	            'p',
 	            { className: 'user-info-label', __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 23
+	                lineNumber: 24
 	              },
 	              __self: this
 	            },
@@ -29599,7 +29603,7 @@
 	              {
 	                __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 23
+	                  lineNumber: 24
 	                },
 	                __self: this
 	              },
@@ -29610,7 +29614,7 @@
 	            'p',
 	            { className: 'user-info-label', __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 24
+	                lineNumber: 25
 	              },
 	              __self: this
 	            },
@@ -29620,7 +29624,7 @@
 	              {
 	                __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 24
+	                  lineNumber: 25
 	                },
 	                __self: this
 	              },
@@ -29631,7 +29635,7 @@
 	            'p',
 	            { className: 'user-info-label', __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 25
+	                lineNumber: 26
 	              },
 	              __self: this
 	            },
@@ -29641,7 +29645,7 @@
 	              {
 	                __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 25
+	                  lineNumber: 26
 	                },
 	                __self: this
 	              },
@@ -29655,7 +29659,7 @@
 	        {
 	          __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 30
+	            lineNumber: 31
 	          },
 	          __self: this
 	        },
@@ -29664,7 +29668,7 @@
 	            return _this2.setState({ "input": e.target.value });
 	          }, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 32
+	            lineNumber: 33
 	          },
 	          __self: this
 	        }),
@@ -29674,12 +29678,18 @@
 	              return _this2.changeUsername();
 	            }, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 33
+	              lineNumber: 34
 	            },
 	            __self: this
 	          },
 	          'Submit'
-	        )
+	        ),
+	        _react2.default.createElement(_TwitterSvg2.default, { color: '#00AAEC', width: '60', height: '50', __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 35
+	          },
+	          __self: this
+	        })
 	      );
 	    }
 	  }]);
@@ -44106,6 +44116,82 @@
 /* 578 */
 /***/ function(module, exports, __webpack_require__) {
 
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	var _jsxFileName = "/Users/davidkerr/Projects/social-feed/src/components/TwitterSvg.js";
+
+	var _react = __webpack_require__(299);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var twitterSvg = function twitterSvg(_ref) {
+	    var color = _ref.color,
+	        width = _ref.width,
+	        height = _ref.height;
+
+	    return _react2.default.createElement(
+	        "svg",
+	        { className: "twitter-svg", width: width, height: height, viewBox: "0 0 48 41", __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 5
+	            },
+	            __self: undefined
+	        },
+	        _react2.default.createElement(
+	            "g",
+	            { id: "individual-page", stroke: "none", strokeWidth: "1", fill: "none", fillRule: "evenodd", __source: {
+	                    fileName: _jsxFileName,
+	                    lineNumber: 6
+	                },
+	                __self: undefined
+	            },
+	            _react2.default.createElement(
+	                "g",
+	                { id: "Desktop-HD", transform: "translate(-970.000000, -217.000000)", fill: color, __source: {
+	                        fileName: _jsxFileName,
+	                        lineNumber: 7
+	                    },
+	                    __self: undefined
+	                },
+	                _react2.default.createElement(
+	                    "g",
+	                    { id: "twitter-card-w-picture", transform: "translate(950.000000, 200.000000)", __source: {
+	                            fileName: _jsxFileName,
+	                            lineNumber: 8
+	                        },
+	                        __self: undefined
+	                    },
+	                    _react2.default.createElement(
+	                        "g",
+	                        { id: "twitter-header", __source: {
+	                                fileName: _jsxFileName,
+	                                lineNumber: 9
+	                            },
+	                            __self: undefined
+	                        },
+	                        _react2.default.createElement("path", { d: "M68,22.4518189 C66.2363092,23.254997 64.3373833,23.7981533 62.3454834,24.0408402 C64.3796443,22.7927362 65.9404825,20.8136824 66.6758232,18.4561526 C64.7712625,19.6118045 62.6666667,20.4525412 60.4183835,20.9032454 C58.6265188,18.9415264 56.0655045,17.7165354 53.2312027,17.7165354 C47.796443,17.7165354 43.3872161,22.2380233 43.3872161,27.8140436 C43.3872161,28.6056651 43.471738,29.3741736 43.6407818,30.1137908 C35.4562423,29.6919778 28.2014439,25.6760876 23.3414334,19.5598001 C22.4933967,21.0563693 22.0088044,22.7927362 22.0088044,24.6417792 C22.0088044,28.1434043 23.7471386,31.2347731 26.3898574,33.0462574 C24.778306,32.9971422 23.2569114,32.5377705 21.9270998,31.7865968 L21.9270998,31.9108294 C21.9270998,36.805015 25.3220637,40.8873552 29.8298996,41.8118767 C29.0044022,42.0487853 28.1338264,42.1672397 27.2350766,42.1672397 C26.6011622,42.1672397 25.9813347,42.1065679 25.3812291,41.9881136 C26.6349709,45.9982256 30.2694136,48.9191356 34.5800317,48.9971422 C31.2104244,51.7071458 26.961789,53.3221692 22.3497095,53.3221692 C21.5552034,53.3221692 20.7691495,53.2759432 20,53.183491 C24.3585138,56.0437294 29.5368903,57.7165354 35.0956154,57.7165354 C53.2114809,57.7165354 63.1146329,42.33192 63.1146329,28.9870302 C63.1146329,28.5478825 63.1061807,28.1087348 63.0892763,27.6782545 C65.0135587,26.2539135 66.6842754,24.4770988 68,22.4518189", id: "Twitter", __source: {
+	                                fileName: _jsxFileName,
+	                                lineNumber: 10
+	                            },
+	                            __self: undefined
+	                        })
+	                    )
+	                )
+	            )
+	        )
+	    );
+	};
+	exports.default = twitterSvg;
+
+/***/ },
+/* 579 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
@@ -44119,7 +44205,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _lodash = __webpack_require__(579);
+	var _lodash = __webpack_require__(580);
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
@@ -44127,11 +44213,11 @@
 
 	var _moment2 = _interopRequireDefault(_moment);
 
-	var _RadarChart = __webpack_require__(580);
+	var _RadarChart = __webpack_require__(581);
 
 	var _RadarChart2 = _interopRequireDefault(_RadarChart);
 
-	var _twitterHelpers = __webpack_require__(626);
+	var _twitterHelpers = __webpack_require__(627);
 
 	var _twitterHelpers2 = _interopRequireDefault(_twitterHelpers);
 
@@ -44149,7 +44235,12 @@
 	  function List() {
 	    _classCallCheck(this, List);
 
-	    return _possibleConstructorReturn(this, (List.__proto__ || Object.getPrototypeOf(List)).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, (List.__proto__ || Object.getPrototypeOf(List)).call(this));
+
+	    _this.state = {
+	      selectedUser: null
+	    };
+	    return _this;
 	  }
 
 	  _createClass(List, [{
@@ -44168,7 +44259,7 @@
 	      return _react2.default.createElement(_RadarChart2.default, { data: data, labels: ['followers', 'following', 'tweets per day', "likes"],
 	        title: 'How do they use Twitter?', __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 21
+	          lineNumber: 27
 	        },
 	        __self: this
 	      });
@@ -44176,6 +44267,8 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+
 	      var tweets = void 0;
 	      var userMentions = void 0;
 	      var hashtags = void 0;
@@ -44185,10 +44278,12 @@
 	      var activityByLocation = void 0;
 	      var repeatedWords = void 0;
 	      var userActivityRadar = void 0;
+	      var repeatedWords1 = void 0;
+	      var repeatedWords2 = void 0;
 
 	      if (this.props.tweets.length) {
-	        tweets = _lodash2.default.slice(this.props.tweets, 0, 15).map(function (tweet) {
-	          return _twitterHelpers2.default.tweetTemplate(tweet);
+	        tweets = _lodash2.default.slice(this.props.tweets, 0, 30).map(function (tweet) {
+	          return _twitterHelpers2.default.tweetTemplate(tweet, _this2.state.selectedUser);
 	        });
 	        userMentions = _twitterHelpers2.default.getUserMentions(this.props.tweets);
 	        hashtags = _twitterHelpers2.default.getHashtags(this.props.tweets);
@@ -44197,15 +44292,16 @@
 	        activityByHour = _twitterHelpers2.default.getActivityByHour(this.props.tweets);
 	        activityByLocation = _twitterHelpers2.default.getActivityByLocation(this.props.tweets);
 	        repeatedWords = _twitterHelpers2.default.getRepeatedWords(this.props.tweets);
-
 	        userActivityRadar = this.getUserActivityRadar(this.props.tweets);
+	        repeatedWords1 = _lodash2.default.slice(repeatedWords, 0, 9);
+	        repeatedWords2 = _lodash2.default.slice(repeatedWords, 10, 19);
 	      }
 
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'twitter-container', __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 53
+	            lineNumber: 62
 	          },
 	          __self: this
 	        },
@@ -44213,7 +44309,7 @@
 	          'ul',
 	          { className: 'side-bar', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 55
+	              lineNumber: 64
 	            },
 	            __self: this
 	          },
@@ -44223,7 +44319,7 @@
 	          'div',
 	          { className: 'user-lists', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 59
+	              lineNumber: 68
 	            },
 	            __self: this
 	          },
@@ -44232,7 +44328,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 60
+	                lineNumber: 69
 	              },
 	              __self: this
 	            },
@@ -44242,7 +44338,7 @@
 	            'ul',
 	            { className: 'user-mentions', __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 61
+	                lineNumber: 70
 	              },
 	              __self: this
 	            },
@@ -44253,7 +44349,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 64
+	                lineNumber: 73
 	              },
 	              __self: this
 	            },
@@ -44263,7 +44359,7 @@
 	            'ul',
 	            { className: 'user-hashtags', __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 65
+	                lineNumber: 74
 	              },
 	              __self: this
 	            },
@@ -44274,29 +44370,47 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 68
+	                lineNumber: 77
 	              },
 	              __self: this
 	            },
 	            'Common words'
 	          ),
 	          _react2.default.createElement(
-	            'ul',
-	            {
-	              __source: {
+	            'div',
+	            { className: 'repeated-words', __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 69
+	                lineNumber: 78
 	              },
 	              __self: this
 	            },
-	            repeatedWords
+	            _react2.default.createElement(
+	              'ul',
+	              { className: 'repeated-words-list', __source: {
+	                  fileName: _jsxFileName,
+	                  lineNumber: 79
+	                },
+	                __self: this
+	              },
+	              repeatedWords1
+	            ),
+	            _react2.default.createElement(
+	              'ul',
+	              { className: 'repeated-words-list', __source: {
+	                  fileName: _jsxFileName,
+	                  lineNumber: 82
+	                },
+	                __self: this
+	              },
+	              repeatedWords2
+	            )
 	          )
 	        ),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'activity-charts', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 74
+	              lineNumber: 88
 	            },
 	            __self: this
 	          },
@@ -44308,7 +44422,7 @@
 	          'div',
 	          { className: 'optional-lists', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 80
+	              lineNumber: 94
 	            },
 	            __self: this
 	          },
@@ -44318,7 +44432,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 82
+	                lineNumber: 96
 	              },
 	              __self: this
 	            },
@@ -44329,7 +44443,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 83
+	                lineNumber: 97
 	              },
 	              __self: this
 	            },
@@ -44346,7 +44460,7 @@
 	exports.default = List;
 
 /***/ },
-/* 579 */
+/* 580 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global, module) {/**
@@ -61335,7 +61449,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(472)(module)))
 
 /***/ },
-/* 580 */
+/* 581 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -61351,7 +61465,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var RadarChart = __webpack_require__(581).Radar;
+	var RadarChart = __webpack_require__(582).Radar;
 
 	var averageTwitterUser = {
 	  'followers': 208,
@@ -61394,8 +61508,8 @@
 	      display: true,
 	      text: title,
 	      fontColor: "white",
-	      fontSize: 16,
-	      fontFamily: "'Roboto', sans-serif",
+	      fontSize: 20,
+	      fontFamily: "'Roboto Slab', serif",
 	      fontStyle: "100"
 	    },
 
@@ -61430,7 +61544,7 @@
 	exports.default = RadarChartTemplate;
 
 /***/ },
-/* 581 */
+/* 582 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -61452,11 +61566,11 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _chart = __webpack_require__(582);
+	var _chart = __webpack_require__(583);
 
 	var _chart2 = _interopRequireDefault(_chart);
 
-	var _deepEqual = __webpack_require__(625);
+	var _deepEqual = __webpack_require__(626);
 
 	var _deepEqual2 = _interopRequireDefault(_deepEqual);
 
@@ -61794,16 +61908,15 @@
 	var defaults = exports.defaults = _chart2.default.defaults;
 
 /***/ },
-/* 582 */
+/* 583 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * @namespace Chart
 	 */
-	var Chart = __webpack_require__(583)();
+	var Chart = __webpack_require__(584)();
 
-	__webpack_require__(584)(Chart);
-	__webpack_require__(590)(Chart);
+	__webpack_require__(585)(Chart);
 	__webpack_require__(591)(Chart);
 	__webpack_require__(592)(Chart);
 	__webpack_require__(593)(Chart);
@@ -61815,41 +61928,42 @@
 	__webpack_require__(599)(Chart);
 	__webpack_require__(600)(Chart);
 	__webpack_require__(601)(Chart);
-
 	__webpack_require__(602)(Chart);
+
 	__webpack_require__(603)(Chart);
 	__webpack_require__(604)(Chart);
 	__webpack_require__(605)(Chart);
-
 	__webpack_require__(606)(Chart);
+
 	__webpack_require__(607)(Chart);
 	__webpack_require__(608)(Chart);
 	__webpack_require__(609)(Chart);
 	__webpack_require__(610)(Chart);
 	__webpack_require__(611)(Chart);
+	__webpack_require__(612)(Chart);
 
 	// Controllers must be loaded after elements
 	// See Chart.core.datasetController.dataElementType
-	__webpack_require__(612)(Chart);
 	__webpack_require__(613)(Chart);
 	__webpack_require__(614)(Chart);
 	__webpack_require__(615)(Chart);
 	__webpack_require__(616)(Chart);
 	__webpack_require__(617)(Chart);
-
 	__webpack_require__(618)(Chart);
+
 	__webpack_require__(619)(Chart);
 	__webpack_require__(620)(Chart);
 	__webpack_require__(621)(Chart);
 	__webpack_require__(622)(Chart);
 	__webpack_require__(623)(Chart);
 	__webpack_require__(624)(Chart);
+	__webpack_require__(625)(Chart);
 
 	window.Chart = module.exports = Chart;
 
 
 /***/ },
-/* 583 */
+/* 584 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -61965,14 +62079,14 @@
 
 
 /***/ },
-/* 584 */
+/* 585 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* global window: false */
 	/* global document: false */
 	'use strict';
 
-	var color = __webpack_require__(585);
+	var color = __webpack_require__(586);
 
 	module.exports = function(Chart) {
 		// Global Chart helpers object for utility methods and classes
@@ -63015,12 +63129,12 @@
 
 
 /***/ },
-/* 585 */
+/* 586 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* MIT license */
-	var convert = __webpack_require__(586);
-	var string = __webpack_require__(588);
+	var convert = __webpack_require__(587);
+	var string = __webpack_require__(589);
 
 	var Color = function (obj) {
 		if (obj instanceof Color) {
@@ -63504,10 +63618,10 @@
 
 
 /***/ },
-/* 586 */
+/* 587 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var conversions = __webpack_require__(587);
+	var conversions = __webpack_require__(588);
 
 	var convert = function() {
 	   return new Converter();
@@ -63601,7 +63715,7 @@
 	module.exports = convert;
 
 /***/ },
-/* 587 */
+/* 588 */
 /***/ function(module, exports) {
 
 	/* MIT license */
@@ -64305,11 +64419,11 @@
 
 
 /***/ },
-/* 588 */
+/* 589 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* MIT license */
-	var colorNames = __webpack_require__(589);
+	var colorNames = __webpack_require__(590);
 
 	module.exports = {
 	   getRgba: getRgba,
@@ -64532,7 +64646,7 @@
 
 
 /***/ },
-/* 589 */
+/* 590 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -64687,7 +64801,7 @@
 	};
 
 /***/ },
-/* 590 */
+/* 591 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -64797,7 +64911,7 @@
 
 
 /***/ },
-/* 591 */
+/* 592 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -64899,7 +65013,7 @@
 
 
 /***/ },
-/* 592 */
+/* 593 */
 /***/ function(module, exports) {
 
 	/* global window: false */
@@ -65036,7 +65150,7 @@
 
 
 /***/ },
-/* 593 */
+/* 594 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -65732,7 +65846,7 @@
 
 
 /***/ },
-/* 594 */
+/* 595 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -65902,7 +66016,7 @@
 
 
 /***/ },
-/* 595 */
+/* 596 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -66229,7 +66343,7 @@
 
 
 /***/ },
-/* 596 */
+/* 597 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -66275,7 +66389,7 @@
 
 
 /***/ },
-/* 597 */
+/* 598 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -66410,7 +66524,7 @@
 
 
 /***/ },
-/* 598 */
+/* 599 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -67174,7 +67288,7 @@
 
 
 /***/ },
-/* 599 */
+/* 600 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -67384,7 +67498,7 @@
 
 
 /***/ },
-/* 600 */
+/* 601 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -67874,7 +67988,7 @@
 
 
 /***/ },
-/* 601 */
+/* 602 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -68594,7 +68708,7 @@
 
 
 /***/ },
-/* 602 */
+/* 603 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -68691,7 +68805,7 @@
 
 
 /***/ },
-/* 603 */
+/* 604 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -68872,7 +68986,7 @@
 
 
 /***/ },
-/* 604 */
+/* 605 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -68935,7 +69049,7 @@
 
 
 /***/ },
-/* 605 */
+/* 606 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -69036,7 +69150,7 @@
 
 
 /***/ },
-/* 606 */
+/* 607 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -69167,7 +69281,7 @@
 
 
 /***/ },
-/* 607 */
+/* 608 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -69302,7 +69416,7 @@
 
 
 /***/ },
-/* 608 */
+/* 609 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -69500,7 +69614,7 @@
 
 
 /***/ },
-/* 609 */
+/* 610 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -69772,7 +69886,7 @@
 
 
 /***/ },
-/* 610 */
+/* 611 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -70192,7 +70306,7 @@
 
 
 /***/ },
-/* 611 */
+/* 612 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* global window: false */
@@ -70658,7 +70772,7 @@
 
 
 /***/ },
-/* 612 */
+/* 613 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -71237,7 +71351,7 @@
 
 
 /***/ },
-/* 613 */
+/* 614 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -71365,7 +71479,7 @@
 
 
 /***/ },
-/* 614 */
+/* 615 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -71662,7 +71776,7 @@
 
 
 /***/ },
-/* 615 */
+/* 616 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -72018,7 +72132,7 @@
 
 
 /***/ },
-/* 616 */
+/* 617 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -72239,7 +72353,7 @@
 
 
 /***/ },
-/* 617 */
+/* 618 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -72433,7 +72547,7 @@
 
 
 /***/ },
-/* 618 */
+/* 619 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -72450,7 +72564,7 @@
 
 
 /***/ },
-/* 619 */
+/* 620 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -72466,7 +72580,7 @@
 
 
 /***/ },
-/* 620 */
+/* 621 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -72483,7 +72597,7 @@
 
 
 /***/ },
-/* 621 */
+/* 622 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -72500,7 +72614,7 @@
 
 
 /***/ },
-/* 622 */
+/* 623 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -72517,7 +72631,7 @@
 
 
 /***/ },
-/* 623 */
+/* 624 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -72535,7 +72649,7 @@
 
 
 /***/ },
-/* 624 */
+/* 625 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -72588,7 +72702,7 @@
 
 
 /***/ },
-/* 625 */
+/* 626 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -72652,7 +72766,7 @@
 	exports.default = deepEqual;
 
 /***/ },
-/* 626 */
+/* 627 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72660,15 +72774,13 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-
-	var _jsxFileName = '/Users/davidkerr/Projects/social-feed/utils/twitter-helpers.js',
-	    _twitterHelpers;
+	var _jsxFileName = '/Users/davidkerr/Projects/social-feed/utils/twitter-helpers.js'; // 'use strict';
 
 	var _react = __webpack_require__(299);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _lodash = __webpack_require__(579);
+	var _lodash = __webpack_require__(580);
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
@@ -72676,111 +72788,36 @@
 
 	var _moment2 = _interopRequireDefault(_moment);
 
-	var _LineChart = __webpack_require__(627);
+	var _LineChart = __webpack_require__(628);
 
 	var _LineChart2 = _interopRequireDefault(_LineChart);
 
+	var _TwitterSvg = __webpack_require__(578);
+
+	var _TwitterSvg2 = _interopRequireDefault(_TwitterSvg);
+
+	var _LikeSvg = __webpack_require__(629);
+
+	var _LikeSvg2 = _interopRequireDefault(_LikeSvg);
+
+	var _RetweetSvg = __webpack_require__(630);
+
+	var _RetweetSvg2 = _interopRequireDefault(_RetweetSvg);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+	var commonWords = ["i", "rt", "the", "is", "a", "of", "us", "for", "this", "in", "to", "and", "you", "by", "like", "my", "but", "we", "have", "that", ' ', "1", "2", "be", "me", "at", "|", "on", "it's", "don't", "it", "from", "you're", "with", "are", "just", "do", "has", "was", "i'm", "an", "am", "", "if", "can", "7", "-", "as", "&amp;"];
 
-	var commonWords = ["i", "rt", "the", "is", "a", "of", "us", "for", "this", "in", "to", "and", "you", "by", "like", "my", "but", "we", "have", "that", ' ', "1", "2", "be", "me", "at", "|", "on", "it's", "don't", "it", "from", "you're", "with", "are", "just", "do", "has", "was", "i'm", "an", "am", "", "if", "can", "7"];
+	var urls = [];
 
-	var twitterHelpers = (_twitterHelpers = {
-	  tweetTemplate: function tweetTemplate(tweet) {
-	    return _react2.default.createElement(
-	      'li',
-	      { className: 'twitter-card', key: tweet.id_str, __source: {
-	          fileName: _jsxFileName,
-	          lineNumber: 17
-	        },
-	        __self: undefined
-	      },
-	      _react2.default.createElement(
-	        'p',
-	        { className: 'twitter-card-header', __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 18
-	          },
-	          __self: undefined
-	        },
-	        tweet.user.name,
-	        _react2.default.createElement(
-	          'span',
-	          {
-	            __source: {
-	              fileName: _jsxFileName,
-	              lineNumber: 19
-	            },
-	            __self: undefined
-	          },
-	          '@',
-	          tweet.user.screen_name
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'p',
-	        { className: 'twitter-card-body', __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 21
-	          },
-	          __self: undefined
-	        },
-	        tweet.text
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'twitter-card-footer', __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 22
-	          },
-	          __self: undefined
-	        },
-	        _react2.default.createElement(
-	          'span',
-	          {
-	            __source: {
-	              fileName: _jsxFileName,
-	              lineNumber: 23
-	            },
-	            __self: undefined
-	          },
-	          'Retweets:',
-	          tweet.retweet_count,
-	          ' '
-	        ),
-	        _react2.default.createElement(
-	          'span',
-	          { className: 'twitter-favorited', __source: {
-	              fileName: _jsxFileName,
-	              lineNumber: 24
-	            },
-	            __self: undefined
-	          },
-	          'Favorited:',
-	          tweet.favorite_count,
-	          ' '
-	        ),
-	        _react2.default.createElement(
-	          'span',
-	          { className: 'twitter-date', __source: {
-	              fileName: _jsxFileName,
-	              lineNumber: 25
-	            },
-	            __self: undefined
-	          },
-	          (0, _moment2.default)(tweet.created_at).format('LLL')
-	        )
-	      )
-	    );
-	  },
+	var twitterHelpers = {
 
 	  hashtagTemplate: function hashtagTemplate(hashtag) {
 	    return _react2.default.createElement(
 	      'li',
 	      { key: hashtag.hashtag, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 32
+	          lineNumber: 23
 	        },
 	        __self: undefined
 	      },
@@ -72788,319 +72825,367 @@
 	      ': ',
 	      hashtag.count
 	    );
-	  }
+	  },
 
-	}, _defineProperty(_twitterHelpers, 'tweetTemplate', function tweetTemplate(tweet) {
-	  return _react2.default.createElement(
-	    'li',
-	    { className: 'twitter-card', key: tweet.id_str, __source: {
+	  tweetTemplate: function tweetTemplate(tweet, selectedUser) {
+	    if (selectedUser === null || dkerrious) {
+	      return _react2.default.createElement(
+	        'li',
+	        { className: 'twitter-card', key: tweet.id_str, __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 29
+	          },
+	          __self: undefined
+	        },
+	        _react2.default.createElement(
+	          'a',
+	          { href: 'https://www.twitter.com/' + tweet.user.screen_name,
+	            target: '_blank', __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 31
+	            },
+	            __self: undefined
+	          },
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'twitter-card-header', __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 33
+	              },
+	              __self: undefined
+	            },
+	            tweet.user.name,
+	            _react2.default.createElement(
+	              'span',
+	              {
+	                __source: {
+	                  fileName: _jsxFileName,
+	                  lineNumber: 34
+	                },
+	                __self: undefined
+	              },
+	              '@',
+	              tweet.user.screen_name
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'a',
+	          { href: tweet.entities.urls[0] ? tweet.entities.urls[0].expanded_url : 'https://www.twitter.com/' + tweet.user.screen_name,
+	            target: '_blank', __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 38
+	            },
+	            __self: undefined
+	          },
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'twitter-card-body', __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 40
+	              },
+	              __self: undefined
+	            },
+	            tweet.text
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'twitter-card-footer', __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 43
+	            },
+	            __self: undefined
+	          },
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'twitter-retweeted', __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 44
+	              },
+	              __self: undefined
+	            },
+	            _react2.default.createElement(_RetweetSvg2.default, { width: '20px', height: '16px', color: 'rgb(128, 194, 175)', __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 44
+	              },
+	              __self: undefined
+	            }),
+	            ':',
+	            tweet.retweet_count,
+	            ' '
+	          ),
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'twitter-favorited', __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 45
+	              },
+	              __self: undefined
+	            },
+	            _react2.default.createElement(_LikeSvg2.default, { width: '20px', height: '16px', __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 45
+	              },
+	              __self: undefined
+	            }),
+	            ':',
+	            tweet.favorite_count,
+	            ' '
+	          ),
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'twitter-date', __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 46
+	              },
+	              __self: undefined
+	            },
+	            (0, _moment2.default)(tweet.created_at).format("M/D/YYYY h:mm A")
+	          )
+	        )
+	      );
+	    }
+	  },
+
+	  getActivityByWeekday: function getActivityByWeekday(tweets) {
+	    if (!tweets.length) return;
+	    var activityByWeekday = tweets.map(function (tweet) {
+	      return (0, _moment2.default)(tweet.created_at).format('dddd');
+	    });
+	    activityByWeekday = _lodash2.default.countBy(_lodash2.default.compact(_lodash2.default.flatten(activityByWeekday)));
+
+	    var activityByWeek = tweets.map(function (tweet) {
+	      return (0, _moment2.default)(tweet.created_at).format('wwww');
+	    });
+	    var data = [];
+	    data.push(activityByWeekday.Monday);
+	    data.push(activityByWeekday.Tuesday);
+	    data.push(activityByWeekday.Wednesday);
+	    data.push(activityByWeekday.Thursday);
+	    data.push(activityByWeekday.Friday);
+	    data.push(activityByWeekday.Saturday);
+	    data.push(activityByWeekday.Sunday);
+	    var labels = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+	    return _react2.default.createElement(_LineChart2.default, { data: data, labels: labels, title: 'Activity by Day', width: window.innerWidth, height: window.innerHeight, __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 37
+	        lineNumber: 72
 	      },
 	      __self: undefined
-	    },
-	    _react2.default.createElement(
-	      'p',
-	      { className: 'twitter-card-header', __source: {
-	          fileName: _jsxFileName,
-	          lineNumber: 38
-	        },
-	        __self: undefined
+	    });
+	  },
+
+	  getActivityByWeek: function getActivityByWeek(tweets) {
+	    var activityByWeek = tweets.map(function (tweet) {
+	      return (0, _moment2.default)(tweet.created_at).format('ww');
+	    });
+
+	    activityByWeek = _lodash2.default.countBy(_lodash2.default.compact(_lodash2.default.flatten(activityByWeek)));
+	    var data = [];
+	    _lodash2.default.map(activityByWeek, function (week) {
+	      data.push(week);
+	    });
+
+	    var labels = [];
+	    var labelHelper = Math.floor(tweets.length / data.length);
+
+	    for (var i = 0; i < data.length; i++) {
+	      var indexForLabel = labelHelper * i;
+	      var label = (0, _moment2.default)(tweets[indexForLabel].created_at).format('LL');
+	      labels.push(label);
+	    }
+	    return _react2.default.createElement(_LineChart2.default, { data: data, labels: labels.reverse(), title: 'Recent Activity by Week', __source: {
+	        fileName: _jsxFileName,
+	        lineNumber: 94
 	      },
-	      tweet.user.name,
-	      _react2.default.createElement(
-	        'span',
-	        {
-	          __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 39
-	          },
-	          __self: undefined
-	        },
-	        '@',
-	        tweet.user.screen_name
-	      )
-	    ),
-	    _react2.default.createElement(
-	      'p',
-	      { className: 'twitter-card-body', __source: {
-	          fileName: _jsxFileName,
-	          lineNumber: 41
-	        },
-	        __self: undefined
+	      __self: undefined
+	    });
+	  },
+
+	  getActivityByHour: function getActivityByHour(tweets) {
+	    var labels = ['12AM', '1AM', '2AM', '3AM', '4AM', '5AM', '6AM', '7AM', '8AM', '9AM', '10AM', '11AM', '12PM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM', '7PM', '8PM', '9PM', '10PM', '11PM'];
+	    var activityByHour = tweets.map(function (tweet) {
+	      return (0, _moment2.default)(tweet.created_at).format('HH');
+	    });
+	    activityByHour = _lodash2.default.countBy(_lodash2.default.compact(_lodash2.default.flatten(activityByHour)));
+	    var data = [];
+	    for (var i = 1; i < 25; i++) {
+	      var index = i.toString();
+	      if (activityByHour[index] !== undefined) {
+	        data.push(activityByHour[index]);
+	      } else {
+	        data.push(0);
+	      }
+	    }
+
+	    return _react2.default.createElement(_LineChart2.default, { data: data, labels: labels, title: 'Average Activity by Hour', __source: {
+	        fileName: _jsxFileName,
+	        lineNumber: 116
 	      },
-	      tweet.text
-	    ),
-	    _react2.default.createElement(
-	      'div',
-	      { className: 'twitter-card-footer', __source: {
-	          fileName: _jsxFileName,
-	          lineNumber: 42
-	        },
-	        __self: undefined
-	      },
-	      _react2.default.createElement(
-	        'span',
-	        {
-	          __source: {
+	      __self: undefined
+	    });
+	  },
+
+	  getActivityByLocation: function getActivityByLocation(tweets) {
+	    var activityByLocation = tweets.map(function (tweet) {
+	      if (!tweet.place) return;
+	      return tweet.place.full_name;
+	    });
+	    if (!activityByLocation) return;
+	    activityByLocation = _lodash2.default.countBy(_lodash2.default.compact(_lodash2.default.flatten(activityByLocation)));
+	    var tweetLocationsFiltered = _lodash2.default.reduce(activityByLocation, function (result, value, key) {
+	      var obj = {};
+	      obj.location = key;
+	      obj.count = value;
+	      if (!result.length) return result.concat(obj);
+	      for (var i = 0; i < result.length; i++) {
+	        if (obj.count > result[i].count) {
+	          result.splice(i, 0, obj);
+	          return result;
+	        }
+	      }
+	      return result.concat(obj);
+	    }, []);
+
+	    activityByLocation = _lodash2.default.slice(tweetLocationsFiltered, 0, 10).map(function (location) {
+	      return _react2.default.createElement(
+	        'li',
+	        { key: location.location, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 43
+	            lineNumber: 142
 	          },
 	          __self: undefined
 	        },
-	        'Retweets:',
-	        tweet.retweet_count,
-	        ' '
-	      ),
-	      _react2.default.createElement(
-	        'span',
-	        { className: 'twitter-favorited', __source: {
+	        location.location,
+	        ': ',
+	        location.count
+	      );
+	    });
+	    return activityByLocation;
+	  },
+
+	  getUserMentions: function getUserMentions(tweets) {
+	    var userReferences = tweets.map(function (tweet) {
+	      if (tweet.entities.user_mentions.length !== 0) {
+	        var mentions = tweet.entities.user_mentions.map(function (userMention) {
+	          return userMention.screen_name;
+	        });
+	        return mentions;
+	      }
+	    });
+	    userReferences = _lodash2.default.countBy(_lodash2.default.compact(_lodash2.default.flatten(userReferences)));
+	    var userReferencesFiltered = _lodash2.default.reduce(userReferences, function (result, value, key) {
+	      var obj = {};
+	      obj.username = key;
+	      obj.count = value;
+	      if (!result.length) return result.concat(obj);
+	      for (var i = 0; i < result.length; i++) {
+	        if (obj.count > result[i].count) {
+	          result.splice(i, 0, obj);
+	          return result;
+	        }
+	      }
+	      return result.concat(obj);
+	    }, []);
+	    userReferences = _lodash2.default.slice(userReferencesFiltered, 0, 10).map(function (user) {
+	      return _react2.default.createElement(
+	        'li',
+	        { key: user.username, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 44
+	            lineNumber: 173
 	          },
 	          __self: undefined
 	        },
-	        'Favorited:',
-	        tweet.favorite_count,
-	        ' '
-	      ),
-	      _react2.default.createElement(
-	        'span',
-	        { className: 'twitter-date', __source: {
+	        user.username,
+	        ': ',
+	        user.count
+	      );
+	    });
+	    return userReferences;
+	  },
+
+	  getHashtags: function getHashtags(tweets) {
+	    var allHashtags = tweets.map(function (tweet) {
+	      if (tweet.entities.hashtags.length !== 0) {
+	        var tags = tweet.entities.hashtags.map(function (hashtag) {
+	          return hashtag.text;
+	        });
+	        return tags;
+	      }
+	    });
+	    allHashtags = _lodash2.default.countBy(_lodash2.default.compact(_lodash2.default.flatten(allHashtags)));
+	    var allHashtagsFiltered = _lodash2.default.reduce(allHashtags, function (result, value, key) {
+	      var obj = {};
+	      obj.hashtag = key;
+	      obj.count = value;
+	      if (!result.length) return result.concat(obj);
+	      for (var i = 0; i < result.length; i++) {
+	        if (obj.count > result[i].count) {
+	          result.splice(i, 0, obj);
+	          return result;
+	        }
+	      }
+	      return result.concat(obj);
+	    }, []);
+	    allHashtags = _lodash2.default.slice(allHashtagsFiltered, 0, 10).map(function (hashtag) {
+	      return _react2.default.createElement(
+	        'li',
+	        { key: hashtag.hashtag, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 45
+	            lineNumber: 202
 	          },
 	          __self: undefined
 	        },
-	        (0, _moment2.default)(tweet.created_at).format('LLL')
-	      )
-	    )
-	  );
-	}), _defineProperty(_twitterHelpers, 'getActivityByWeekday', function getActivityByWeekday(tweets) {
-	  if (!tweets.length) return;
-	  var activityByWeekday = tweets.map(function (tweet) {
-	    return (0, _moment2.default)(tweet.created_at).format('dddd');
-	  });
-	  activityByWeekday = _lodash2.default.countBy(_lodash2.default.compact(_lodash2.default.flatten(activityByWeekday)));
+	        hashtag.hashtag,
+	        ': ',
+	        hashtag.count
+	      );
+	    });
+	    return allHashtags;
+	  },
 
-	  var activityByWeek = tweets.map(function (tweet) {
-	    return (0, _moment2.default)(tweet.created_at).format('wwww');
-	  });
-	  var data = [];
-	  data.push(activityByWeekday.Monday);
-	  data.push(activityByWeekday.Tuesday);
-	  data.push(activityByWeekday.Wednesday);
-	  data.push(activityByWeekday.Thursday);
-	  data.push(activityByWeekday.Friday);
-	  data.push(activityByWeekday.Saturday);
-	  data.push(activityByWeekday.Sunday);
-	  var labels = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-	  return _react2.default.createElement(_LineChart2.default, { data: data, labels: labels, title: 'Activity by Day', width: '600', height: ' 250', __source: {
-	      fileName: _jsxFileName,
-	      lineNumber: 70
-	    },
-	    __self: undefined
-	  });
-	}), _defineProperty(_twitterHelpers, 'getActivityByWeek', function getActivityByWeek(tweets) {
-	  var activityByWeek = tweets.map(function (tweet) {
-	    return (0, _moment2.default)(tweet.created_at).format('ww');
-	  });
-
-	  activityByWeek = _lodash2.default.countBy(_lodash2.default.compact(_lodash2.default.flatten(activityByWeek)));
-	  var data = [];
-	  _lodash2.default.map(activityByWeek, function (week) {
-	    data.push(week);
-	  });
-
-	  var labels = [];
-	  var labelHelper = Math.floor(tweets.length / data.length);
-
-	  for (var i = 0; i < data.length; i++) {
-	    var indexForLabel = labelHelper * i;
-	    var label = (0, _moment2.default)(tweets[indexForLabel].created_at).format('LL');
-	    labels.push(label);
+	  getRepeatedWords: function getRepeatedWords(tweets) {
+	    var allWords = tweets.map(function (tweet) {
+	      return tweet.text.split(' ');
+	    });
+	    allWords = _lodash2.default.countBy(_lodash2.default.flatten(allWords));
+	    var allWordsFiltered = _lodash2.default.reduce(allWords, function (result, value, key) {
+	      if (commonWords.includes(key.toLowerCase())) return result;
+	      if (key.includes('@') || key.includes('#')) return result;
+	      var obj = {};
+	      obj.word = key;
+	      obj.count = value;
+	      if (!result.length) return result.concat(obj);
+	      for (var i = 0; i < result.length; i++) {
+	        if (obj.count > result[i].count) {
+	          result.splice(i, 0, obj);
+	          return result;
+	        }
+	      }
+	      return result.concat(obj);
+	    }, []);
+	    allWords = _lodash2.default.slice(allWordsFiltered, 0, 30).map(function (word) {
+	      return _react2.default.createElement(
+	        'li',
+	        { key: word.word, __source: {
+	            fileName: _jsxFileName,
+	            lineNumber: 228
+	          },
+	          __self: undefined
+	        },
+	        word.word,
+	        ': ',
+	        word.count
+	      );
+	    });
+	    return allWords;
 	  }
-	  return _react2.default.createElement(_LineChart2.default, { data: data, labels: labels.reverse(), title: 'Recent Activity by Week', width: '600', height: '250', __source: {
-	      fileName: _jsxFileName,
-	      lineNumber: 92
-	    },
-	    __self: undefined
-	  });
-	}), _defineProperty(_twitterHelpers, 'getActivityByHour', function getActivityByHour(tweets) {
-	  var labels = ['12AM', '1AM', '2AM', '3AM', '4AM', '5AM', '6AM', '7AM', '8AM', '9AM', '10AM', '11AM', '12PM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM', '7PM', '8PM', '9PM', '10PM', '11PM'];
-	  var activityByHour = tweets.map(function (tweet) {
-	    return (0, _moment2.default)(tweet.created_at).format('HH');
-	  });
-	  activityByHour = _lodash2.default.countBy(_lodash2.default.compact(_lodash2.default.flatten(activityByHour)));
-	  var data = [];
-	  for (var i = 1; i < 25; i++) {
-	    var index = i.toString();
-	    if (activityByHour[index] !== undefined) {
-	      data.push(activityByHour[index]);
-	    } else {
-	      data.push(0);
-	    }
-	  }
-
-	  return _react2.default.createElement(_LineChart2.default, { data: data, labels: labels, title: 'Average Activity by Hour', width: '600', height: '250', __source: {
-	      fileName: _jsxFileName,
-	      lineNumber: 114
-	    },
-	    __self: undefined
-	  });
-	}), _defineProperty(_twitterHelpers, 'getActivityByLocation', function getActivityByLocation(tweets) {
-	  var activityByLocation = tweets.map(function (tweet) {
-	    if (!tweet.place) return;
-	    return tweet.place.full_name;
-	  });
-	  if (!activityByLocation) return;
-	  activityByLocation = _lodash2.default.countBy(_lodash2.default.compact(_lodash2.default.flatten(activityByLocation)));
-	  var tweetLocationsFiltered = _lodash2.default.reduce(activityByLocation, function (result, value, key) {
-	    var obj = {};
-	    obj.location = key;
-	    obj.count = value;
-	    if (!result.length) return result.concat(obj);
-	    for (var i = 0; i < result.length; i++) {
-	      if (obj.count > result[i].count) {
-	        result.splice(i, 0, obj);
-	        return result;
-	      }
-	    }
-	    return result.concat(obj);
-	  }, []);
-
-	  activityByLocation = _lodash2.default.slice(tweetLocationsFiltered, 0, 10).map(function (location) {
-	    return _react2.default.createElement(
-	      'li',
-	      { key: location.location, __source: {
-	          fileName: _jsxFileName,
-	          lineNumber: 140
-	        },
-	        __self: undefined
-	      },
-	      location.location,
-	      ': ',
-	      location.count
-	    );
-	  });
-	  return activityByLocation;
-	}), _defineProperty(_twitterHelpers, 'getUserMentions', function getUserMentions(tweets) {
-	  var userReferences = tweets.map(function (tweet) {
-	    if (tweet.entities.user_mentions.length !== 0) {
-	      var mentions = tweet.entities.user_mentions.map(function (userMention) {
-	        return userMention.screen_name;
-	      });
-	      return mentions;
-	    }
-	  });
-	  userReferences = _lodash2.default.countBy(_lodash2.default.compact(_lodash2.default.flatten(userReferences)));
-	  var userReferencesFiltered = _lodash2.default.reduce(userReferences, function (result, value, key) {
-	    var obj = {};
-	    obj.username = key;
-	    obj.count = value;
-	    if (!result.length) return result.concat(obj);
-	    for (var i = 0; i < result.length; i++) {
-	      if (obj.count > result[i].count) {
-	        result.splice(i, 0, obj);
-	        return result;
-	      }
-	    }
-	    return result.concat(obj);
-	  }, []);
-	  userReferences = _lodash2.default.slice(userReferencesFiltered, 0, 10).map(function (user) {
-	    return _react2.default.createElement(
-	      'li',
-	      { key: user.username, __source: {
-	          fileName: _jsxFileName,
-	          lineNumber: 171
-	        },
-	        __self: undefined
-	      },
-	      user.username,
-	      ': ',
-	      user.count
-	    );
-	  });
-	  return userReferences;
-	}), _defineProperty(_twitterHelpers, 'getHashtags', function getHashtags(tweets) {
-	  var allHashtags = tweets.map(function (tweet) {
-	    if (tweet.entities.hashtags.length !== 0) {
-	      var tags = tweet.entities.hashtags.map(function (hashtag) {
-	        return hashtag.text;
-	      });
-	      return tags;
-	    }
-	  });
-	  allHashtags = _lodash2.default.countBy(_lodash2.default.compact(_lodash2.default.flatten(allHashtags)));
-	  var allHashtagsFiltered = _lodash2.default.reduce(allHashtags, function (result, value, key) {
-	    var obj = {};
-	    obj.hashtag = key;
-	    obj.count = value;
-	    if (!result.length) return result.concat(obj);
-	    for (var i = 0; i < result.length; i++) {
-	      if (obj.count > result[i].count) {
-	        result.splice(i, 0, obj);
-	        return result;
-	      }
-	    }
-	    return result.concat(obj);
-	  }, []);
-	  allHashtags = _lodash2.default.slice(allHashtagsFiltered, 0, 10).map(function (hashtag) {
-	    return _react2.default.createElement(
-	      'li',
-	      { key: hashtag.hashtag, __source: {
-	          fileName: _jsxFileName,
-	          lineNumber: 200
-	        },
-	        __self: undefined
-	      },
-	      hashtag.hashtag,
-	      ': ',
-	      hashtag.count
-	    );
-	  });
-	  return allHashtags;
-	}), _defineProperty(_twitterHelpers, 'getRepeatedWords', function getRepeatedWords(tweets) {
-	  var allWords = tweets.map(function (tweet) {
-	    return tweet.text.split(' ');
-	  });
-	  allWords = _lodash2.default.countBy(_lodash2.default.flatten(allWords));
-	  var allWordsFiltered = _lodash2.default.reduce(allWords, function (result, value, key) {
-	    if (commonWords.includes(key.toLowerCase())) return result;
-	    if (key.includes('@') || key.includes('#')) return result;
-	    var obj = {};
-	    obj.word = key;
-	    obj.count = value;
-	    if (!result.length) return result.concat(obj);
-	    for (var i = 0; i < result.length; i++) {
-	      if (obj.count > result[i].count) {
-	        result.splice(i, 0, obj);
-	        return result;
-	      }
-	    }
-	    return result.concat(obj);
-	  }, []);
-	  allWords = _lodash2.default.slice(allWordsFiltered, 0, 20).map(function (word) {
-	    return _react2.default.createElement(
-	      'li',
-	      { key: word.word, __source: {
-	          fileName: _jsxFileName,
-	          lineNumber: 226
-	        },
-	        __self: undefined
-	      },
-	      word.word,
-	      ': ',
-	      word.count
-	    );
-	  });
-	  return allWords;
-	}), _twitterHelpers);
+	};
 
 	exports.default = twitterHelpers;
 
 /***/ },
-/* 627 */
+/* 628 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73116,7 +73201,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var LineChart = __webpack_require__(581).Line;
+	var LineChart = __webpack_require__(582).Line;
 
 	var LineChartTemplate = function LineChartTemplate(_ref) {
 	  var data = _ref.data,
@@ -73130,24 +73215,19 @@
 	      pointborderColor: "rgba(0, 170, 236,1)",
 	      pointBackgroundColor: "rgba(0, 170, 236,1)",
 	      backgroundColor: "rgba(0, 170, 236,.4)",
-
-	      // pointColor: "rgba(0, 170, 236,1)",
-	      // strokeColor: "rgba(0, 170, 236,1)",
+	      pointColor: "rgba(0, 170, 236,1)",
+	      strokeColor: "rgba(0, 170, 236,1)",
 	      data: data
 	    }]
 	  };
 
 	  var chartOptions = {
-	    default: {
-	      fontColor: "white",
-	      fontFamily: "'Roboto', sans-serif",
-	      fontStyle: "100"
-	    },
+
 	    title: {
 	      display: true,
 	      text: title,
 	      fontColor: "white",
-	      fontSize: 16,
+	      fontSize: 20,
 	      fontFamily: "'Roboto Slab', serif",
 	      fontStyle: "100"
 	    },
@@ -73159,30 +73239,85 @@
 	    legend: {
 	      display: false
 	    }
+
 	  };
 
 	  return _react2.default.createElement(LineChart, { data: chartData, options: chartOptions, width: 800, height: 300, __source: {
 	      fileName: _jsxFileName,
-	      lineNumber: 44
+	      lineNumber: 40
 	    },
 	    __self: undefined
 	  });
 	};
 
-	// StackedBarGraph.defaultProps = {
-	//   width: 600,
-	//   height: 40,
-	// };
-	//
-	// StackedBarGraph.propTypes = {
-	//   width: React.PropTypes.number.isRequired,
-	//   height: React.PropTypes.number.isRequired
-	// };
-
 	exports.default = LineChartTemplate;
 
 /***/ },
-/* 628 */
+/* 629 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	var _jsxFileName = "/Users/davidkerr/Projects/social-feed/src/components/LikeSvg.js";
+
+	var _react = __webpack_require__(299);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var likeSvg = function likeSvg(_ref) {
+	    var color = _ref.color,
+	        width = _ref.width,
+	        height = _ref.height;
+
+	    return _react2.default.createElement(
+	        "svg",
+	        { width: width, height: height, viewBox: "144 144 24 24", __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 5
+	            },
+	            __self: undefined
+	        },
+	        _react2.default.createElement(
+	            "g",
+	            { id: "ic_favorite", stroke: "none", strokeWidth: "1", fill: "none", fillRule: "evenodd", transform: "translate(144.000000, 144.000000)", __source: {
+	                    fileName: _jsxFileName,
+	                    lineNumber: 6
+	                },
+	                __self: undefined
+	            },
+	            _react2.default.createElement("polygon", { id: "Bounds", fillOpacity: "0.1", fill: color, points: "0 0 24 0 24 24 0 24", __source: {
+	                    fileName: _jsxFileName,
+	                    lineNumber: 7
+	                },
+	                __self: undefined
+	            }),
+	            _react2.default.createElement("path", { d: "M12,21.35 L10.55,20.03 C5.4,15.36 2,12.28 2,8.5 C2,5.42 4.42,3 7.5,3 C9.24,3 10.91,3.81 12,5.09 C13.09,3.81 14.76,3 16.5,3 C19.58,3 22,5.42 22,8.5 C22,12.28 18.6,15.36 13.45,20.04 L12,21.35 L12,21.35 Z", id: "Shape", fillOpacity: "0.7", fill: "rgb(128, 194, 175)", __source: {
+	                    fileName: _jsxFileName,
+	                    lineNumber: 8
+	                },
+	                __self: undefined
+	            })
+	        )
+	    )
+
+	    // <svg width="24px" height="24px" viewBox="192 144 24 24" >
+	    //     <g id="ic_favorite_outline" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(192.000000, 144.000000)">
+	    //         <path d="M16.5,3 C14.76,3 13.09,3.81 12,5.09 C10.91,3.81 9.24,3 7.5,3 C4.42,3 2,5.42 2,8.5 C2,12.28 5.4,15.36 10.55,20.04 L12,21.35 L13.45,20.03 C18.6,15.36 22,12.28 22,8.5 C22,5.42 19.58,3 16.5,3 L16.5,3 Z M12.1,18.55 L12,18.65 L11.9,18.55 C7.14,14.24 4,11.39 4,8.5 C4,6.5 5.5,5 7.5,5 C9.04,5 10.54,5.99 11.07,7.36 L12.94,7.36 C13.46,5.99 14.96,5 16.5,5 C18.5,5 20,6.5 20,8.5 C20,11.39 16.86,14.24 12.1,18.55 L12.1,18.55 Z" id="Shape" fill-opacity="0.7" fill="#FFFFFF"></path>
+	    //     </g>
+	    // </svg>
+	    ;
+	};
+	exports.default = likeSvg;
+
+	// <polygon id="Bounds" fill-opacity="0.1" fill="#FF0000" points="0 0 24 0 24 24 0 24"></polygon>
+
+/***/ },
+/* 630 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -73190,7 +73325,65 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	var firebase = __webpack_require__(629);
+	var _jsxFileName = "/Users/davidkerr/Projects/social-feed/src/components/RetweetSvg.js";
+
+	var _react = __webpack_require__(299);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var retweetSvg = function retweetSvg(_ref) {
+	  var color = _ref.color,
+	      width = _ref.width,
+	      height = _ref.height;
+
+	  return _react2.default.createElement(
+	    "svg",
+	    { width: width, height: height, viewBox: "720 96 25 24", version: "1.1", __source: {
+	        fileName: _jsxFileName,
+	        lineNumber: 7
+	      },
+	      __self: undefined
+	    },
+	    _react2.default.createElement(
+	      "g",
+	      { id: "ic_replay", stroke: "none", strokeWidth: "1", fill: "none", fillRule: "evenodd", transform: "translate(720.000000, 96.000000)", __source: {
+	          fileName: _jsxFileName,
+	          lineNumber: 8
+	        },
+	        __self: undefined
+	      },
+	      _react2.default.createElement("path", { d: "M12,5 L12,1 L7,6 L12,11 L12,7 C15.31,7 18,9.69 18,13 C18,16.31 15.31,19 12,19 C8.69,19 6,16.31 6,13 L4,13 C4,17.42 7.58,21 12,21 C16.42,21 20,17.42 20,13 C20,8.58 16.42,5 12,5 L12,5 Z", id: "Shape", fillOpacity: "0.7", fill: color, __source: {
+	          fileName: _jsxFileName,
+	          lineNumber: 9
+	        },
+	        __self: undefined
+	      })
+	    )
+	  )
+
+	  // <svg width="24px" height="24px" viewBox="192 144 24 24" >
+	  //     <g id="ic_favorite_outline" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(192.000000, 144.000000)">
+	  //         <path d="M16.5,3 C14.76,3 13.09,3.81 12,5.09 C10.91,3.81 9.24,3 7.5,3 C4.42,3 2,5.42 2,8.5 C2,12.28 5.4,15.36 10.55,20.04 L12,21.35 L13.45,20.03 C18.6,15.36 22,12.28 22,8.5 C22,5.42 19.58,3 16.5,3 L16.5,3 Z M12.1,18.55 L12,18.65 L11.9,18.55 C7.14,14.24 4,11.39 4,8.5 C4,6.5 5.5,5 7.5,5 C9.04,5 10.54,5.99 11.07,7.36 L12.94,7.36 C13.46,5.99 14.96,5 16.5,5 C18.5,5 20,6.5 20,8.5 C20,11.39 16.86,14.24 12.1,18.55 L12.1,18.55 Z" id="Shape" fill-opacity="0.7" fill="rgb(128, 194, 175)"></path>
+	  //     </g>
+	  // </svg>
+	  ;
+	};
+	exports.default = retweetSvg;
+
+	// <polygon id="Bounds" fill-opacity="0.1" fill="#FF0000" points="0 0 24 0 24 24 0 24"></polygon>
+
+/***/ },
+/* 631 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var firebase = __webpack_require__(632);
 
 	var config = {
 	  apiKey: "AIzaSyBb1BsyWdbqQdgpj05fBD8ljp1m1-OvRLM",
@@ -73206,7 +73399,7 @@
 	var provider = exports.provider = new firebase.auth.TwitterAuthProvider();
 
 /***/ },
-/* 629 */
+/* 632 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -73216,16 +73409,16 @@
 	 *
 	 *   firebase = require('firebase');
 	 */
-	var firebase = __webpack_require__(630);
-	__webpack_require__(631);
-	__webpack_require__(632);
-	__webpack_require__(633);
+	var firebase = __webpack_require__(633);
 	__webpack_require__(634);
+	__webpack_require__(635);
+	__webpack_require__(636);
+	__webpack_require__(637);
 	module.exports = firebase;
 
 
 /***/ },
-/* 630 */
+/* 633 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/*! @license Firebase v3.5.1
@@ -73269,10 +73462,10 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 631 */
+/* 634 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var firebase = __webpack_require__(630);
+	var firebase = __webpack_require__(633);
 	/*! @license Firebase v3.5.1
 	    Build: 3.5.1-rc.1
 	    Terms: https://developers.google.com/terms */
@@ -73502,10 +73695,10 @@
 
 
 /***/ },
-/* 632 */
+/* 635 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var firebase = __webpack_require__(630);
+	var firebase = __webpack_require__(633);
 	/*! @license Firebase v3.5.1
 	    Build: 3.5.1-rc.1
 	    Terms: https://developers.google.com/terms */
@@ -73754,10 +73947,10 @@
 
 
 /***/ },
-/* 633 */
+/* 636 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var firebase = __webpack_require__(630);
+	var firebase = __webpack_require__(633);
 	/*! @license Firebase v3.5.1
 	    Build: 3.5.1-rc.1
 	    Terms: https://developers.google.com/terms */
@@ -73866,10 +74059,10 @@
 
 
 /***/ },
-/* 634 */
+/* 637 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(630);
+	/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(633);
 	/*! @license Firebase v3.5.1
 	    Build: 3.5.1-rc.1
 	    Terms: https://developers.google.com/terms */
@@ -73917,20 +74110,20 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 635 */
+/* 638 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(636);
+	module.exports = __webpack_require__(639);
 
 /***/ },
-/* 636 */
+/* 639 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(637);
-	var bind = __webpack_require__(638);
-	var Axios = __webpack_require__(639);
+	var utils = __webpack_require__(640);
+	var bind = __webpack_require__(641);
+	var Axios = __webpack_require__(642);
 
 	/**
 	 * Create an instance of Axios
@@ -73963,15 +74156,15 @@
 	};
 
 	// Expose Cancel & CancelToken
-	axios.Cancel = __webpack_require__(657);
-	axios.CancelToken = __webpack_require__(658);
-	axios.isCancel = __webpack_require__(654);
+	axios.Cancel = __webpack_require__(660);
+	axios.CancelToken = __webpack_require__(661);
+	axios.isCancel = __webpack_require__(657);
 
 	// Expose all/spread
 	axios.all = function all(promises) {
 	  return Promise.all(promises);
 	};
-	axios.spread = __webpack_require__(659);
+	axios.spread = __webpack_require__(662);
 
 	module.exports = axios;
 
@@ -73980,12 +74173,12 @@
 
 
 /***/ },
-/* 637 */
+/* 640 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var bind = __webpack_require__(638);
+	var bind = __webpack_require__(641);
 
 	/*global toString:true*/
 
@@ -74285,7 +74478,7 @@
 
 
 /***/ },
-/* 638 */
+/* 641 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -74302,17 +74495,17 @@
 
 
 /***/ },
-/* 639 */
+/* 642 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var defaults = __webpack_require__(640);
-	var utils = __webpack_require__(637);
-	var InterceptorManager = __webpack_require__(651);
-	var dispatchRequest = __webpack_require__(652);
-	var isAbsoluteURL = __webpack_require__(655);
-	var combineURLs = __webpack_require__(656);
+	var defaults = __webpack_require__(643);
+	var utils = __webpack_require__(640);
+	var InterceptorManager = __webpack_require__(654);
+	var dispatchRequest = __webpack_require__(655);
+	var isAbsoluteURL = __webpack_require__(658);
+	var combineURLs = __webpack_require__(659);
 
 	/**
 	 * Create a new instance of Axios
@@ -74393,13 +74586,13 @@
 
 
 /***/ },
-/* 640 */
+/* 643 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var utils = __webpack_require__(637);
-	var normalizeHeaderName = __webpack_require__(641);
+	var utils = __webpack_require__(640);
+	var normalizeHeaderName = __webpack_require__(644);
 
 	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 	var DEFAULT_CONTENT_TYPE = {
@@ -74416,10 +74609,10 @@
 	  var adapter;
 	  if (typeof XMLHttpRequest !== 'undefined') {
 	    // For browsers use XHR adapter
-	    adapter = __webpack_require__(642);
+	    adapter = __webpack_require__(645);
 	  } else if (typeof process !== 'undefined') {
 	    // For node use HTTP adapter
-	    adapter = __webpack_require__(642);
+	    adapter = __webpack_require__(645);
 	  }
 	  return adapter;
 	}
@@ -74486,12 +74679,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(294)))
 
 /***/ },
-/* 641 */
+/* 644 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(637);
+	var utils = __webpack_require__(640);
 
 	module.exports = function normalizeHeaderName(headers, normalizedName) {
 	  utils.forEach(headers, function processHeader(value, name) {
@@ -74504,18 +74697,18 @@
 
 
 /***/ },
-/* 642 */
+/* 645 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var utils = __webpack_require__(637);
-	var settle = __webpack_require__(643);
-	var buildURL = __webpack_require__(646);
-	var parseHeaders = __webpack_require__(647);
-	var isURLSameOrigin = __webpack_require__(648);
-	var createError = __webpack_require__(644);
-	var btoa = (typeof window !== 'undefined' && window.btoa) || __webpack_require__(649);
+	var utils = __webpack_require__(640);
+	var settle = __webpack_require__(646);
+	var buildURL = __webpack_require__(649);
+	var parseHeaders = __webpack_require__(650);
+	var isURLSameOrigin = __webpack_require__(651);
+	var createError = __webpack_require__(647);
+	var btoa = (typeof window !== 'undefined' && window.btoa) || __webpack_require__(652);
 
 	module.exports = function xhrAdapter(config) {
 	  return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -74611,7 +74804,7 @@
 	    // This is only done if running in a standard browser environment.
 	    // Specifically not if we're in a web worker, or react-native.
 	    if (utils.isStandardBrowserEnv()) {
-	      var cookies = __webpack_require__(650);
+	      var cookies = __webpack_require__(653);
 
 	      // Add xsrf header
 	      var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -74688,12 +74881,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(294)))
 
 /***/ },
-/* 643 */
+/* 646 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var createError = __webpack_require__(644);
+	var createError = __webpack_require__(647);
 
 	/**
 	 * Resolve or reject a Promise based on response status.
@@ -74719,12 +74912,12 @@
 
 
 /***/ },
-/* 644 */
+/* 647 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var enhanceError = __webpack_require__(645);
+	var enhanceError = __webpack_require__(648);
 
 	/**
 	 * Create an Error with the specified message, config, error code, and response.
@@ -74742,7 +74935,7 @@
 
 
 /***/ },
-/* 645 */
+/* 648 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -74767,12 +74960,12 @@
 
 
 /***/ },
-/* 646 */
+/* 649 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(637);
+	var utils = __webpack_require__(640);
 
 	function encode(val) {
 	  return encodeURIComponent(val).
@@ -74841,12 +75034,12 @@
 
 
 /***/ },
-/* 647 */
+/* 650 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(637);
+	var utils = __webpack_require__(640);
 
 	/**
 	 * Parse headers into an object
@@ -74884,12 +75077,12 @@
 
 
 /***/ },
-/* 648 */
+/* 651 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(637);
+	var utils = __webpack_require__(640);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -74958,7 +75151,7 @@
 
 
 /***/ },
-/* 649 */
+/* 652 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -75000,12 +75193,12 @@
 
 
 /***/ },
-/* 650 */
+/* 653 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(637);
+	var utils = __webpack_require__(640);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -75059,12 +75252,12 @@
 
 
 /***/ },
-/* 651 */
+/* 654 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(637);
+	var utils = __webpack_require__(640);
 
 	function InterceptorManager() {
 	  this.handlers = [];
@@ -75117,15 +75310,15 @@
 
 
 /***/ },
-/* 652 */
+/* 655 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(637);
-	var transformData = __webpack_require__(653);
-	var isCancel = __webpack_require__(654);
-	var defaults = __webpack_require__(640);
+	var utils = __webpack_require__(640);
+	var transformData = __webpack_require__(656);
+	var isCancel = __webpack_require__(657);
+	var defaults = __webpack_require__(643);
 
 	/**
 	 * Throws a `Cancel` if cancellation has been requested.
@@ -75202,12 +75395,12 @@
 
 
 /***/ },
-/* 653 */
+/* 656 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(637);
+	var utils = __webpack_require__(640);
 
 	/**
 	 * Transform the data for a request or a response
@@ -75228,7 +75421,7 @@
 
 
 /***/ },
-/* 654 */
+/* 657 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -75239,7 +75432,7 @@
 
 
 /***/ },
-/* 655 */
+/* 658 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -75259,7 +75452,7 @@
 
 
 /***/ },
-/* 656 */
+/* 659 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -75277,7 +75470,7 @@
 
 
 /***/ },
-/* 657 */
+/* 660 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -75302,12 +75495,12 @@
 
 
 /***/ },
-/* 658 */
+/* 661 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var Cancel = __webpack_require__(657);
+	var Cancel = __webpack_require__(660);
 
 	/**
 	 * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -75365,7 +75558,7 @@
 
 
 /***/ },
-/* 659 */
+/* 662 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -75398,16 +75591,16 @@
 
 
 /***/ },
-/* 660 */
+/* 663 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(661);
+	var content = __webpack_require__(664);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(663)(content, {});
+	var update = __webpack_require__(666)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -75424,10 +75617,10 @@
 	}
 
 /***/ },
-/* 661 */
+/* 664 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(662)();
+	exports = module.exports = __webpack_require__(665)();
 	// imports
 
 
@@ -75438,7 +75631,7 @@
 
 
 /***/ },
-/* 662 */
+/* 665 */
 /***/ function(module, exports) {
 
 	/*
@@ -75494,7 +75687,7 @@
 
 
 /***/ },
-/* 663 */
+/* 666 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -75746,16 +75939,16 @@
 
 
 /***/ },
-/* 664 */
+/* 667 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(665);
+	var content = __webpack_require__(668);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(663)(content, {});
+	var update = __webpack_require__(666)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -75772,15 +75965,15 @@
 	}
 
 /***/ },
-/* 665 */
+/* 668 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(662)();
+	exports = module.exports = __webpack_require__(665)();
 	// imports
 
 
 	// module
-	exports.push([module.id, "/*@import url('./css/header')*/\n/*@import './css/index';*/\nheader {\n  background-color: rgba(35, 37, 40, .94);\n  display: flex;\n  flex-direction: row;\n  width: 75%;\n  padding: 10px;\n  color: white;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 100;\n  font-size: 24px;\n  margin-left: 25%;\n}\n\n.user-info-label {\n  color: rgb(128, 194, 175);\n  font-family: 'Roboto Slab', serif;\n}\n\n.user-info-label span {\n  color: white;\n  font-family: 'Roboto', sans-serif;\n}\n\nbody {\n  position: relative;\n  letter-spacing: 2px;\n  background-color: rgba(35, 37, 40, .75);\n}\n\nheader input {\n  margin-left: auto;\n  margin-right: 10px;\n  padding: 10px;\n  background-color: rgba(255, 255, 255,.8);\n  color: black;\n  font-size: 24px;\n  font-family: 'Roboto', sans-serif;\n  border:none;\n  height: 40px;\n}\n\nheader button {\n  margin-right: 30px;\n  border:none;\n  color: black;\n  font-family: 'Roboto Slab', serif;\n  background-color: rgb(128, 194, 175);\n  font-size: 24px;\n  height: 60px;\n}\n\n.twitter-container {\n  display:flex;\n  flex-direction: wrap;\n  height: 100%;\n}\n\n.side-bar{\n  width: 25%;\n  background-color: rgba(35, 37, 40, .75);\n  position: fixed;\n  top:0;\n  bottom:0;\n}\n\n.user-lists {\n  display: flex;\n  flex-direction: column;\n  background-color: rgba(35, 37, 40, .75);\n  border: 1px solid rgba(35, 37, 40, 1);\n  width: 15%;\n  margin-left: 25%;\n}\n\n.optional-lists {\n  display: flex;\n  flex-direction: column;\n  background-color: rgba(35, 37, 40, .75);\n  border: 1px solid rgba(35, 37, 40, 1);\n  width: 25%;\n}\n\n\n.user-lists p, .optional-lists p {\n  background-color: rgba(35, 37, 40, .75);\n  color: #00AAEC;\n  font-family: 'Roboto Slab', serif;\n  font-size: 24px;\n  padding: 10px;\n}\n\n.user-lists li, .optional-lists li{\n  color: white;\n  width: 100%;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 100;\n  font-size: 20px;\n  letter-spacing: 2px;\n  height: 100%;\n  margin: 5px;\n}\n\n.activity-charts {\n  display: flex;\n  flex-direction: column;\n  background-color: rgba(35, 37, 40, .75);\n}\n\n.side-bar,.user-hashtags, .user-mentions, .activity-charts{\n  border: 1px solid rgba(35, 37, 40, 1);\n}\n\n.twitter-card {\n  border: 1px solid rgba(35, 37, 40, 1);\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  width: 100%;\n}\n\n.twitter-card svg {\n  color: #00AAEC;\n}\n\n.twitter-card-header {\n  background-color: rgba(35, 37, 40, .75);\n  color: white;\n  font-family: 'Roboto Slab', serif;\n  font-size: 24px;\n  width: 100%;\n  padding: 5px 0px;\n  margin-top: 10px;\n}\n\n.twitter-card-header span {\n  font-family: 'Roboto', sans-serif;\n  color: #00AAEC;\n}\n\n.twitter-card-body {\n  color: white;\n  width: 100%;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 100;\n  font-size: 20px;\n  height: 100%;\n  margin:5px 0px;\n}\n\n.twitter-card-footer {\n  background-color: rgba(35, 37, 40, .75);\n  font-family: 'Roboto', sans-serif;\n  font-weight: 100;\n  font-size: 16px;\n  width:100%;\n  color: rgb(128, 194, 175);\n  padding: 5px 0px;\n}\n\nspan.twitter-date {\n  float:right;\n}\n", ""]);
+	exports.push([module.id, "/*@import url('./css/header')*/\n/*@import './css/index';*/\nheader {\n  background-color: rgba(35, 37, 40, .94);\n  display: flex;\n  flex-direction: row;\n  width: 75%;\n  padding: 10px;\n  color: white;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 100;\n  font-size: 20px;\n  margin-left: 25%;\n}\n\na {\n  text-decoration:none;\n}\n\n.user-info-label {\n  color: rgb(128, 194, 175);\n  font-family: 'Roboto Slab', serif;\n}\n\n.user-info-label span {\n  color: white;\n  font-family: 'Roboto', sans-serif;\n}\n\nbody {\n  position: relative;\n  letter-spacing: 2px;\n  background-color: rgba(35, 37, 40, .75);\n}\n\nheader input {\n  margin-left: auto;\n  margin-right: 10px;\n  padding: 10px;\n  background-color: rgba(255, 255, 255,.8);\n  color: black;\n  font-size: 20px;\n  font-family: 'Roboto', sans-serif;\n  border:none;\n  height: 40px;\n}\n\nheader button {\n  margin-right: 30px;\n  border:none;\n  color: black;\n  font-family: 'Roboto Slab', serif;\n  background-color: rgb(128, 194, 175);\n  font-size: 20px;\n  height: 60px;\n}\n\n.twitter-container {\n  display:flex;\n  flex-direction: wrap;\n  height: 100%;\n}\n\n.side-bar{\n  width: 25%;\n  background-color: rgba(35, 37, 40, .75);\n  position: fixed;\n  top:0;\n  bottom:0;\n}\n\n.user-lists {\n  display: flex;\n  flex-direction: column;\n  background-color: rgba(35, 37, 40, .75);\n  border: 1px solid rgba(35, 37, 40, 1);\n  width: 15%;\n  margin-left: 25%;\n}\n\n.optional-lists {\n  display: flex;\n  flex-direction: column;\n  background-color: rgba(35, 37, 40, .75);\n  border: 1px solid rgba(35, 37, 40, 1);\n  width: 25%;\n}\n\n\n.user-lists p, .optional-lists p {\n  background-color: rgba(35, 37, 40, .75);\n  color: #00AAEC;\n  font-family: 'Roboto Slab', serif;\n  font-size: 20px;\n  padding: 10px;\n}\n\n.user-lists li, .optional-lists li{\n  color: white;\n  width: 100%;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 100;\n  font-size: 16px;\n  letter-spacing: 2px;\n  margin: 5px;\n}\n\n.activity-charts {\n  display: flex;\n  flex-direction: column;\n  background-color: rgba(35, 37, 40, .75);\n}\n\n.side-bar,.user-hashtags, .user-mentions, .activity-charts{\n  border: 1px solid rgba(35, 37, 40, 1);\n}\n\n.twitter-card {\n  border: 1px solid rgba(35, 37, 40, 1);\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  width: 100%;\n}\n\n.twitter-card svg {\n  color: #00AAEC;\n}\n\n.twitter-card-header {\n  background-color: rgba(35, 37, 40, .75);\n  color: white;\n  font-family: 'Roboto Slab', serif;\n  font-size: 20px;\n  width: 100%;\n  padding: 5px 0px;\n  margin-top: 10px;\n}\n\n.twitter-card-header span {\n  font-family: 'Roboto', sans-serif;\n  color: #00AAEC;\n}\n\n.twitter-card-body {\n  color: white;\n  width: 100%;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 100;\n  font-size: 16px;\n  height: 100%;\n  margin:5px 0px;\n}\n\n.twitter-card-footer {\n  position: relative;\n  background-color: rgba(35, 37, 40, .75);\n  font-family: 'Roboto', sans-serif;\n  font-weight: 100;\n  font-size: 16px;\n  width:100%;\n  color: rgb(128, 194, 175);\n  padding:5px 0px;\n}\n\nspan.twitter-date {\n  position: absolute;\n  right: 5px;\n  top: 9px;\n}\n\n.repeated-words {\n\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n  padding: 8px 0px 5px 0px;\n}\n\n.repeated-words-list {\n  width: 50%;\n}\n\n.twitter-svg {\n  margin-right: 30px;\n  margin-top: 5px;\n}\n", ""]);
 
 	// exports
 

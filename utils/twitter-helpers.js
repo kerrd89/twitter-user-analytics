@@ -1,51 +1,53 @@
-'use strict';
+// 'use strict';
 import React, { Component } from 'react';
 import _ from 'lodash';
 import moment from 'moment';
 import LineChartTemplate from '../src/components/LineChart';
+import TwitterSvg from '../src/components/TwitterSvg';
+import LikeSvg from '../src/components/LikeSvg';
+import RetweetSvg from '../src/components/RetweetSvg';
+
 
 let commonWords = [
   "i","rt","the","is","a","of","us","for","this","in","to","and","you","by","like",
   "my","but","we","have","that",' ',"1","2","be","me","at","|","on","it's","don't",
   "it","from","you're","with","are","just","do","has","was","i'm","an","am","","if",
-  "can","7"
+  "can","7","-","as","&amp;"
 ];
 
+let urls = [];
+
 const twitterHelpers = {
-  tweetTemplate: (tweet) => {
-    return (
-      <li className="twitter-card" key={tweet.id_str}>
-      <p className="twitter-card-header">
-      {tweet.user.name}<span>@{tweet.user.screen_name}</span>
-      </p>
-      <p className="twitter-card-body">{tweet.text}</p>
-      <div className="twitter-card-footer">
-        <span>Retweets:{tweet.retweet_count} </span>
-        <span className="twitter-favorited">Favorited:{tweet.favorite_count} </span>
-        <span className="twitter-date">{moment(tweet.created_at).format('LLL')}</span>
-      </div>
-      </li>
-    )
-  },
 
   hashtagTemplate: (hashtag) => {
     return (<li key={hashtag.hashtag}>{hashtag.hashtag}: {hashtag.count}</li>);
   },
 
-  tweetTemplate: (tweet) => {
-    return (
-      <li className="twitter-card" key={tweet.id_str}>
-      <p className="twitter-card-header">
-      {tweet.user.name}<span>@{tweet.user.screen_name}</span>
-      </p>
-      <p className="twitter-card-body">{tweet.text}</p>
-      <div className="twitter-card-footer">
-        <span>Retweets:{tweet.retweet_count} </span>
-        <span className="twitter-favorited">Favorited:{tweet.favorite_count} </span>
-        <span className="twitter-date">{moment(tweet.created_at).format('LLL')}</span>
-      </div>
-      </li>
-    )
+  tweetTemplate: (tweet, selectedUser) => {
+    if(selectedUser === null  ||  dkerrious) {
+      return (
+        <li className="twitter-card" key={tweet.id_str}>
+
+          <a href={'https://www.twitter.com/'+tweet.user.screen_name}
+          target="_blank">
+            <p className="twitter-card-header">
+            {tweet.user.name}<span>@{tweet.user.screen_name}</span>
+            </p>
+          </a>
+
+          <a href={tweet.entities.urls[0] ? tweet.entities.urls[0].expanded_url : 'https://www.twitter.com/'+tweet.user.screen_name}
+            target="_blank">
+            <p className="twitter-card-body">{tweet.text}</p>
+          </a>
+
+          <div className="twitter-card-footer">
+            <span className="twitter-retweeted"><RetweetSvg width="20px" height="16px" color="rgb(128, 194, 175)" />:{tweet.retweet_count} </span>
+            <span className="twitter-favorited"><LikeSvg width="20px" height="16px" />:{tweet.favorite_count} </span>
+            <span className="twitter-date">{moment(tweet.created_at).format("M/D/YYYY h:mm A")}</span>
+          </div>
+        </li>
+      )
+    }
   },
 
   getActivityByWeekday: (tweets) => {
@@ -67,7 +69,7 @@ const twitterHelpers = {
     data.push(activityByWeekday.Saturday);
     data.push(activityByWeekday.Sunday);
     let labels = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-    return (<LineChartTemplate data={data} labels={labels} title="Activity by Day" width="600" height=" 250"/>)
+    return (<LineChartTemplate data={data} labels={labels} title="Activity by Day" width={window.innerWidth} height={window.innerHeight}/>)
   },
 
   getActivityByWeek: (tweets) => {
@@ -89,7 +91,7 @@ const twitterHelpers = {
       let label = moment(tweets[indexForLabel].created_at).format('LL')
       labels.push(label)
     }
-    return (<LineChartTemplate data={data} labels={labels.reverse()} title="Recent Activity by Week" width="600" height="250"/>)
+    return (<LineChartTemplate data={data} labels={labels.reverse()} title="Recent Activity by Week"/>)
   },
 
   getActivityByHour: (tweets) => {
@@ -111,7 +113,7 @@ const twitterHelpers = {
     }
 
     return (
-      <LineChartTemplate data={data} labels={labels} title="Average Activity by Hour" width="600" height="250"/>
+      <LineChartTemplate data={data} labels={labels} title="Average Activity by Hour"/>
     )
   },
 
@@ -222,7 +224,7 @@ const twitterHelpers = {
       }
       return result.concat(obj);
     }, []);
-    allWords = _.slice(allWordsFiltered, 0, 20).map((word) => {
+    allWords = _.slice(allWordsFiltered, 0, 30).map((word) => {
       return (<li key={word.word}>{word.word}: {word.count}</li>)
     });
     return allWords

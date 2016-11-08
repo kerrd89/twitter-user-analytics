@@ -9,24 +9,19 @@ const LineChartTemplate = ({ data , labels , title }) => {
       pointborderColor: "rgba(0, 170, 236,1)",
       pointBackgroundColor: "rgba(0, 170, 236,1)",
       backgroundColor: "rgba(0, 170, 236,.4)",
-
-      // pointColor: "rgba(0, 170, 236,1)",
-      // strokeColor: "rgba(0, 170, 236,1)",
+      pointColor: "rgba(0, 170, 236,1)",
+      strokeColor: "rgba(0, 170, 236,1)",
       data: data,
     }],
   };
 
 let chartOptions = {
-  default: {
-    fontColor: "white",
-    fontFamily: "'Roboto', sans-serif",
-    fontStyle: "100"
-  },
+
   title: {
     display: true,
     text:title,
     fontColor: "white",
-    fontSize: 16,
+    fontSize: 20,
     fontFamily: "'Roboto Slab', serif",
     fontStyle: "100"
   },
@@ -38,21 +33,12 @@ let chartOptions = {
   legend: {
     display:false
   },
+
 };
 
   return (
     <LineChart data={chartData} options={chartOptions} width={800} height={300}/>
   );
 }
-
-// StackedBarGraph.defaultProps = {
-//   width: 600,
-//   height: 40,
-// };
-//
-// StackedBarGraph.propTypes = {
-//   width: React.PropTypes.number.isRequired,
-//   height: React.PropTypes.number.isRequired
-// };
 
 export default LineChartTemplate;

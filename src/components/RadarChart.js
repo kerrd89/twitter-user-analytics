@@ -47,8 +47,8 @@ let chartOptions = {
     display: true,
     text:title,
     fontColor: "white",
-    fontSize: 16,
-    fontFamily: "'Roboto', sans-serif",
+    fontSize: 20,
+    fontFamily: "'Roboto Slab', serif",
     fontStyle: "100"
   },
 

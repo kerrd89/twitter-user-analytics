@@ -5,6 +5,12 @@ import RadarChartTemplate from '../components/RadarChart';
 import twitterHelpers from '../../utils/twitter-helpers';
 
 class List extends Component {
+  constructor() {
+    super();
+    this.state = {
+      selectedUser: null
+    };
+  }
   getUserActivityRadar(tweets) {
     let recentCreatedAt = moment().diff(tweets[0].created_at,"days");
     let oldestCreatedAt = moment().diff(tweets[(tweets.length-1)].created_at,"days");
@@ -33,10 +39,12 @@ class List extends Component {
     let activityByLocation;
     let repeatedWords;
     let userActivityRadar;
+    let repeatedWords1;
+    let repeatedWords2;
 
     if (this.props.tweets.length) {
-      tweets = _.slice(this.props.tweets, 0, 15).map((tweet)=>{
-        return twitterHelpers.tweetTemplate(tweet);
+      tweets = _.slice(this.props.tweets, 0, 30).map((tweet)=>{
+        return twitterHelpers.tweetTemplate(tweet, this.state.selectedUser);
       });
       userMentions = twitterHelpers.getUserMentions(this.props.tweets)
       hashtags = twitterHelpers.getHashtags(this.props.tweets)
@@ -45,8 +53,9 @@ class List extends Component {
       activityByHour = twitterHelpers.getActivityByHour(this.props.tweets)
       activityByLocation = twitterHelpers.getActivityByLocation(this.props.tweets)
       repeatedWords = twitterHelpers.getRepeatedWords(this.props.tweets);
-
       userActivityRadar = this.getUserActivityRadar(this.props.tweets)
+      repeatedWords1 = _.slice(repeatedWords, 0,9)
+      repeatedWords2 = _.slice(repeatedWords, 10,19)
     }
 
     return (
@@ -66,9 +75,14 @@ class List extends Component {
             {hashtags}
           </ul >
           <p>Common words</p>
-          <ul>
-            {repeatedWords}
-          </ul>
+          <div className="repeated-words">
+            <ul className="repeated-words-list">
+              {repeatedWords1}
+            </ul>
+            <ul className="repeated-words-list">
+              {repeatedWords2}
+            </ul>
+          </div>
         </div>
 
         <div className="activity-charts">
