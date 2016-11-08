@@ -23,31 +23,29 @@ const twitterHelpers = {
     return (<li key={hashtag.hashtag}>{hashtag.hashtag}: {hashtag.count}</li>);
   },
 
-  tweetTemplate: (tweet, selectedUser) => {
-    if(selectedUser === null  ||  dkerrious) {
-      return (
-        <li className="twitter-card" key={tweet.id_str}>
+  tweetTemplate: (tweet) => {
+    return (
+      <li className="twitter-card" key={tweet.id_str}>
 
-          <a href={'https://www.twitter.com/'+tweet.user.screen_name}
+        <a href={'https://www.twitter.com/'+tweet.user.screen_name}
+        target="_blank">
+          <p className="twitter-card-header">
+          {tweet.user.name}<span>@{tweet.user.screen_name}</span>
+          </p>
+        </a>
+
+        <a href={tweet.entities.urls[0] ? tweet.entities.urls[0].expanded_url : 'https://www.twitter.com/'+tweet.user.screen_name}
           target="_blank">
-            <p className="twitter-card-header">
-            {tweet.user.name}<span>@{tweet.user.screen_name}</span>
-            </p>
-          </a>
+          <p className="twitter-card-body">{tweet.text}</p>
+        </a>
 
-          <a href={tweet.entities.urls[0] ? tweet.entities.urls[0].expanded_url : 'https://www.twitter.com/'+tweet.user.screen_name}
-            target="_blank">
-            <p className="twitter-card-body">{tweet.text}</p>
-          </a>
-
-          <div className="twitter-card-footer">
-            <span className="twitter-retweeted"><RetweetSvg width="20px" height="16px" color="rgb(128, 194, 175)" />:{tweet.retweet_count} </span>
-            <span className="twitter-favorited"><LikeSvg width="20px" height="16px" />:{tweet.favorite_count} </span>
-            <span className="twitter-date">{moment(tweet.created_at).format("M/D/YYYY h:mm A")}</span>
-          </div>
-        </li>
-      )
-    }
+        <div className="twitter-card-footer">
+          <span className="twitter-retweeted"><RetweetSvg width="20px" height="16px" color="rgb(128, 194, 175)" />:{tweet.retweet_count} </span>
+          <span className="twitter-favorited"><LikeSvg width="20px" height="16px" />:{tweet.favorite_count} </span>
+          <span className="twitter-date">{moment(tweet.created_at).format("M/D/YYYY h:mm A")}</span>
+        </div>
+      </li>
+    )
   },
 
   getActivityByWeekday: (tweets) => {
@@ -169,10 +167,8 @@ const twitterHelpers = {
       }
       return result.concat(obj);
     }, []);
-    userReferences = _.slice(userReferencesFiltered, 0, 10).map((user)=>{
-      return <li key={user.username}>{user.username}: {user.count}</li>;
-    });
-    return userReferences;
+    return userReferencesFiltered
+
   },
 
   getHashtags: (tweets) => {

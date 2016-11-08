@@ -1,3 +1,4 @@
+'use strict';
 import React, { Component } from 'react';
 import _ from 'lodash';
 import moment from 'moment';
@@ -11,6 +12,7 @@ class List extends Component {
       selectedUser: null
     };
   }
+
   getUserActivityRadar(tweets) {
     let recentCreatedAt = moment().diff(tweets[0].created_at,"days");
     let oldestCreatedAt = moment().diff(tweets[(tweets.length-1)].created_at,"days");
@@ -29,8 +31,22 @@ class List extends Component {
     )
   }
 
+  getUserMentions(tweets) {
+    let userReferencesFiltered = twitterHelpers.getUserMentions(tweets)
+    let userReferences = _.slice(userReferencesFiltered, 0, 10).map((user)=>{
+      return (
+        <li key={user.username} onClick={()=>{
+          this.setState({selectedUser: user.username})
+        }} >
+          {user.username}: {user.count}
+        </li>
+      )
+    });
+    return userReferences;
+  }
+
   render() {
-    let tweets;
+    let tweets = [];
     let userMentions;
     let hashtags;
     let activityByWeekday;
@@ -43,10 +59,22 @@ class List extends Component {
     let repeatedWords2;
 
     if (this.props.tweets.length) {
-      tweets = _.slice(this.props.tweets, 0, 30).map((tweet)=>{
-        return twitterHelpers.tweetTemplate(tweet, this.state.selectedUser);
-      });
-      userMentions = twitterHelpers.getUserMentions(this.props.tweets)
+      if(this.state.selectedUser) {
+        tweets.push(<p>Tweets mentioning @{this.state.selectedUser}</p>)
+        this.props.tweets.map((tweet)=> {
+          tweet.entities.user_mentions.map((userMention) => {
+
+            if(userMention.screen_name === this.state.selectedUser) {
+              tweets.push(twitterHelpers.tweetTemplate(tweet));
+            }
+          })
+        })
+      } else {
+        tweets = _.slice(this.props.tweets, 0, 30).map((tweet)=>{
+          return twitterHelpers.tweetTemplate(tweet);
+        });
+      }
+      userMentions = this.getUserMentions(this.props.tweets)
       hashtags = twitterHelpers.getHashtags(this.props.tweets)
       activityByWeekday = twitterHelpers.getActivityByWeekday(this.props.tweets)
       activityByWeek = twitterHelpers.getActivityByWeek(this.props.tweets)
