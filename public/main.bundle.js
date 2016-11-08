@@ -44276,7 +44276,7 @@
 	          'li',
 	          { key: user.username, onClick: function onClick() {
 	              _this2.setState({ selectedUser: user.username });
-	              console.log(_this2.state.selectedUser);
+	              _this2.setState({ selectedHashtag: null });
 	            }, __source: {
 	              fileName: _jsxFileName,
 	              lineNumber: 39
@@ -44301,6 +44301,7 @@
 	          'li',
 	          { key: hashtag.hashtag, onClick: function onClick() {
 	              _this3.setState({ selectedHashtag: hashtag.hashtag });
+	              _this3.setState({ selectedUser: null });
 	            }, __source: {
 	              fileName: _jsxFileName,
 	              lineNumber: 54
@@ -44336,10 +44337,9 @@
 	          tweets = [];
 	          tweets.push(_react2.default.createElement(
 	            'p',
-	            {
-	              __source: {
+	            { className: 'tweets-active-filter', __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 80
+	                lineNumber: 81
 	              },
 	              __self: this
 	            },
@@ -44358,10 +44358,9 @@
 	          tweets = [];
 	          tweets.push(_react2.default.createElement(
 	            'p',
-	            {
-	              __source: {
+	            { className: 'tweets-active-filter', __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 91
+	                lineNumber: 92
 	              },
 	              __self: this
 	            },
@@ -44396,7 +44395,7 @@
 	        'div',
 	        { className: 'twitter-container', __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 117
+	            lineNumber: 118
 	          },
 	          __self: this
 	        },
@@ -44404,7 +44403,7 @@
 	          'ul',
 	          { className: 'side-bar', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 119
+	              lineNumber: 120
 	            },
 	            __self: this
 	          },
@@ -44414,7 +44413,7 @@
 	          'div',
 	          { className: 'user-lists', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 123
+	              lineNumber: 124
 	            },
 	            __self: this
 	          },
@@ -44423,7 +44422,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 124
+	                lineNumber: 125
 	              },
 	              __self: this
 	            },
@@ -44433,7 +44432,7 @@
 	            'ul',
 	            { className: 'user-mentions', __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 125
+	                lineNumber: 126
 	              },
 	              __self: this
 	            },
@@ -44444,7 +44443,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 128
+	                lineNumber: 129
 	              },
 	              __self: this
 	            },
@@ -44454,7 +44453,7 @@
 	            'ul',
 	            { className: 'user-hashtags', __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 129
+	                lineNumber: 130
 	              },
 	              __self: this
 	            },
@@ -44465,7 +44464,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 132
+	                lineNumber: 133
 	              },
 	              __self: this
 	            },
@@ -44475,7 +44474,7 @@
 	            'div',
 	            { className: 'repeated-words', __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 133
+	                lineNumber: 134
 	              },
 	              __self: this
 	            },
@@ -44483,7 +44482,7 @@
 	              'ul',
 	              { className: 'repeated-words-list', __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 134
+	                  lineNumber: 135
 	                },
 	                __self: this
 	              },
@@ -44493,7 +44492,7 @@
 	              'ul',
 	              { className: 'repeated-words-list', __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 137
+	                  lineNumber: 138
 	                },
 	                __self: this
 	              },
@@ -44505,7 +44504,7 @@
 	          'div',
 	          { className: 'activity-charts', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 143
+	              lineNumber: 144
 	            },
 	            __self: this
 	          },
@@ -44517,7 +44516,7 @@
 	          'div',
 	          { className: 'optional-lists', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 149
+	              lineNumber: 150
 	            },
 	            __self: this
 	          },
@@ -44527,7 +44526,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 151
+	                lineNumber: 152
 	              },
 	              __self: this
 	            },
@@ -44538,7 +44537,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 152
+	                lineNumber: 153
 	              },
 	              __self: this
 	            },
@@ -64142,7 +64141,7 @@
 
 
 	// module
-	exports.push([module.id, "/*@import url('./css/header')*/\n/*@import './css/index';*/\nheader {\n  background-color: rgba(35, 37, 40, .94);\n  display: flex;\n  flex-direction: row;\n  width: 75%;\n  padding: 10px;\n  color: white;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 100;\n  font-size: 20px;\n  margin-left: 25%;\n}\n\na {\n  text-decoration:none;\n}\n\n.user-info-label {\n  color: rgb(128, 194, 175);\n  font-family: 'Roboto Slab', serif;\n}\n\n.user-info-label span {\n  color: white;\n  font-family: 'Roboto', sans-serif;\n}\n\nbody {\n  position: relative;\n  letter-spacing: 2px;\n  background-color: rgba(35, 37, 40, .75);\n}\n\nheader input {\n  margin-left: auto;\n  margin-right: 10px;\n  padding: 10px;\n  background-color: rgba(255, 255, 255,.8);\n  color: black;\n  font-size: 20px;\n  font-family: 'Roboto', sans-serif;\n  border:none;\n  height: 40px;\n}\n\nheader button {\n  margin-right: 30px;\n  border:none;\n  color: black;\n  font-family: 'Roboto Slab', serif;\n  background-color: rgb(128, 194, 175);\n  font-size: 20px;\n  height: 60px;\n}\n\n.twitter-container {\n  display:flex;\n  flex-direction: wrap;\n  height: 100%;\n}\n\n.side-bar{\n  width: 25%;\n  background-color: rgba(35, 37, 40, .75);\n  position: fixed;\n  top:0;\n  bottom:0;\n}\n\n.user-lists {\n  display: flex;\n  flex-direction: column;\n  background-color: rgba(35, 37, 40, .75);\n  border: 1px solid rgba(35, 37, 40, 1);\n  width: 15%;\n  margin-left: 25%;\n}\n\n.optional-lists {\n  display: flex;\n  flex-direction: column;\n  background-color: rgba(35, 37, 40, .75);\n  border: 1px solid rgba(35, 37, 40, 1);\n  width: 25%;\n}\n\n\n.user-lists p, .optional-lists p {\n  background-color: rgba(35, 37, 40, .75);\n  color: #00AAEC;\n  font-family: 'Roboto Slab', serif;\n  font-size: 20px;\n  padding: 10px;\n}\n\n.user-lists li, .optional-lists li{\n  color: white;\n  width: 100%;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 100;\n  font-size: 16px;\n  letter-spacing: 2px;\n  margin: 5px;\n}\n\n.activity-charts {\n  display: flex;\n  flex-direction: column;\n  background-color: rgba(35, 37, 40, .75);\n}\n\n.side-bar,.user-hashtags, .user-mentions, .activity-charts{\n  border: 1px solid rgba(35, 37, 40, 1);\n}\n\n.twitter-card {\n  border: 1px solid rgba(35, 37, 40, 1);\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  width: 100%;\n}\n\n.twitter-card svg {\n  color: #00AAEC;\n}\n\n.twitter-card-header {\n  background-color: rgba(35, 37, 40, .75);\n  color: white;\n  font-family: 'Roboto Slab', serif;\n  font-size: 20px;\n  width: 100%;\n  padding: 5px 0px;\n  margin-top: 10px;\n}\n\n.twitter-card-header span {\n  font-family: 'Roboto', sans-serif;\n  color: #00AAEC;\n}\n\n.twitter-card-body {\n  color: white;\n  width: 100%;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 100;\n  font-size: 16px;\n  height: 100%;\n  margin:5px 0px;\n}\n\n.twitter-card-footer {\n  position: relative;\n  background-color: rgba(35, 37, 40, .75);\n  font-family: 'Roboto', sans-serif;\n  font-weight: 100;\n  font-size: 16px;\n  width:100%;\n  color: rgb(128, 194, 175);\n  padding:5px 0px;\n}\n\nspan.twitter-date {\n  position: absolute;\n  right: 5px;\n  top: 9px;\n}\n\n.repeated-words {\n\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n  padding: 8px 0px 5px 0px;\n}\n\n.repeated-words-list {\n  width: 50%;\n}\n\n.twitter-svg {\n  margin-right: 30px;\n  margin-top: 5px;\n}\n", ""]);
+	exports.push([module.id, "/*@import url('./css/header')*/\n/*@import './css/index';*/\nheader {\n  background-color: rgba(35, 37, 40, .94);\n  display: flex;\n  flex-direction: row;\n  width: 75%;\n  padding: 10px;\n  color: white;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 100;\n  font-size: 20px;\n  margin-left: 25%;\n}\n\na {\n  text-decoration:none;\n}\n\n.user-info-label {\n  color: rgb(128, 194, 175);\n  font-family: 'Roboto Slab', serif;\n}\n\n.user-info-label span {\n  color: white;\n  font-family: 'Roboto', sans-serif;\n}\n\nbody {\n  position: relative;\n  letter-spacing: 2px;\n  background-color: rgba(35, 37, 40, .75);\n}\n\nheader input {\n  margin-left: auto;\n  margin-right: 10px;\n  padding: 10px;\n  background-color: rgba(255, 255, 255,.8);\n  color: black;\n  font-size: 20px;\n  font-family: 'Roboto', sans-serif;\n  border:none;\n  height: 40px;\n}\n\nheader button {\n  margin-right: 30px;\n  border:none;\n  color: black;\n  font-family: 'Roboto Slab', serif;\n  background-color: rgb(128, 194, 175);\n  font-size: 20px;\n  height: 60px;\n}\n\n.twitter-container {\n  display:flex;\n  flex-direction: wrap;\n  height: 100%;\n}\n\n.side-bar{\n  width: 25%;\n  background-color: rgba(35, 37, 40, .75);\n  position: fixed;\n  top:0;\n  bottom:0;\n}\n\n.user-lists {\n  display: flex;\n  flex-direction: column;\n  background-color: rgba(35, 37, 40, .75);\n  border: 1px solid rgba(35, 37, 40, 1);\n  width: 15%;\n  margin-left: 25%;\n}\n\n.optional-lists {\n  display: flex;\n  flex-direction: column;\n  background-color: rgba(35, 37, 40, .75);\n  border: 1px solid rgba(35, 37, 40, 1);\n  width: 25%;\n}\n\n\n.user-lists p, .optional-lists p {\n  background-color: rgba(35, 37, 40, .75);\n  color: #00AAEC;\n  font-family: 'Roboto Slab', serif;\n  font-size: 20px;\n  padding: 10px;\n}\n\n.user-lists li, .optional-lists li{\n  color: white;\n  width: 100%;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 100;\n  font-size: 16px;\n  letter-spacing: 2px;\n  margin: 5px;\n}\n\n.activity-charts {\n  display: flex;\n  flex-direction: column;\n  background-color: rgba(35, 37, 40, .75);\n}\n\n.side-bar,.user-hashtags, .user-mentions, .activity-charts{\n  border: 1px solid rgba(35, 37, 40, 1);\n}\n\n.twitter-card {\n  border: 1px solid rgba(35, 37, 40, 1);\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  width: 100%;\n}\n\n.twitter-card svg {\n  color: #00AAEC;\n}\n\n.twitter-card-header {\n  background-color: rgba(35, 37, 40, .75);\n  color: white;\n  font-family: 'Roboto Slab', serif;\n  font-size: 20px;\n  width: 100%;\n  padding: 5px 0px;\n  margin-top: 10px;\n}\n\n.twitter-card-header span {\n  font-family: 'Roboto', sans-serif;\n  color: #00AAEC;\n}\n\n.twitter-card-body {\n  color: white;\n  width: 100%;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 100;\n  font-size: 16px;\n  height: 100%;\n  margin:5px 0px;\n}\n\n.twitter-card-footer {\n  position: relative;\n  background-color: rgba(35, 37, 40, .75);\n  font-family: 'Roboto', sans-serif;\n  font-weight: 100;\n  font-size: 16px;\n  width:100%;\n  color: rgb(128, 194, 175);\n  padding:5px 0px;\n}\n\nspan.twitter-date {\n  position: absolute;\n  right: 5px;\n  top: 9px;\n}\n\n.repeated-words {\n\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n  padding: 8px 0px 5px 0px;\n}\n\n.repeated-words-list {\n  width: 50%;\n}\n\n.twitter-svg {\n  margin-right: 30px;\n  margin-top: 5px;\n}\n\n.tweets-active-filter {\n  background-color: rgba(35, 37, 40, .75);\n  color: rgb(128, 194, 175);\n  font-family: 'Roboto Slab', serif;\n  font-size: 20px;\n  padding: 10px;\n}\n", ""]);
 
 	// exports
 

@@ -185,3 +185,11 @@ span.twitter-date {
   margin-right: 30px;
   margin-top: 5px;
 }
+
+.tweets-active-filter {
+  background-color: rgba(35, 37, 40, .75);
+  color: rgb(128, 194, 175);
+  font-family: 'Roboto Slab', serif;
+  font-size: 20px;
+  padding: 10px;
+}

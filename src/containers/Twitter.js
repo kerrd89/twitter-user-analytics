@@ -38,7 +38,7 @@ class List extends Component {
       return (
         <li key={user.username} onClick={()=>{
           this.setState({selectedUser: user.username})
-          console.log(this.state.selectedUser)
+          this.setState({selectedHashtag: null})
         }} >
           {user.username}: {user.count}
         </li>
@@ -53,6 +53,7 @@ class List extends Component {
       return (
         <li key={hashtag.hashtag} onClick={()=>{
           this.setState({selectedHashtag: hashtag.hashtag})
+          this.setState({selectedUser: null})
         }} >
           {hashtag.hashtag}: {hashtag.count}
         </li>
@@ -77,7 +78,7 @@ class List extends Component {
     if (this.props.tweets.length) {
       if(this.state.selectedUser) {
         tweets = [];
-        tweets.push(<p>Tweets mentioning @{this.state.selectedUser}</p>)
+        tweets.push(<p className="tweets-active-filter">Tweets mentioning @{this.state.selectedUser}</p>)
         this.props.tweets.map((tweet)=> {
           tweet.entities.user_mentions.map((userMention) => {
 
@@ -88,7 +89,7 @@ class List extends Component {
         })
       } else if(this.state.selectedHashtag) {
           tweets = [];
-          tweets.push(<p>Tweets with #{this.state.selectedHashtag}</p>)
+          tweets.push(<p className="tweets-active-filter">Tweets with #{this.state.selectedHashtag}</p>)
           this.props.tweets.map((tweet)=> {
             tweet.entities.hashtags.map((hashtag) => {
               if(hashtag.text === this.state.selectedHashtag) {
