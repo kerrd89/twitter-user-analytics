@@ -194,10 +194,7 @@ const twitterHelpers = {
       }
       return result.concat(obj);
     }, []);
-    allHashtags = _.slice(allHashtagsFiltered, 0, 10).map((hashtag) => {
-      return <li key={hashtag.hashtag}>{hashtag.hashtag}: {hashtag.count}</li>;
-    });
-    return allHashtags;
+    return allHashtagsFiltered
   },
 
   getRepeatedWords: (tweets) => {

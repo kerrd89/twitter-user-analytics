@@ -44238,7 +44238,8 @@
 	    var _this = _possibleConstructorReturn(this, (List.__proto__ || Object.getPrototypeOf(List)).call(this));
 
 	    _this.state = {
-	      selectedUser: null
+	      selectedUser: null,
+	      selectedHashtag: null
 	    };
 	    return _this;
 	  }
@@ -44259,7 +44260,7 @@
 	      return _react2.default.createElement(_RadarChart2.default, { data: data, labels: ['followers', 'following', 'tweets per day', "likes"],
 	        title: 'How do they use Twitter?', __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 29
+	          lineNumber: 30
 	        },
 	        __self: this
 	      });
@@ -44275,9 +44276,10 @@
 	          'li',
 	          { key: user.username, onClick: function onClick() {
 	              _this2.setState({ selectedUser: user.username });
+	              console.log(_this2.state.selectedUser);
 	            }, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 38
+	              lineNumber: 39
 	            },
 	            __self: _this2
 	          },
@@ -44289,9 +44291,33 @@
 	      return userReferences;
 	    }
 	  }, {
+	    key: 'getHashtags',
+	    value: function getHashtags(tweets) {
+	      var _this3 = this;
+
+	      var allHashtagsFiltered = _twitterHelpers2.default.getHashtags(tweets);
+	      var allHashtags = _lodash2.default.slice(allHashtagsFiltered, 0, 10).map(function (hashtag) {
+	        return _react2.default.createElement(
+	          'li',
+	          { key: hashtag.hashtag, onClick: function onClick() {
+	              _this3.setState({ selectedHashtag: hashtag.hashtag });
+	            }, __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 54
+	            },
+	            __self: _this3
+	          },
+	          hashtag.hashtag,
+	          ': ',
+	          hashtag.count
+	        );
+	      });
+	      return allHashtags;
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var _this3 = this;
+	      var _this4 = this;
 
 	      var tweets = [];
 	      var userMentions = void 0;
@@ -44307,12 +44333,13 @@
 
 	      if (this.props.tweets.length) {
 	        if (this.state.selectedUser) {
+	          tweets = [];
 	          tweets.push(_react2.default.createElement(
 	            'p',
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 63
+	                lineNumber: 80
 	              },
 	              __self: this
 	            },
@@ -44322,7 +44349,28 @@
 	          this.props.tweets.map(function (tweet) {
 	            tweet.entities.user_mentions.map(function (userMention) {
 
-	              if (userMention.screen_name === _this3.state.selectedUser) {
+	              if (userMention.screen_name === _this4.state.selectedUser) {
+	                tweets.push(_twitterHelpers2.default.tweetTemplate(tweet));
+	              }
+	            });
+	          });
+	        } else if (this.state.selectedHashtag) {
+	          tweets = [];
+	          tweets.push(_react2.default.createElement(
+	            'p',
+	            {
+	              __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 91
+	              },
+	              __self: this
+	            },
+	            'Tweets with #',
+	            this.state.selectedHashtag
+	          ));
+	          this.props.tweets.map(function (tweet) {
+	            tweet.entities.hashtags.map(function (hashtag) {
+	              if (hashtag.text === _this4.state.selectedHashtag) {
 	                tweets.push(_twitterHelpers2.default.tweetTemplate(tweet));
 	              }
 	            });
@@ -44333,7 +44381,7 @@
 	          });
 	        }
 	        userMentions = this.getUserMentions(this.props.tweets);
-	        hashtags = _twitterHelpers2.default.getHashtags(this.props.tweets);
+	        hashtags = this.getHashtags(this.props.tweets);
 	        activityByWeekday = _twitterHelpers2.default.getActivityByWeekday(this.props.tweets);
 	        activityByWeek = _twitterHelpers2.default.getActivityByWeek(this.props.tweets);
 	        activityByHour = _twitterHelpers2.default.getActivityByHour(this.props.tweets);
@@ -44348,7 +44396,7 @@
 	        'div',
 	        { className: 'twitter-container', __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 90
+	            lineNumber: 117
 	          },
 	          __self: this
 	        },
@@ -44356,7 +44404,7 @@
 	          'ul',
 	          { className: 'side-bar', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 92
+	              lineNumber: 119
 	            },
 	            __self: this
 	          },
@@ -44366,7 +44414,7 @@
 	          'div',
 	          { className: 'user-lists', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 96
+	              lineNumber: 123
 	            },
 	            __self: this
 	          },
@@ -44375,7 +44423,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 97
+	                lineNumber: 124
 	              },
 	              __self: this
 	            },
@@ -44385,7 +44433,7 @@
 	            'ul',
 	            { className: 'user-mentions', __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 98
+	                lineNumber: 125
 	              },
 	              __self: this
 	            },
@@ -44396,7 +44444,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 101
+	                lineNumber: 128
 	              },
 	              __self: this
 	            },
@@ -44406,7 +44454,7 @@
 	            'ul',
 	            { className: 'user-hashtags', __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 102
+	                lineNumber: 129
 	              },
 	              __self: this
 	            },
@@ -44417,7 +44465,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 105
+	                lineNumber: 132
 	              },
 	              __self: this
 	            },
@@ -44427,7 +44475,7 @@
 	            'div',
 	            { className: 'repeated-words', __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 106
+	                lineNumber: 133
 	              },
 	              __self: this
 	            },
@@ -44435,7 +44483,7 @@
 	              'ul',
 	              { className: 'repeated-words-list', __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 107
+	                  lineNumber: 134
 	                },
 	                __self: this
 	              },
@@ -44445,7 +44493,7 @@
 	              'ul',
 	              { className: 'repeated-words-list', __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 110
+	                  lineNumber: 137
 	                },
 	                __self: this
 	              },
@@ -44457,7 +44505,7 @@
 	          'div',
 	          { className: 'activity-charts', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 116
+	              lineNumber: 143
 	            },
 	            __self: this
 	          },
@@ -44469,7 +44517,7 @@
 	          'div',
 	          { className: 'optional-lists', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 122
+	              lineNumber: 149
 	            },
 	            __self: this
 	          },
@@ -44479,7 +44527,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 124
+	                lineNumber: 151
 	              },
 	              __self: this
 	            },
@@ -44490,7 +44538,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 125
+	                lineNumber: 152
 	              },
 	              __self: this
 	            },
@@ -75762,21 +75810,7 @@
 	      }
 	      return result.concat(obj);
 	    }, []);
-	    allHashtags = _lodash2.default.slice(allHashtagsFiltered, 0, 10).map(function (hashtag) {
-	      return _react2.default.createElement(
-	        'li',
-	        { key: hashtag.hashtag, __source: {
-	            fileName: _jsxFileName,
-	            lineNumber: 198
-	          },
-	          __self: undefined
-	        },
-	        hashtag.hashtag,
-	        ': ',
-	        hashtag.count
-	      );
-	    });
-	    return allHashtags;
+	    return allHashtagsFiltered;
 	  },
 
 	  getRepeatedWords: function getRepeatedWords(tweets) {
@@ -75804,7 +75838,7 @@
 	        'li',
 	        { key: word.word, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 224
+	            lineNumber: 221
 	          },
 	          __self: undefined
 	        },

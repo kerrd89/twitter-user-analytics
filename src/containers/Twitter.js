@@ -9,7 +9,8 @@ class List extends Component {
   constructor() {
     super();
     this.state = {
-      selectedUser: null
+      selectedUser: null,
+      selectedHashtag: null
     };
   }
 
@@ -32,17 +33,32 @@ class List extends Component {
   }
 
   getUserMentions(tweets) {
-    let userReferencesFiltered = twitterHelpers.getUserMentions(tweets)
+    let userReferencesFiltered = twitterHelpers.getUserMentions(tweets);
     let userReferences = _.slice(userReferencesFiltered, 0, 10).map((user)=>{
       return (
         <li key={user.username} onClick={()=>{
           this.setState({selectedUser: user.username})
+          console.log(this.state.selectedUser)
         }} >
           {user.username}: {user.count}
         </li>
       )
     });
     return userReferences;
+  }
+
+  getHashtags(tweets) {
+    let allHashtagsFiltered = twitterHelpers.getHashtags(tweets);
+    let allHashtags = _.slice(allHashtagsFiltered, 0, 10).map((hashtag) => {
+      return (
+        <li key={hashtag.hashtag} onClick={()=>{
+          this.setState({selectedHashtag: hashtag.hashtag})
+        }} >
+          {hashtag.hashtag}: {hashtag.count}
+        </li>
+      );
+    });
+    return allHashtags;
   }
 
   render() {
@@ -60,6 +76,7 @@ class List extends Component {
 
     if (this.props.tweets.length) {
       if(this.state.selectedUser) {
+        tweets = [];
         tweets.push(<p>Tweets mentioning @{this.state.selectedUser}</p>)
         this.props.tweets.map((tweet)=> {
           tweet.entities.user_mentions.map((userMention) => {
@@ -69,13 +86,23 @@ class List extends Component {
             }
           })
         })
+      } else if(this.state.selectedHashtag) {
+          tweets = [];
+          tweets.push(<p>Tweets with #{this.state.selectedHashtag}</p>)
+          this.props.tweets.map((tweet)=> {
+            tweet.entities.hashtags.map((hashtag) => {
+              if(hashtag.text === this.state.selectedHashtag) {
+                tweets.push(twitterHelpers.tweetTemplate(tweet));
+              }
+            })
+          })
       } else {
         tweets = _.slice(this.props.tweets, 0, 30).map((tweet)=>{
           return twitterHelpers.tweetTemplate(tweet);
         });
       }
       userMentions = this.getUserMentions(this.props.tweets)
-      hashtags = twitterHelpers.getHashtags(this.props.tweets)
+      hashtags = this.getHashtags(this.props.tweets)
       activityByWeekday = twitterHelpers.getActivityByWeekday(this.props.tweets)
       activityByWeek = twitterHelpers.getActivityByWeek(this.props.tweets)
       activityByHour = twitterHelpers.getActivityByHour(this.props.tweets)
