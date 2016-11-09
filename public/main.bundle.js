@@ -8193,9 +8193,9 @@
 
 	var _App2 = _interopRequireDefault(_App);
 
-	__webpack_require__(665);
+	__webpack_require__(666);
 
-	__webpack_require__(669);
+	__webpack_require__(670);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29413,7 +29413,7 @@
 
 	var _Twitter2 = _interopRequireDefault(_Twitter);
 
-	var _firebase = __webpack_require__(632);
+	var _firebase = __webpack_require__(633);
 
 	var _firebase2 = _interopRequireDefault(_firebase);
 
@@ -29421,11 +29421,11 @@
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
-	var _axios = __webpack_require__(639);
+	var _axios = __webpack_require__(640);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
-	var _LoadingSvg = __webpack_require__(664);
+	var _LoadingSvg = __webpack_require__(665);
 
 	var _LoadingSvg2 = _interopRequireDefault(_LoadingSvg);
 
@@ -44237,15 +44237,11 @@
 
 	var _moment2 = _interopRequireDefault(_moment);
 
-	var _RadarChart = __webpack_require__(581);
+	var _ActiveFilter = __webpack_require__(627);
 
-	var _RadarChart2 = _interopRequireDefault(_RadarChart);
+	var _ActiveFilter2 = _interopRequireDefault(_ActiveFilter);
 
-	var _DeleteSvg = __webpack_require__(627);
-
-	var _DeleteSvg2 = _interopRequireDefault(_DeleteSvg);
-
-	var _twitterHelpers = __webpack_require__(628);
+	var _twitterHelpers = __webpack_require__(629);
 
 	var _twitterHelpers2 = _interopRequireDefault(_twitterHelpers);
 
@@ -44273,33 +44269,13 @@
 	  }
 
 	  _createClass(List, [{
-	    key: 'getUserActivityRadar',
-	    value: function getUserActivityRadar(tweets) {
-	      var recentCreatedAt = (0, _moment2.default)().diff(tweets[0].created_at, "days");
-	      var oldestCreatedAt = (0, _moment2.default)().diff(tweets[tweets.length - 1].created_at, "days");
-	      var velocity = tweets.length / (oldestCreatedAt - recentCreatedAt);
-	      var data = {
-	        'followers': tweets[0].user.followers_count,
-	        'following': tweets[0].user.friends_count,
-	        'tweetsPerDay': velocity,
-	        'likes': tweets[0].user.favourites_count
-	      };
-
-	      return _react2.default.createElement(_RadarChart2.default, { data: data, labels: ['followers', 'following', 'tweets per day', "likes"],
-	        title: 'How do they use Twitter?', __source: {
-	          fileName: _jsxFileName,
-	          lineNumber: 31
-	        },
-	        __self: this
-	      });
-	    }
-	  }, {
 	    key: 'getUserMentions',
 	    value: function getUserMentions(tweets) {
 	      var _this2 = this;
 
 	      var userReferencesFiltered = _twitterHelpers2.default.getUserMentions(tweets);
 	      var userReferences = _lodash2.default.slice(userReferencesFiltered, 0, 10).map(function (user) {
+	        //this can be refactored into its own component
 	        return _react2.default.createElement(
 	          'li',
 	          { key: user.username, onClick: function onClick() {
@@ -44307,7 +44283,7 @@
 	              _this2.setState({ selectedHashtag: null });
 	            }, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 40
+	              lineNumber: 22
 	            },
 	            __self: _this2
 	          },
@@ -44332,7 +44308,7 @@
 	              _this3.setState({ selectedUser: null });
 	            }, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 55
+	              lineNumber: 37
 	            },
 	            __self: _this3
 	          },
@@ -44342,6 +44318,11 @@
 	        );
 	      });
 	      return allHashtags;
+	    }
+	  }, {
+	    key: 'clearState',
+	    value: function clearState() {
+	      this.setState({ selectedUser: null, selectedHashtag: null });
 	    }
 	  }, {
 	    key: 'render',
@@ -44363,37 +44344,12 @@
 	      if (this.props.tweets.length) {
 	        if (this.state.selectedUser) {
 	          tweets = [];
-	          tweets.push(_react2.default.createElement(
-	            'div',
-	            { className: 'tweets-active-filter', __source: {
-	                fileName: _jsxFileName,
-	                lineNumber: 83
-	              },
-	              __self: this
+	          tweets.push(_react2.default.createElement(_ActiveFilter2.default, { filterParameter: this.state.selectedUser, onClick: this.clearState.bind(this), __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 69
 	            },
-	            _react2.default.createElement(
-	              'p',
-	              {
-	                __source: {
-	                  fileName: _jsxFileName,
-	                  lineNumber: 84
-	                },
-	                __self: this
-	              },
-	              'Tweets mentioning @',
-	              this.state.selectedUser
-	            ),
-	            _react2.default.createElement(_DeleteSvg2.default, { width: '30px', height: '30px', color: 'rgb(128, 194, 175)',
-	              onClick: function onClick(e) {
-	                _this4.setState({ selectedUser: null, selectedHashtag: null });
-	              },
-	              __source: {
-	                fileName: _jsxFileName,
-	                lineNumber: 85
-	              },
-	              __self: this
-	            })
-	          ));
+	            __self: this
+	          }));
 	          this.props.tweets.map(function (tweet) {
 	            tweet.entities.user_mentions.map(function (userMention) {
 	              if (userMention.screen_name === _this4.state.selectedUser) {
@@ -44403,37 +44359,12 @@
 	          });
 	        } else if (this.state.selectedHashtag) {
 	          tweets = [];
-	          tweets.push(_react2.default.createElement(
-	            'div',
-	            { className: 'tweets-active-filter', __source: {
-	                fileName: _jsxFileName,
-	                lineNumber: 102
-	              },
-	              __self: this
+	          tweets.push(_react2.default.createElement(_ActiveFilter2.default, { filterParameter: this.state.selectedHashtag, onClick: this.clearState.bind(this), __source: {
+	              fileName: _jsxFileName,
+	              lineNumber: 81
 	            },
-	            _react2.default.createElement(
-	              'p',
-	              {
-	                __source: {
-	                  fileName: _jsxFileName,
-	                  lineNumber: 103
-	                },
-	                __self: this
-	              },
-	              'Tweets with #',
-	              this.state.selectedHashtag
-	            ),
-	            _react2.default.createElement(_DeleteSvg2.default, { width: '40px', height: '40px', color: 'rgb(128, 194, 175)',
-	              onClick: function onClick(e) {
-	                _this4.setState({ selectedUser: null, selectedHashtag: null });
-	              },
-	              __source: {
-	                fileName: _jsxFileName,
-	                lineNumber: 104
-	              },
-	              __self: this
-	            })
-	          ));
+	            __self: this
+	          }));
 	          this.props.tweets.map(function (tweet) {
 	            tweet.entities.hashtags.map(function (hashtag) {
 	              if (hashtag.text === _this4.state.selectedHashtag) {
@@ -44453,7 +44384,7 @@
 	        activityByHour = _twitterHelpers2.default.getActivityByHour(this.props.tweets);
 	        activityByLocation = _twitterHelpers2.default.getActivityByLocation(this.props.tweets);
 	        repeatedWords = _twitterHelpers2.default.getRepeatedWords(this.props.tweets);
-	        userActivityRadar = this.getUserActivityRadar(this.props.tweets);
+	        userActivityRadar = _twitterHelpers2.default.getUserActivityRadar(this.props.tweets);
 	        repeatedWords1 = _lodash2.default.slice(repeatedWords, 0, 9);
 	        repeatedWords2 = _lodash2.default.slice(repeatedWords, 10, 19);
 	      }
@@ -44462,7 +44393,7 @@
 	        'div',
 	        { className: 'twitter-container', __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 136
+	            lineNumber: 108
 	          },
 	          __self: this
 	        },
@@ -44470,7 +44401,7 @@
 	          'ul',
 	          { className: 'side-bar', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 138
+	              lineNumber: 110
 	            },
 	            __self: this
 	          },
@@ -44480,7 +44411,7 @@
 	          'div',
 	          { className: 'user-lists', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 142
+	              lineNumber: 114
 	            },
 	            __self: this
 	          },
@@ -44489,7 +44420,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 143
+	                lineNumber: 115
 	              },
 	              __self: this
 	            },
@@ -44499,7 +44430,7 @@
 	            'ul',
 	            { className: 'user-mentions', __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 144
+	                lineNumber: 116
 	              },
 	              __self: this
 	            },
@@ -44510,7 +44441,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 147
+	                lineNumber: 119
 	              },
 	              __self: this
 	            },
@@ -44520,7 +44451,7 @@
 	            'ul',
 	            { className: 'user-hashtags', __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 148
+	                lineNumber: 120
 	              },
 	              __self: this
 	            },
@@ -44531,7 +44462,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 151
+	                lineNumber: 123
 	              },
 	              __self: this
 	            },
@@ -44541,7 +44472,7 @@
 	            'div',
 	            { className: 'repeated-words', __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 152
+	                lineNumber: 124
 	              },
 	              __self: this
 	            },
@@ -44549,7 +44480,7 @@
 	              'ul',
 	              { className: 'repeated-words-list', __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 153
+	                  lineNumber: 125
 	                },
 	                __self: this
 	              },
@@ -44559,7 +44490,7 @@
 	              'ul',
 	              { className: 'repeated-words-list', __source: {
 	                  fileName: _jsxFileName,
-	                  lineNumber: 156
+	                  lineNumber: 128
 	                },
 	                __self: this
 	              },
@@ -44571,7 +44502,7 @@
 	          'div',
 	          { className: 'activity-charts', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 162
+	              lineNumber: 134
 	            },
 	            __self: this
 	          },
@@ -44583,7 +44514,7 @@
 	          'div',
 	          { className: 'optional-lists', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 168
+	              lineNumber: 140
 	            },
 	            __self: this
 	          },
@@ -44593,7 +44524,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 170
+	                lineNumber: 142
 	              },
 	              __self: this
 	            },
@@ -44604,7 +44535,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 171
+	                lineNumber: 143
 	              },
 	              __self: this
 	            },
@@ -72929,6 +72860,65 @@
 /* 627 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var _jsxFileName = '/Users/davidkerr/Projects/social-feed/src/components/ActiveFilter.js';
+
+	var _react = __webpack_require__(299);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _DeleteSvg = __webpack_require__(628);
+
+	var _DeleteSvg2 = _interopRequireDefault(_DeleteSvg);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var ActiveFilter = function ActiveFilter(_ref) {
+	  var filterParameter = _ref.filterParameter,
+	      _onClick = _ref.onClick;
+
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'tweets-active-filter', __source: {
+	        fileName: _jsxFileName,
+	        lineNumber: 6
+	      },
+	      __self: undefined
+	    },
+	    _react2.default.createElement(
+	      'p',
+	      {
+	        __source: {
+	          fileName: _jsxFileName,
+	          lineNumber: 7
+	        },
+	        __self: undefined
+	      },
+	      'Tweets with #',
+	      filterParameter
+	    ),
+	    _react2.default.createElement(_DeleteSvg2.default, { width: '40px', height: '40px', color: 'rgb(128, 194, 175)',
+	      onClick: function onClick(e) {
+	        return _onClick();
+	      },
+	      __source: {
+	        fileName: _jsxFileName,
+	        lineNumber: 8
+	      },
+	      __self: undefined
+	    })
+	  );
+	};
+	exports.default = ActiveFilter;
+
+/***/ },
+/* 628 */
+/***/ function(module, exports, __webpack_require__) {
+
 	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
@@ -72976,7 +72966,7 @@
 	exports.default = deleteSvg;
 
 /***/ },
-/* 628 */
+/* 629 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72984,7 +72974,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	var _jsxFileName = '/Users/davidkerr/Projects/social-feed/utils/twitter-helpers.js'; // 'use strict';
+	var _jsxFileName = '/Users/davidkerr/Projects/social-feed/utils/twitter-helpers.js';
 
 	var _react = __webpack_require__(299);
 
@@ -72998,7 +72988,7 @@
 
 	var _moment2 = _interopRequireDefault(_moment);
 
-	var _LineChart = __webpack_require__(629);
+	var _LineChart = __webpack_require__(630);
 
 	var _LineChart2 = _interopRequireDefault(_LineChart);
 
@@ -73006,13 +72996,17 @@
 
 	var _TwitterSvg2 = _interopRequireDefault(_TwitterSvg);
 
-	var _LikeSvg = __webpack_require__(630);
+	var _LikeSvg = __webpack_require__(631);
 
 	var _LikeSvg2 = _interopRequireDefault(_LikeSvg);
 
-	var _RetweetSvg = __webpack_require__(631);
+	var _RetweetSvg = __webpack_require__(632);
 
 	var _RetweetSvg2 = _interopRequireDefault(_RetweetSvg);
+
+	var _RadarChart = __webpack_require__(581);
+
+	var _RadarChart2 = _interopRequireDefault(_RadarChart);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -73027,7 +73021,7 @@
 	      'li',
 	      { key: hashtag.hashtag, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 23
+	          lineNumber: 24
 	        },
 	        __self: undefined
 	      },
@@ -73042,7 +73036,7 @@
 	      'li',
 	      { className: 'twitter-card', key: tweet.id_str, __source: {
 	          fileName: _jsxFileName,
-	          lineNumber: 28
+	          lineNumber: 29
 	        },
 	        __self: undefined
 	      },
@@ -73051,7 +73045,7 @@
 	        { href: 'https://www.twitter.com/' + tweet.user.screen_name,
 	          target: '_blank', __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 30
+	            lineNumber: 31
 	          },
 	          __self: undefined
 	        },
@@ -73059,7 +73053,7 @@
 	          'p',
 	          { className: 'twitter-card-header', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 32
+	              lineNumber: 33
 	            },
 	            __self: undefined
 	          },
@@ -73069,7 +73063,7 @@
 	            {
 	              __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 33
+	                lineNumber: 34
 	              },
 	              __self: undefined
 	            },
@@ -73083,7 +73077,7 @@
 	        { href: tweet.entities.urls[0] ? tweet.entities.urls[0].expanded_url : 'https://www.twitter.com/' + tweet.user.screen_name,
 	          target: '_blank', __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 37
+	            lineNumber: 38
 	          },
 	          __self: undefined
 	        },
@@ -73091,7 +73085,7 @@
 	          'p',
 	          { className: 'twitter-card-body', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 39
+	              lineNumber: 40
 	            },
 	            __self: undefined
 	          },
@@ -73102,7 +73096,7 @@
 	        'div',
 	        { className: 'twitter-card-footer', __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 42
+	            lineNumber: 43
 	          },
 	          __self: undefined
 	        },
@@ -73110,13 +73104,13 @@
 	          'span',
 	          { className: 'twitter-retweeted', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 43
+	              lineNumber: 44
 	            },
 	            __self: undefined
 	          },
 	          _react2.default.createElement(_RetweetSvg2.default, { width: '20px', height: '16px', color: 'rgb(128, 194, 175)', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 43
+	              lineNumber: 44
 	            },
 	            __self: undefined
 	          }),
@@ -73128,13 +73122,13 @@
 	          'span',
 	          { className: 'twitter-favorited', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 44
+	              lineNumber: 45
 	            },
 	            __self: undefined
 	          },
 	          _react2.default.createElement(_LikeSvg2.default, { width: '20px', height: '16px', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 44
+	              lineNumber: 45
 	            },
 	            __self: undefined
 	          }),
@@ -73146,7 +73140,7 @@
 	          'span',
 	          { className: 'twitter-date', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 45
+	              lineNumber: 46
 	            },
 	            __self: undefined
 	          },
@@ -73177,7 +73171,7 @@
 	    var labels = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 	    return _react2.default.createElement(_LineChart2.default, { data: data, labels: labels, title: 'Activity by Day', width: window.innerWidth, height: window.innerHeight, __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 70
+	        lineNumber: 71
 	      },
 	      __self: undefined
 	    });
@@ -73204,7 +73198,7 @@
 	    }
 	    return _react2.default.createElement(_LineChart2.default, { data: data, labels: labels.reverse(), title: 'Recent Activity by Week', __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 92
+	        lineNumber: 93
 	      },
 	      __self: undefined
 	    });
@@ -73228,7 +73222,7 @@
 
 	    return _react2.default.createElement(_LineChart2.default, { data: data, labels: labels, title: 'Average Activity by Hour', __source: {
 	        fileName: _jsxFileName,
-	        lineNumber: 114
+	        lineNumber: 115
 	      },
 	      __self: undefined
 	    });
@@ -73260,7 +73254,7 @@
 	        'li',
 	        { key: location.location, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 140
+	            lineNumber: 141
 	          },
 	          __self: undefined
 	        },
@@ -73349,7 +73343,7 @@
 	        'li',
 	        { key: word.word, __source: {
 	            fileName: _jsxFileName,
-	            lineNumber: 221
+	            lineNumber: 222
 	          },
 	          __self: undefined
 	        },
@@ -73359,13 +73353,32 @@
 	      );
 	    });
 	    return allWords;
+	  },
+
+	  getUserActivityRadar: function getUserActivityRadar(tweets) {
+	    var recentCreatedAt = (0, _moment2.default)().diff(tweets[0].created_at, "days");
+	    var oldestCreatedAt = (0, _moment2.default)().diff(tweets[tweets.length - 1].created_at, "days");
+	    var velocity = tweets.length / (oldestCreatedAt - recentCreatedAt);
+	    var data = {
+	      'followers': tweets[0].user.followers_count,
+	      'following': tweets[0].user.friends_count,
+	      'tweetsPerDay': velocity,
+	      'likes': tweets[0].user.favourites_count
+	    };
+	    return _react2.default.createElement(_RadarChart2.default, { data: data, labels: ['followers', 'following', 'tweets per day', "likes"],
+	      title: 'How do they use Twitter?', __source: {
+	        fileName: _jsxFileName,
+	        lineNumber: 238
+	      },
+	      __self: undefined
+	    });
 	  }
 	};
 
 	exports.default = twitterHelpers;
 
 /***/ },
-/* 629 */
+/* 630 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73433,7 +73446,7 @@
 	exports.default = LineChartTemplate;
 
 /***/ },
-/* 630 */
+/* 631 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -73488,7 +73501,7 @@
 	exports.default = likeSvg;
 
 /***/ },
-/* 631 */
+/* 632 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -73537,7 +73550,7 @@
 	exports.default = retweetSvg;
 
 /***/ },
-/* 632 */
+/* 633 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -73545,7 +73558,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	var firebase = __webpack_require__(633);
+	var firebase = __webpack_require__(634);
 
 	var config = {
 	  apiKey: "AIzaSyBb1BsyWdbqQdgpj05fBD8ljp1m1-OvRLM",
@@ -73561,7 +73574,7 @@
 	var provider = exports.provider = new firebase.auth.TwitterAuthProvider();
 
 /***/ },
-/* 633 */
+/* 634 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -73571,16 +73584,16 @@
 	 *
 	 *   firebase = require('firebase');
 	 */
-	var firebase = __webpack_require__(634);
-	__webpack_require__(635);
+	var firebase = __webpack_require__(635);
 	__webpack_require__(636);
 	__webpack_require__(637);
 	__webpack_require__(638);
+	__webpack_require__(639);
 	module.exports = firebase;
 
 
 /***/ },
-/* 634 */
+/* 635 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/*! @license Firebase v3.5.1
@@ -73624,10 +73637,10 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 635 */
+/* 636 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var firebase = __webpack_require__(634);
+	var firebase = __webpack_require__(635);
 	/*! @license Firebase v3.5.1
 	    Build: 3.5.1-rc.1
 	    Terms: https://developers.google.com/terms */
@@ -73857,10 +73870,10 @@
 
 
 /***/ },
-/* 636 */
+/* 637 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var firebase = __webpack_require__(634);
+	var firebase = __webpack_require__(635);
 	/*! @license Firebase v3.5.1
 	    Build: 3.5.1-rc.1
 	    Terms: https://developers.google.com/terms */
@@ -74109,10 +74122,10 @@
 
 
 /***/ },
-/* 637 */
+/* 638 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var firebase = __webpack_require__(634);
+	var firebase = __webpack_require__(635);
 	/*! @license Firebase v3.5.1
 	    Build: 3.5.1-rc.1
 	    Terms: https://developers.google.com/terms */
@@ -74221,10 +74234,10 @@
 
 
 /***/ },
-/* 638 */
+/* 639 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(634);
+	/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(635);
 	/*! @license Firebase v3.5.1
 	    Build: 3.5.1-rc.1
 	    Terms: https://developers.google.com/terms */
@@ -74272,20 +74285,20 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 639 */
+/* 640 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(640);
+	module.exports = __webpack_require__(641);
 
 /***/ },
-/* 640 */
+/* 641 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(641);
-	var bind = __webpack_require__(642);
-	var Axios = __webpack_require__(643);
+	var utils = __webpack_require__(642);
+	var bind = __webpack_require__(643);
+	var Axios = __webpack_require__(644);
 
 	/**
 	 * Create an instance of Axios
@@ -74318,15 +74331,15 @@
 	};
 
 	// Expose Cancel & CancelToken
-	axios.Cancel = __webpack_require__(661);
-	axios.CancelToken = __webpack_require__(662);
-	axios.isCancel = __webpack_require__(658);
+	axios.Cancel = __webpack_require__(662);
+	axios.CancelToken = __webpack_require__(663);
+	axios.isCancel = __webpack_require__(659);
 
 	// Expose all/spread
 	axios.all = function all(promises) {
 	  return Promise.all(promises);
 	};
-	axios.spread = __webpack_require__(663);
+	axios.spread = __webpack_require__(664);
 
 	module.exports = axios;
 
@@ -74335,12 +74348,12 @@
 
 
 /***/ },
-/* 641 */
+/* 642 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var bind = __webpack_require__(642);
+	var bind = __webpack_require__(643);
 
 	/*global toString:true*/
 
@@ -74640,7 +74653,7 @@
 
 
 /***/ },
-/* 642 */
+/* 643 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -74657,17 +74670,17 @@
 
 
 /***/ },
-/* 643 */
+/* 644 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var defaults = __webpack_require__(644);
-	var utils = __webpack_require__(641);
-	var InterceptorManager = __webpack_require__(655);
-	var dispatchRequest = __webpack_require__(656);
-	var isAbsoluteURL = __webpack_require__(659);
-	var combineURLs = __webpack_require__(660);
+	var defaults = __webpack_require__(645);
+	var utils = __webpack_require__(642);
+	var InterceptorManager = __webpack_require__(656);
+	var dispatchRequest = __webpack_require__(657);
+	var isAbsoluteURL = __webpack_require__(660);
+	var combineURLs = __webpack_require__(661);
 
 	/**
 	 * Create a new instance of Axios
@@ -74748,13 +74761,13 @@
 
 
 /***/ },
-/* 644 */
+/* 645 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var utils = __webpack_require__(641);
-	var normalizeHeaderName = __webpack_require__(645);
+	var utils = __webpack_require__(642);
+	var normalizeHeaderName = __webpack_require__(646);
 
 	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 	var DEFAULT_CONTENT_TYPE = {
@@ -74771,10 +74784,10 @@
 	  var adapter;
 	  if (typeof XMLHttpRequest !== 'undefined') {
 	    // For browsers use XHR adapter
-	    adapter = __webpack_require__(646);
+	    adapter = __webpack_require__(647);
 	  } else if (typeof process !== 'undefined') {
 	    // For node use HTTP adapter
-	    adapter = __webpack_require__(646);
+	    adapter = __webpack_require__(647);
 	  }
 	  return adapter;
 	}
@@ -74841,12 +74854,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(294)))
 
 /***/ },
-/* 645 */
+/* 646 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(641);
+	var utils = __webpack_require__(642);
 
 	module.exports = function normalizeHeaderName(headers, normalizedName) {
 	  utils.forEach(headers, function processHeader(value, name) {
@@ -74859,18 +74872,18 @@
 
 
 /***/ },
-/* 646 */
+/* 647 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var utils = __webpack_require__(641);
-	var settle = __webpack_require__(647);
-	var buildURL = __webpack_require__(650);
-	var parseHeaders = __webpack_require__(651);
-	var isURLSameOrigin = __webpack_require__(652);
-	var createError = __webpack_require__(648);
-	var btoa = (typeof window !== 'undefined' && window.btoa) || __webpack_require__(653);
+	var utils = __webpack_require__(642);
+	var settle = __webpack_require__(648);
+	var buildURL = __webpack_require__(651);
+	var parseHeaders = __webpack_require__(652);
+	var isURLSameOrigin = __webpack_require__(653);
+	var createError = __webpack_require__(649);
+	var btoa = (typeof window !== 'undefined' && window.btoa) || __webpack_require__(654);
 
 	module.exports = function xhrAdapter(config) {
 	  return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -74966,7 +74979,7 @@
 	    // This is only done if running in a standard browser environment.
 	    // Specifically not if we're in a web worker, or react-native.
 	    if (utils.isStandardBrowserEnv()) {
-	      var cookies = __webpack_require__(654);
+	      var cookies = __webpack_require__(655);
 
 	      // Add xsrf header
 	      var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -75043,12 +75056,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(294)))
 
 /***/ },
-/* 647 */
+/* 648 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var createError = __webpack_require__(648);
+	var createError = __webpack_require__(649);
 
 	/**
 	 * Resolve or reject a Promise based on response status.
@@ -75074,12 +75087,12 @@
 
 
 /***/ },
-/* 648 */
+/* 649 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var enhanceError = __webpack_require__(649);
+	var enhanceError = __webpack_require__(650);
 
 	/**
 	 * Create an Error with the specified message, config, error code, and response.
@@ -75097,7 +75110,7 @@
 
 
 /***/ },
-/* 649 */
+/* 650 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -75122,12 +75135,12 @@
 
 
 /***/ },
-/* 650 */
+/* 651 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(641);
+	var utils = __webpack_require__(642);
 
 	function encode(val) {
 	  return encodeURIComponent(val).
@@ -75196,12 +75209,12 @@
 
 
 /***/ },
-/* 651 */
+/* 652 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(641);
+	var utils = __webpack_require__(642);
 
 	/**
 	 * Parse headers into an object
@@ -75239,12 +75252,12 @@
 
 
 /***/ },
-/* 652 */
+/* 653 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(641);
+	var utils = __webpack_require__(642);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -75313,7 +75326,7 @@
 
 
 /***/ },
-/* 653 */
+/* 654 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -75355,12 +75368,12 @@
 
 
 /***/ },
-/* 654 */
+/* 655 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(641);
+	var utils = __webpack_require__(642);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -75414,12 +75427,12 @@
 
 
 /***/ },
-/* 655 */
+/* 656 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(641);
+	var utils = __webpack_require__(642);
 
 	function InterceptorManager() {
 	  this.handlers = [];
@@ -75472,15 +75485,15 @@
 
 
 /***/ },
-/* 656 */
+/* 657 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(641);
-	var transformData = __webpack_require__(657);
-	var isCancel = __webpack_require__(658);
-	var defaults = __webpack_require__(644);
+	var utils = __webpack_require__(642);
+	var transformData = __webpack_require__(658);
+	var isCancel = __webpack_require__(659);
+	var defaults = __webpack_require__(645);
 
 	/**
 	 * Throws a `Cancel` if cancellation has been requested.
@@ -75557,12 +75570,12 @@
 
 
 /***/ },
-/* 657 */
+/* 658 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(641);
+	var utils = __webpack_require__(642);
 
 	/**
 	 * Transform the data for a request or a response
@@ -75583,7 +75596,7 @@
 
 
 /***/ },
-/* 658 */
+/* 659 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -75594,7 +75607,7 @@
 
 
 /***/ },
-/* 659 */
+/* 660 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -75614,7 +75627,7 @@
 
 
 /***/ },
-/* 660 */
+/* 661 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -75632,7 +75645,7 @@
 
 
 /***/ },
-/* 661 */
+/* 662 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -75657,12 +75670,12 @@
 
 
 /***/ },
-/* 662 */
+/* 663 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var Cancel = __webpack_require__(661);
+	var Cancel = __webpack_require__(662);
 
 	/**
 	 * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -75720,7 +75733,7 @@
 
 
 /***/ },
-/* 663 */
+/* 664 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -75753,7 +75766,7 @@
 
 
 /***/ },
-/* 664 */
+/* 665 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -75808,16 +75821,16 @@
 	exports.default = LoadingSvg;
 
 /***/ },
-/* 665 */
+/* 666 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(666);
+	var content = __webpack_require__(667);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(668)(content, {});
+	var update = __webpack_require__(669)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -75834,10 +75847,10 @@
 	}
 
 /***/ },
-/* 666 */
+/* 667 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(667)();
+	exports = module.exports = __webpack_require__(668)();
 	// imports
 
 
@@ -75848,7 +75861,7 @@
 
 
 /***/ },
-/* 667 */
+/* 668 */
 /***/ function(module, exports) {
 
 	/*
@@ -75904,7 +75917,7 @@
 
 
 /***/ },
-/* 668 */
+/* 669 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -76156,16 +76169,16 @@
 
 
 /***/ },
-/* 669 */
+/* 670 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(670);
+	var content = __webpack_require__(671);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(668)(content, {});
+	var update = __webpack_require__(669)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -76182,10 +76195,10 @@
 	}
 
 /***/ },
-/* 670 */
+/* 671 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(667)();
+	exports = module.exports = __webpack_require__(668)();
 	// imports
 
 

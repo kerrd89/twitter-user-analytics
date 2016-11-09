@@ -2,8 +2,7 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import moment from 'moment';
-import RadarChartTemplate from '../components/RadarChart';
-import DeleteSvg from '../components/DeleteSvg';
+import ActiveFilter from '../components/ActiveFilter';
 import twitterHelpers from '../../utils/twitter-helpers';
 
 class List extends Component {
@@ -15,27 +14,10 @@ class List extends Component {
     };
   }
 
-  getUserActivityRadar(tweets) {
-    let recentCreatedAt = moment().diff(tweets[0].created_at,"days");
-    let oldestCreatedAt = moment().diff(tweets[(tweets.length-1)].created_at,"days");
-    let velocity = tweets.length/(oldestCreatedAt - recentCreatedAt);
-    let data = {
-      'followers': tweets[0].user.followers_count,
-      'following': tweets[0].user.friends_count,
-      'tweetsPerDay': velocity,
-      'likes':tweets[0].user.favourites_count,
-      // 'retweets':60
-    };
-
-    return (
-      <RadarChartTemplate data={data} labels={['followers','following','tweets per day',"likes"]}
-      title="How do they use Twitter?"/>
-    )
-  }
-
   getUserMentions(tweets) {
     let userReferencesFiltered = twitterHelpers.getUserMentions(tweets);
     let userReferences = _.slice(userReferencesFiltered, 0, 10).map((user)=>{
+      //this can be refactored into its own component
       return (
         <li key={user.username} onClick={()=>{
           this.setState({selectedUser: user.username})
@@ -63,6 +45,10 @@ class List extends Component {
     return allHashtags;
   }
 
+  clearState() {
+    this.setState({selectedUser:null, selectedHashtag:null})
+  }
+
   render() {
     let tweets = [];
     let userMentions;
@@ -80,14 +66,7 @@ class List extends Component {
       if(this.state.selectedUser) {
         tweets = [];
         tweets.push(
-          <div className="tweets-active-filter">
-            <p>Tweets mentioning @{this.state.selectedUser}</p>
-            <DeleteSvg width="30px" height="30px" color="rgb(128, 194, 175)"
-              onClick={((e)=>{
-                this.setState({selectedUser: null, selectedHashtag: null})
-              })}
-            />
-          </div>
+          <ActiveFilter filterParameter={this.state.selectedUser} onClick={this.clearState.bind(this)}/>
         )
         this.props.tweets.map((tweet)=> {
           tweet.entities.user_mentions.map((userMention) => {
@@ -99,14 +78,7 @@ class List extends Component {
       } else if(this.state.selectedHashtag) {
           tweets = [];
           tweets.push(
-            <div className="tweets-active-filter">
-              <p>Tweets with #{this.state.selectedHashtag}</p>
-              <DeleteSvg width="40px" height="40px" color="rgb(128, 194, 175)"
-                onClick={((e)=>{
-                  this.setState({selectedUser: null, selectedHashtag: null})
-                })}
-              />
-            </div>
+            <ActiveFilter filterParameter={this.state.selectedHashtag} onClick={this.clearState.bind(this)}/>
           )
           this.props.tweets.map((tweet)=> {
             tweet.entities.hashtags.map((hashtag) => {
@@ -127,7 +99,7 @@ class List extends Component {
       activityByHour = twitterHelpers.getActivityByHour(this.props.tweets)
       activityByLocation = twitterHelpers.getActivityByLocation(this.props.tweets)
       repeatedWords = twitterHelpers.getRepeatedWords(this.props.tweets);
-      userActivityRadar = this.getUserActivityRadar(this.props.tweets)
+      userActivityRadar = twitterHelpers.getUserActivityRadar(this.props.tweets)
       repeatedWords1 = _.slice(repeatedWords, 0,9)
       repeatedWords2 = _.slice(repeatedWords, 10,19)
     }

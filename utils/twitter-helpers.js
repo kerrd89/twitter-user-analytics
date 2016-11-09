@@ -1,4 +1,4 @@
-// 'use strict';
+'use strict';
 import React, { Component } from 'react';
 import _ from 'lodash';
 import moment from 'moment';
@@ -6,6 +6,7 @@ import LineChartTemplate from '../src/components/LineChart';
 import TwitterSvg from '../src/components/TwitterSvg';
 import LikeSvg from '../src/components/LikeSvg';
 import RetweetSvg from '../src/components/RetweetSvg';
+import RadarChartTemplate from '../src/components/RadarChart';
 
 
 let commonWords = [
@@ -221,7 +222,25 @@ const twitterHelpers = {
       return (<li key={word.word}>{word.word}: {word.count}</li>)
     });
     return allWords
+  },
+
+  getUserActivityRadar: (tweets) => {
+    let recentCreatedAt = moment().diff(tweets[0].created_at,"days");
+    let oldestCreatedAt = moment().diff(tweets[(tweets.length-1)].created_at,"days");
+    let velocity = tweets.length/(oldestCreatedAt - recentCreatedAt);
+    let data = {
+      'followers': tweets[0].user.followers_count,
+      'following': tweets[0].user.friends_count,
+      'tweetsPerDay': velocity,
+      'likes':tweets[0].user.favourites_count,
+    };
+    return (
+      <RadarChartTemplate data={data} labels={['followers','following','tweets per day',"likes"]}
+      title="How do they use Twitter?"/>
+    )
   }
 }
+
+
 
 export default twitterHelpers;
