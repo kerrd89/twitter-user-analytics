@@ -29433,7 +29433,7 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        _reactRouter.Router,
-	        { history: _reactRouter.browserHistory, __source: {
+	        { history: _reactRouter.hashHistory, __source: {
 	            fileName: _jsxFileName,
 	            lineNumber: 9
 	          },
@@ -29520,7 +29520,8 @@
 	    _this.state = {
 	      username: "benthehuman",
 	      tweets: [],
-	      user: null
+	      user: null,
+	      userMessage: "fetching tweets"
 	    };
 	    return _this;
 	  }
@@ -29541,10 +29542,15 @@
 	      var _this2 = this;
 	
 	      _axios2.default.get('/api/tweets-for-user/' + screenName + '?count=' + count + '?exclude_replies=true').then(function (response) {
-	        _this2.setState({ tweets: response.data });
-	        // this.sendUserDataToFirebase(response.data);
+	        if (!response.data) {
+	          _this2.setState({ userMessage: "that is not a valid twitter handle" });
+	          _this2.setState({ username: "benthehuman" });
+	          return _this2.pullTweets("benthehuman", 200);
+	        }
+	        _this2.setState({ tweets: response.data, userMessage: "fetching tweets" });
 	      }).catch(function (error) {
-	        return console.log(error);
+	        console.log(error);
+	        _this2.setState({ userMessage: "that is not a valid twitter handle" });
 	      });
 	    }
 	  }, {
@@ -29562,19 +29568,19 @@
 	          'div',
 	          { className: 'App', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 47
+	              lineNumber: 55
 	            },
 	            __self: this
 	          },
 	          _react2.default.createElement(_Header2.default, { user: this.state.tweets[0], changeUsername: this.changeUsername.bind(this), __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 48
+	              lineNumber: 56
 	            },
 	            __self: this
 	          }),
 	          _react2.default.createElement(_Twitter2.default, { tweets: this.state.tweets, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 49
+	              lineNumber: 57
 	            },
 	            __self: this
 	          })
@@ -29586,16 +29592,26 @@
 	          'div',
 	          { className: 'App', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 56
+	              lineNumber: 64
 	            },
 	            __self: this
 	          },
 	          _react2.default.createElement(_LoadingSvg2.default, { width: '200px', height: '200px', color: 'rgb(128, 194, 175)', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 57
+	              lineNumber: 65
 	            },
 	            __self: this
-	          })
+	          }),
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'error-message', __source: {
+	                fileName: _jsxFileName,
+	                lineNumber: 66
+	              },
+	              __self: this
+	            },
+	            this.state.userMessage
+	          )
 	        );
 	      }
 	    }
@@ -81171,7 +81187,7 @@
 	
 	
 	// module
-	exports.push([module.id, "/*@import url('./css/header')*/\n/*@import './css/index';*/\nheader {\n  background-color: rgba(35, 37, 40, .94);\n  display: flex;\n  flex-direction: row;\n  width: 75%;\n  padding: 10px;\n  color: white;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 100;\n  font-size: 20px;\n  margin-left: 25%;\n}\n\na {\n  text-decoration:none;\n}\n\n.user-info-label {\n  color: rgb(128, 194, 175);\n  font-family: 'Roboto Slab', serif;\n}\n\n.user-info-label span {\n  color: white;\n  font-family: 'Roboto', sans-serif;\n}\n\nbody {\n  position: relative;\n  letter-spacing: 2px;\n  background-color: rgba(35, 37, 40, .75);\n}\n\nheader input {\n  margin-left: auto;\n  margin-right: 10px;\n  padding: 10px;\n  background-color: rgba(255, 255, 255,.8);\n  color: black;\n  font-size: 20px;\n  font-family: 'Roboto', sans-serif;\n  border:none;\n  height: 40px;\n}\n\nheader button {\n  margin-right: 30px;\n  border:none;\n  color: black;\n  font-family: 'Roboto Slab', serif;\n  background-color: rgb(128, 194, 175);\n  font-size: 20px;\n  height: 60px;\n}\n\n.twitter-container {\n  display:flex;\n  flex-direction: wrap;\n  height: 100%;\n}\n\n.side-bar{\n  width: 25%;\n  background-color: rgba(35, 37, 40, .75);\n  position: fixed;\n  top:0;\n  bottom:0;\n}\n\n.user-lists {\n  display: flex;\n  flex-direction: column;\n  background-color: rgba(35, 37, 40, .75);\n  border: 1px solid rgba(35, 37, 40, 1);\n  width: 15%;\n  margin-left: 25%;\n}\n\n.optional-lists {\n  display: flex;\n  flex-direction: column;\n  background-color: rgba(35, 37, 40, .75);\n  border: 1px solid rgba(35, 37, 40, 1);\n  width: 25%;\n}\n\n\n.user-lists p, .optional-lists p {\n  background-color: rgba(35, 37, 40, .75);\n  color: #00AAEC;\n  font-family: 'Roboto Slab', serif;\n  font-size: 20px;\n  padding: 10px;\n}\n\n.user-lists li, .optional-lists li{\n  color: white;\n  width: 100%;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 100;\n  font-size: 16px;\n  letter-spacing: 2px;\n  margin: 5px 10px;\n}\n\n.activity-charts {\n  display: flex;\n  flex-direction: column;\n  background-color: rgba(35, 37, 40, .75);\n}\n\n.side-bar,.user-hashtags, .user-mentions, .activity-charts{\n  border: 1px solid rgba(35, 37, 40, 1);\n}\n\n.twitter-card {\n  border: 1px solid rgba(35, 37, 40, 1);\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  width: 100%;\n}\n\n.twitter-card svg {\n  color: #00AAEC;\n}\n\n.twitter-card-header {\n  background-color: rgba(35, 37, 40, .75);\n  color: white;\n  font-family: 'Roboto Slab', serif;\n  font-size: 20px;\n  width: 96%;\n  padding: 2% 2%;\n  margin-top: 10px;\n}\n\n.twitter-card-header span {\n  font-family: 'Roboto', sans-serif;\n  color: #00AAEC;\n}\n\n.twitter-card-body {\n  color: white;\n  width: 96%;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 100;\n  font-size: 16px;\n  height: 100%;\n  margin:5px 0px;\n  padding: 1% 2%;\n}\n\n.twitter-card-footer {\n  position: relative;\n  background-color: rgba(35, 37, 40, .75);\n  font-family: 'Roboto', sans-serif;\n  font-weight: 100;\n  font-size: 16px;\n  width:100%;\n  color: rgb(128, 194, 175);\n  padding:5px 0px;\n}\n\nspan.twitter-date {\n  position: absolute;\n  right: 5px;\n  top: 9px;\n}\n\n.repeated-words {\n\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n  padding: 8px 0px 5px 0px;\n}\n\n.repeated-words-list {\n  width: 50%;\n}\n\n.twitter-svg {\n  margin-right: 30px;\n  margin-top: 5px;\n}\n\n.tweets-active-filter {\n  height: 40px;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n}\n\n.tweets-active-filter p, .tweets-active-filter svg {\n  margin: auto 0px;\n}\n\n.tweets-active-filter {\n  background-color: rgba(35, 37, 40, .75);\n  color: rgb(128, 194, 175);\n  font-family: 'Roboto Slab', serif;\n  font-size: 20px;\n  padding: 10px;\n}\n\n.App {\n  position:relative;\n}\n\n.loading-svg {\n  position: absolute;\n  top: 50vh;\n  left: 50vw;\n}\n", ""]);
+	exports.push([module.id, "/*@import url('./css/header')*/\n/*@import './css/index';*/\nheader {\n  background-color: rgba(35, 37, 40, .94);\n  display: flex;\n  flex-direction: row;\n  width: 75%;\n  padding: 10px;\n  color: white;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 100;\n  font-size: 20px;\n  margin-left: 25%;\n}\n\na {\n  text-decoration:none;\n}\n\n.user-info-label {\n  color: rgb(128, 194, 175);\n  font-family: 'Roboto Slab', serif;\n}\n\n.user-info-label span {\n  color: white;\n  font-family: 'Roboto', sans-serif;\n}\n\nbody {\n  position: relative;\n  letter-spacing: 2px;\n  background-color: rgba(35, 37, 40, .75);\n}\n\nheader input {\n  margin-left: auto;\n  margin-right: 10px;\n  padding: 10px;\n  background-color: rgba(255, 255, 255,.8);\n  color: black;\n  font-size: 20px;\n  font-family: 'Roboto', sans-serif;\n  border:none;\n  height: 40px;\n}\n\nheader button {\n  margin-right: 30px;\n  border:none;\n  color: black;\n  font-family: 'Roboto Slab', serif;\n  background-color: rgb(128, 194, 175);\n  font-size: 20px;\n  height: 60px;\n}\n\n.twitter-container {\n  display:flex;\n  flex-direction: wrap;\n  height: 100%;\n}\n\n.side-bar{\n  width: 25%;\n  background-color: rgba(35, 37, 40, .75);\n  position: fixed;\n  top:0;\n  bottom:0;\n}\n\n.user-lists {\n  display: flex;\n  flex-direction: column;\n  background-color: rgba(35, 37, 40, .75);\n  border: 1px solid rgba(35, 37, 40, 1);\n  width: 15%;\n  margin-left: 25%;\n}\n\n.optional-lists {\n  display: flex;\n  flex-direction: column;\n  background-color: rgba(35, 37, 40, .75);\n  border: 1px solid rgba(35, 37, 40, 1);\n  width: 25%;\n}\n\n\n.user-lists p, .optional-lists p {\n  background-color: rgba(35, 37, 40, .75);\n  color: #00AAEC;\n  font-family: 'Roboto Slab', serif;\n  font-size: 20px;\n  padding: 10px;\n}\n\n.user-lists li, .optional-lists li{\n  color: white;\n  width: 100%;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 100;\n  font-size: 16px;\n  letter-spacing: 2px;\n  margin: 5px 10px;\n}\n\n.activity-charts {\n  display: flex;\n  flex-direction: column;\n  background-color: rgba(35, 37, 40, .75);\n}\n\n.side-bar,.user-hashtags, .user-mentions, .activity-charts{\n  border: 1px solid rgba(35, 37, 40, 1);\n}\n\n.twitter-card {\n  border: 1px solid rgba(35, 37, 40, 1);\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  width: 100%;\n}\n\n.twitter-card svg {\n  color: #00AAEC;\n}\n\n.twitter-card-header {\n  background-color: rgba(35, 37, 40, .75);\n  color: white;\n  font-family: 'Roboto Slab', serif;\n  font-size: 20px;\n  width: 96%;\n  padding: 2% 2%;\n  margin-top: 10px;\n}\n\n.twitter-card-header span {\n  font-family: 'Roboto', sans-serif;\n  color: #00AAEC;\n}\n\n.twitter-card-body {\n  color: white;\n  width: 96%;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 100;\n  font-size: 16px;\n  height: 100%;\n  margin:5px 0px;\n  padding: 1% 2%;\n}\n\n.twitter-card-footer {\n  position: relative;\n  background-color: rgba(35, 37, 40, .75);\n  font-family: 'Roboto', sans-serif;\n  font-weight: 100;\n  font-size: 16px;\n  width:100%;\n  color: rgb(128, 194, 175);\n  padding:5px 0px;\n}\n\nspan.twitter-date {\n  position: absolute;\n  right: 5px;\n  top: 9px;\n}\n\n.repeated-words {\n\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n  padding: 8px 0px 5px 0px;\n}\n\n.repeated-words-list {\n  width: 50%;\n}\n\n.twitter-svg {\n  margin-right: 30px;\n  margin-top: 5px;\n}\n\n.tweets-active-filter {\n  height: 40px;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n}\n\n.tweets-active-filter p, .tweets-active-filter svg {\n  margin: auto 0px;\n}\n\n.tweets-active-filter {\n  background-color: rgba(35, 37, 40, .75);\n  color: rgb(128, 194, 175);\n  font-family: 'Roboto Slab', serif;\n  font-size: 20px;\n  padding: 10px;\n}\n\n.App {\n  position:relative;\n}\n\n.loading-svg {\n  position: absolute;\n  top: 50vh;\n  left: 47vw;\n}\n\n.error-message {\n  position: absolute;\n  top: 40vh;\n  width: 100%;\n  text-align: center;\n  color: rgb(128, 194, 175);\n  font-family: 'Roboto Slab', serif;\n  font-size: 20px;\n}\n", ""]);
 	
 	// exports
 

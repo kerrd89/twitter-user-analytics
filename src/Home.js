@@ -14,6 +14,7 @@ class App extends Component {
       username: "benthehuman",
       tweets: [],
       user: null,
+      userMessage: "fetching tweets"
     };
   }
 
@@ -29,10 +30,17 @@ class App extends Component {
   pullTweets(screenName, count) {
     axios.get(`/api/tweets-for-user/${screenName}?count=${count}?exclude_replies=true`)
       .then((response)=>{
-        this.setState({ tweets: response.data });
-        // this.sendUserDataToFirebase(response.data);
+        if(!response.data) {
+          this.setState({userMessage: "that is not a valid twitter handle"});
+          this.setState({username: "benthehuman"});
+          return this.pullTweets("benthehuman", 200);
+        }
+        this.setState({ tweets: response.data, userMessage: "fetching tweets" });
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+        this.setState({userMessage: "that is not a valid twitter handle"});
+      });
   }
 
   changeUsername(data) {
@@ -55,6 +63,7 @@ class App extends Component {
       return (
         <div className="App">
           <LoadingSvg width="200px" height="200px" color="rgb(128, 194, 175)"/>
+          <p className="error-message">{this.state.userMessage}</p>
         </div>
       )
     }

@@ -6,7 +6,7 @@ import { Router, Route, Link, IndexRoute, hashHistory, browserHistory } from 're
 class App extends Component {
   render() {
     return (
-      <Router history={browserHistory}>
+      <Router history={hashHistory}>
         <Route path='/' component={Home} />
         <Route path='/usernames/:username' component={Home} />
       </Router>

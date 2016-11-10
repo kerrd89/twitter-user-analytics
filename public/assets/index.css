@@ -213,5 +213,15 @@ span.twitter-date {
 .loading-svg {
   position: absolute;
   top: 50vh;
-  left: 50vw;
+  left: 47vw;
+}
+
+.error-message {
+  position: absolute;
+  top: 40vh;
+  width: 100%;
+  text-align: center;
+  color: rgb(128, 194, 175);
+  font-family: 'Roboto Slab', serif;
+  font-size: 20px;
 }
