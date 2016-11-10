@@ -169,7 +169,6 @@ const twitterHelpers = {
       return result.concat(obj);
     }, []);
     return userReferencesFiltered
-
   },
 
   getHashtags: (tweets) => {
