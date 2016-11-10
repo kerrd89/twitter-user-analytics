@@ -1,57 +1,18 @@
 import React, { Component } from 'react';
-import Header from './containers/Header.js';
-import List from './containers/List.js';
-import './App.css';
-import firebase, { provider } from './firebase';
-import $ from 'jquery';
-import _ from 'lodash';
+import Home from './Home';
+import { Router, Route, Link, IndexRoute, hashHistory, browserHistory } from 'react-router';
+
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      tweets: []
-    };
-  }
-
-  twitterLogin() {
-    firebase.auth().signInWithPopup(provider).then((result)=>{
-      console.log(result);
-    });
-  }
-
-  pullTweet() {
-    $.ajax({
-      context: this,
-      url: "https://api.twitter.com/1/statuses/oembed.json?id=785307538975698945",
-      jsonp: "callback",
-      dataType: "jsonp",
-      success: function(response) {
-        let tweet = _.pick(response, ['author_name','html']);
-        this.setState({ 'tweets' : this.state.tweets.concat(tweet) });
-        console.log(this.state.tweets);
-        console.log("response: ", response);
-      },
-      error: function(errorThrown){
-        alert(errorThrown);
-      }
-  });
-  }
-
   render() {
     return (
-      <div className="App">
-        <button className="buttonSignIn" onClick={() => this.pullTweet()}>
-        Pull Tweet
-        </button>
-        <button className="buttonSignIn" onClick={() => this.searchTwitter()}>
-        Sign In
-        </button>
-        <Header />
-        <List tweets={this.state.tweets}/>
-      </div>
-    );
+      <Router history={hashHistory}>
+        <Route path='/' component={Home} />
+        <Route path='/usernames/:username' component={Home} />
+      </Router>
+    )
   }
+
 }
 
 export default App;

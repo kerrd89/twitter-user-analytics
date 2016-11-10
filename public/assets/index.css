@@ -1,0 +1,227 @@
+/*@import url('./css/header')*/
+/*@import './css/index';*/
+header {
+  background-color: rgba(35, 37, 40, .94);
+  display: flex;
+  flex-direction: row;
+  width: 75%;
+  padding: 10px;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 20px;
+  margin-left: 25%;
+}
+
+a {
+  text-decoration:none;
+}
+
+.user-info-label {
+  color: rgb(128, 194, 175);
+  font-family: 'Roboto Slab', serif;
+}
+
+.user-info-label span {
+  color: white;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  position: relative;
+  letter-spacing: 2px;
+  background-color: rgba(35, 37, 40, .75);
+}
+
+header input {
+  margin-left: auto;
+  margin-right: 10px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255,.8);
+  color: black;
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  border:none;
+  height: 40px;
+}
+
+header button {
+  margin-right: 30px;
+  border:none;
+  color: black;
+  font-family: 'Roboto Slab', serif;
+  background-color: rgb(128, 194, 175);
+  font-size: 20px;
+  height: 60px;
+}
+
+.twitter-container {
+  display:flex;
+  flex-direction: wrap;
+  height: 100%;
+}
+
+.side-bar{
+  width: 25%;
+  background-color: rgba(35, 37, 40, .75);
+  position: fixed;
+  top:0;
+  bottom:0;
+}
+
+.user-lists {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(35, 37, 40, .75);
+  border: 1px solid rgba(35, 37, 40, 1);
+  width: 15%;
+  margin-left: 25%;
+}
+
+.optional-lists {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(35, 37, 40, .75);
+  border: 1px solid rgba(35, 37, 40, 1);
+  width: 25%;
+}
+
+
+.user-lists p, .optional-lists p {
+  background-color: rgba(35, 37, 40, .75);
+  color: #00AAEC;
+  font-family: 'Roboto Slab', serif;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.user-lists li, .optional-lists li{
+  color: white;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 16px;
+  letter-spacing: 2px;
+  margin: 5px 10px;
+}
+
+.activity-charts {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(35, 37, 40, .75);
+}
+
+.side-bar,.user-hashtags, .user-mentions, .activity-charts{
+  border: 1px solid rgba(35, 37, 40, 1);
+}
+
+.twitter-card {
+  border: 1px solid rgba(35, 37, 40, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.twitter-card svg {
+  color: #00AAEC;
+}
+
+.twitter-card-header {
+  background-color: rgba(35, 37, 40, .75);
+  color: white;
+  font-family: 'Roboto Slab', serif;
+  font-size: 20px;
+  width: 96%;
+  padding: 2% 2%;
+  margin-top: 10px;
+}
+
+.twitter-card-header span {
+  font-family: 'Roboto', sans-serif;
+  color: #00AAEC;
+}
+
+.twitter-card-body {
+  color: white;
+  width: 96%;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 16px;
+  height: 100%;
+  margin:5px 0px;
+  padding: 1% 2%;
+}
+
+.twitter-card-footer {
+  position: relative;
+  background-color: rgba(35, 37, 40, .75);
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 16px;
+  width:100%;
+  color: rgb(128, 194, 175);
+  padding:5px 0px;
+}
+
+span.twitter-date {
+  position: absolute;
+  right: 5px;
+  top: 9px;
+}
+
+.repeated-words {
+
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 8px 0px 5px 0px;
+}
+
+.repeated-words-list {
+  width: 50%;
+}
+
+.twitter-svg {
+  margin-right: 30px;
+  margin-top: 5px;
+}
+
+.tweets-active-filter {
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.tweets-active-filter p, .tweets-active-filter svg {
+  margin: auto 0px;
+}
+
+.tweets-active-filter {
+  background-color: rgba(35, 37, 40, .75);
+  color: rgb(128, 194, 175);
+  font-family: 'Roboto Slab', serif;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.App {
+  position:relative;
+}
+
+.loading-svg {
+  position: absolute;
+  top: 50vh;
+  left: 47vw;
+}
+
+.error-message {
+  position: absolute;
+  top: 40vh;
+  width: 100%;
+  text-align: center;
+  color: rgb(128, 194, 175);
+  font-family: 'Roboto Slab', serif;
+  font-size: 20px;
+}
