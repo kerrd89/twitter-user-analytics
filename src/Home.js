@@ -19,6 +19,7 @@ class App extends Component {
   }
 
   componentDidMount() {
+    const { params } = this.props;
     if(!!this.props.params.username) {
       this.setState({ username: this.props.params.username});
       this.pullTweets(this.props.params.username, 200);
@@ -44,22 +45,20 @@ class App extends Component {
   }
 
   changeUsername(data) {
-    this.setState({ username: data });
+    this.setState({ username: data, tweets: [] });
     this.state.tweets = [];
     this.pullTweets(data, 200);
   }
 
   render() {
-    if(this.state.tweets.length !== 0) {
+    if(this.state.tweets.length) {
       return (
         <div className="App">
           <Header user={this.state.tweets[0]} changeUsername={this.changeUsername.bind(this)}/>
           <Twitter tweets={this.state.tweets}/>
         </div>
       )
-    }
-
-    if(this.state.tweets.length === 0) {
+    } else {
       return (
         <div className="App">
           <LoadingSvg width="200px" height="200px" color="rgb(128, 194, 175)"/>

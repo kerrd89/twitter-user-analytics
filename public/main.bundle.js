@@ -29529,6 +29529,8 @@
 	  _createClass(App, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
+	      var params = this.props.params;
+	
 	      if (!!this.props.params.username) {
 	        this.setState({ username: this.props.params.username });
 	        this.pullTweets(this.props.params.username, 200);
@@ -29556,49 +29558,47 @@
 	  }, {
 	    key: 'changeUsername',
 	    value: function changeUsername(data) {
-	      this.setState({ username: data });
+	      this.setState({ username: data, tweets: [] });
 	      this.state.tweets = [];
 	      this.pullTweets(data, 200);
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      if (this.state.tweets.length !== 0) {
+	      if (this.state.tweets.length) {
 	        return _react2.default.createElement(
 	          'div',
 	          { className: 'App', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 55
+	              lineNumber: 56
 	            },
 	            __self: this
 	          },
 	          _react2.default.createElement(_Header2.default, { user: this.state.tweets[0], changeUsername: this.changeUsername.bind(this), __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 56
+	              lineNumber: 57
 	            },
 	            __self: this
 	          }),
 	          _react2.default.createElement(_Twitter2.default, { tweets: this.state.tweets, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 57
+	              lineNumber: 58
 	            },
 	            __self: this
 	          })
 	        );
-	      }
-	
-	      if (this.state.tweets.length === 0) {
+	      } else {
 	        return _react2.default.createElement(
 	          'div',
 	          { className: 'App', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 64
+	              lineNumber: 63
 	            },
 	            __self: this
 	          },
 	          _react2.default.createElement(_LoadingSvg2.default, { width: '200px', height: '200px', color: 'rgb(128, 194, 175)', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 65
+	              lineNumber: 64
 	            },
 	            __self: this
 	          }),
@@ -29606,7 +29606,7 @@
 	            'p',
 	            { className: 'error-message', __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 66
+	                lineNumber: 65
 	              },
 	              __self: this
 	            },
