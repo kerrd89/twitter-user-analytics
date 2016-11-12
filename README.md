@@ -8,6 +8,8 @@
 
 ## Introduction
 
+![](http://g.recordit.co/5LbHgVIvu6.gif)
+
 This repo was created to call the Twitter API for any given user and provide information about how that individual uses twitter.  [Using ChartJS-2](https://www.npmjs.com/package/react-chartjs-2), Twitter data is converted into various charts about a given accounts usage.  The application uses filter states to allow users to click on commonly used hashtags or commonly interacted with users and see just those tweets.
 
 To run this package, apply to the [twitter API](https://dev.twitter.com/docs) for access Tokens.
