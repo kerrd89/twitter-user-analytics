@@ -25,4 +25,7 @@ module.exports = {
     extensions: ['', '.js', '.jsx', '.json', '.scss', '.css'],
   },
   devtool: 'source-map',
+  devServer: {
+    historyApiFallback: true
+  }
 };
