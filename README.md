@@ -4,7 +4,6 @@
 
 - [Introduction](#introduction)
 - [Getting Started](#getting-started)
-- [Folder Structure](#folder-structure)
 
 ## Introduction
 
