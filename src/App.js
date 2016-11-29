@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <Router history={hashHistory}>
         <Route path='/' component={Home} />
-        <Route path='/usernames/:username' component={Home} />
+        <Route path='/:username' component={Home} />
       </Router>
     )
   }

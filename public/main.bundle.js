@@ -29445,7 +29445,7 @@
 	          },
 	          __self: this
 	        }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/usernames/:username', component: _Home2.default, __source: {
+	        _react2.default.createElement(_reactRouter.Route, { path: '/:username', component: _Home2.default, __source: {
 	            fileName: _jsxFileName,
 	            lineNumber: 11
 	          },
@@ -29532,6 +29532,7 @@
 	      var params = this.props.params;
 	
 	      if (!!this.props.params.username) {
+	        console.log("params", this.props.params);
 	        this.setState({ username: this.props.params.username });
 	        this.pullTweets(this.props.params.username, 200);
 	      } else {
@@ -29570,19 +29571,19 @@
 	          'div',
 	          { className: 'App', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 56
+	              lineNumber: 57
 	            },
 	            __self: this
 	          },
 	          _react2.default.createElement(_Header2.default, { user: this.state.tweets[0], changeUsername: this.changeUsername.bind(this), __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 57
+	              lineNumber: 58
 	            },
 	            __self: this
 	          }),
 	          _react2.default.createElement(_Twitter2.default, { tweets: this.state.tweets, __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 58
+	              lineNumber: 59
 	            },
 	            __self: this
 	          })
@@ -29592,13 +29593,13 @@
 	          'div',
 	          { className: 'App', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 63
+	              lineNumber: 64
 	            },
 	            __self: this
 	          },
 	          _react2.default.createElement(_LoadingSvg2.default, { width: '200px', height: '200px', color: 'rgb(128, 194, 175)', __source: {
 	              fileName: _jsxFileName,
-	              lineNumber: 64
+	              lineNumber: 65
 	            },
 	            __self: this
 	          }),
@@ -29606,7 +29607,7 @@
 	            'p',
 	            { className: 'error-message', __source: {
 	                fileName: _jsxFileName,
-	                lineNumber: 65
+	                lineNumber: 66
 	              },
 	              __self: this
 	            },
