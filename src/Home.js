@@ -32,8 +32,10 @@ class App extends Component {
     axios.get(`/api/tweets-for-user/${screenName}?count=${count}?exclude_replies=true`)
       .then((response)=>{
         if(!response.data) {
-          this.setState({userMessage: "that is not a valid twitter handle"});
-          this.setState({username: "benthehuman"});
+          this.setState({
+            userMessage: "that is not a valid twitter handle",
+            username: "benthehuman"
+          });
           return this.pullTweets("benthehuman", 200);
         }
         this.setState({ tweets: response.data, userMessage: "fetching tweets" });
@@ -46,7 +48,6 @@ class App extends Component {
 
   changeUsername(data) {
     this.setState({ username: data, tweets: [] });
-    this.state.tweets = [];
     this.pullTweets(data, 200);
   }
 
