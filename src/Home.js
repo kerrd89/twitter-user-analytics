@@ -20,10 +20,9 @@ class App extends Component {
 
   componentDidMount() {
     const { params } = this.props;
-    if(!!this.props.params.username) {
-      console.log("params", this.props.params);
-      this.setState({ username: this.props.params.username});
-      this.pullTweets(this.props.params.username, 200);
+    if(!!params.username) {
+      this.setState({ username: params.username});
+      this.pullTweets(params.username, 200);
     } else {
       this.pullTweets(this.state.username,200);
     }
