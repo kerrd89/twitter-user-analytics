@@ -20,8 +20,7 @@ class List extends Component {
       //this can be refactored into its own component
       return (
         <li key={user.username} onClick={()=>{
-          this.setState({selectedUser: user.username})
-          this.setState({selectedHashtag: null})
+          this.setState({selectedUser: user.username, selectedHashtag: null})
         }} >
           {user.username}: {user.count}
         </li>
@@ -35,8 +34,7 @@ class List extends Component {
     let allHashtags = _.slice(allHashtagsFiltered, 0, 10).map((hashtag) => {
       return (
         <li key={hashtag.hashtag} onClick={()=>{
-          this.setState({selectedHashtag: hashtag.hashtag})
-          this.setState({selectedUser: null})
+          this.setState({selectedHashtag: hashtag.hashtag, selectedUser: null})
         }} >
           {hashtag.hashtag}: {hashtag.count}
         </li>
