@@ -3,8 +3,16 @@ var Twitter = require('node-twitter-api');
 const express = require('express');
 var app = express();
 const _ = require('lodash');
+require('./env.js');
 
-var twitter = new Twitter(require ('./config'));
+var twitter = new Twitter({
+  consumerKey: process.env.CONSUMER_KEY,
+  consumerSecret: process.env.CONSUMER_SECRET,
+  accessToken: process.env.ACCESS_TOKEN,
+  accessTokenSecret: process.env.ACCESS_TOKEN_SECRET
+});
+
+console.log(process.env.CONSUMER_KEY)
 
 app.set('port', process.env.PORT || 3000);
 app.use(express.static('public'));
