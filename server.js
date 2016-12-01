@@ -3,7 +3,7 @@ var Twitter = require('node-twitter-api');
 const express = require('express');
 var app = express();
 const _ = require('lodash');
-require('./env.js');
+// require('./env.js');
 
 var twitter = new Twitter({
   consumerKey: process.env.CONSUMER_KEY,
@@ -12,7 +12,7 @@ var twitter = new Twitter({
   accessTokenSecret: process.env.ACCESS_TOKEN_SECRET
 });
 
-console.log(process.env.CONSUMER_KEY)
+console.log(process.env.CONSUMER_KEY);
 
 app.set('port', process.env.PORT || 3000);
 app.use(express.static('public'));
