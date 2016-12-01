@@ -58,6 +58,7 @@
     "lodash": "^4.16.4",
     "moment": "^2.15.2",
     "node-sass": "^3.10.1",
+    "node-twitter-api": "^1.8.0",
     "react": "^15.3.2",
     "react-chartist": "^0.10.2",
     "react-chartjs": "^0.8.0",
