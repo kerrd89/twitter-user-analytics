@@ -6,7 +6,7 @@ const _ = require('lodash');
 
 var twitter = new Twitter(require ('./config'));
 
-app.set('port', process.env.PORT || 3001);
+app.set('port', process.env.PORT || 3000);
 app.use(express.static('public'));
 
 app.listen(app.get('port'), () => {
